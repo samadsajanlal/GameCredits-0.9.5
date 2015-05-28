@@ -43,7 +43,7 @@ map<uint256, CBlockIndex*> mapBlockIndex;
 CChain chainActive;
 CChain chainMostWork;
 int64_t nTimeBestReceived = 0;
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // EarthCoin: starting difficulty is 1 / 2^12
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // starting difficulty is 1 / 2^12
 int nScriptCheckThreads = 0;
 bool fImporting = false;
 bool fReindex = false;
@@ -1213,7 +1213,7 @@ int64_t GetBlockValue(int nHeight, int64_t nFees)
     return nSubsidy + nFees;
 }
 
-static const int64_t nTargetTimespan = 30 * 60; // EarthCoin: every 30 minutes
+static const int64_t nTargetTimespan = 30 * 60; // every 30 minutes
 static const int64_t nTargetSpacing = 1.5 * 60; // 90 sec
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing;
 
