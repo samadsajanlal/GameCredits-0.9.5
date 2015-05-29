@@ -1222,6 +1222,11 @@ static const int64_t nTargetTimespan = 3.5 * 24 * 60 * 60;
 static const int64_t nTargetSpacing = 2.5 * 60;
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing;
 
+// V3 Targets
+static const int64_t nTargetTimespannew = 30 * 60; // every 30 minutes
+static const int64_t nTargetSpacingnew = 1.5 * 60; // 90 sec
+static const int64_t nIntervalnew = nTargetTimespannew / nTargetSpacingnew;
+
 
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
 	/* current difficulty formula, megacoin - kimoto gravity well */
@@ -1353,6 +1358,58 @@ unsigned int static GetNextWorkRequired_OLD(const CBlockIndex* pindexLast, const
     return bnNew.GetCompact();
 }
 
+unsigned int static GetNextWorkRequired_V3(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
+{
+	const CBigNum &bnProofOfWorkLimit = Params().ProofOfWorkLimit();
+    unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
+
+    // Genesis block
+    if (pindexLast == NULL)
+        return nProofOfWorkLimit;
+
+    // Only change once per interval
+    if ((pindexLast->nHeight+1) % nIntervalnew != 0) {
+        return pindexLast->nBits;
+    }
+
+    // GameCredits: This fixes an issue where a 51% attack can change difficulty at will.
+    // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
+    int blockstogoback = nIntervalnew-1;
+    if ((pindexLast->nHeight+1) != nIntervalnew)
+        blockstogoback = nIntervalnew;
+
+    // Go back by what we want to be 14 days worth of blocks
+    const CBlockIndex* pindexFirst = pindexLast;
+    for (int i = 0; pindexFirst && i < blockstogoback; i++)
+        pindexFirst = pindexFirst->pprev;
+    assert(pindexFirst);
+	
+    // Limit adjustment step
+    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+
+    if (nActualTimespan < nTargetTimespannew/16)
+        nActualTimespan = nTargetTimespannew/16;
+    if (nActualTimespan > nTargetTimespannew*16)
+        nActualTimespan = nTargetTimespannew*16;
+
+    // Retarget
+    CBigNum bnNew;
+    bnNew.SetCompact(pindexLast->nBits);
+
+    bnNew *= ((nIntervalnew - 1) * nTargetTimespannew + 2 * nActualTimespan);
+    bnNew /= ((nIntervalnew + 1) * nTargetTimespannew);
+
+    if (bnNew > bnProofOfWorkLimit)
+        bnNew = bnProofOfWorkLimit;
+
+    /// debug print
+    printf("GetNextWorkRequired RETARGET\n");
+    printf("Before: %08x  %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
+    printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
+
+    return bnNew.GetCompact();
+}
+
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
 	unsigned int nHeight = pindexLast->nHeight + 1;
@@ -1366,17 +1423,30 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 	if(nHeight < 15332) {
 		// KGW v1
 		return GetNextWorkRequired_OLD(pindexLast, pblock);
-	} else if(nHeight < 1036320) {
+	} 
+	else if(nHeight < 1036320) {
 		// Former 30 Second Block Target, KGW 2 Prefork
 		BlocksTargetSpacing = 30;
-	} else {
-		// New 90 Second Block Target, KGW 2 Postfork
-		BlocksTargetSpacing = 90;
-	}
-	uint64_t PastBlocksMin = PastSecondsMin / BlocksTargetSpacing;
+			uint64_t PastBlocksMin = PastSecondsMin / BlocksTargetSpacing;
 	uint64_t PastBlocksMax = PastSecondsMax / BlocksTargetSpacing;
 	return KimotoGravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
+	} 
+	else if(nHeight < 1096772) {
+		// New 90 Second Block Target, KGW 2 Postfork
+		BlocksTargetSpacing = 90;
+		uint64_t PastBlocksMin = PastSecondsMin / BlocksTargetSpacing;
+	uint64_t PastBlocksMax = PastSecondsMax / BlocksTargetSpacing;
+	return KimotoGravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
+	}
+	else {
+			return GetNextWorkRequired_V3(pindexLast, pblock);
+	} 
 }
+
+//
+// minimum amount of work that could possibly be required nTime after
+// minimum work required was nBase
+//
 
 //
 // minimum amount of work that could possibly be required nTime after
