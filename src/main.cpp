@@ -1367,24 +1367,10 @@ unsigned int static GetNextWorkRequired_V3(const CBlockIndex* pindexLast, const 
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
 
-    // Only change once per interval
-    if ((pindexLast->nHeight+1) % nIntervalnew != 0) {
-        return pindexLast->nBits;
-    }
 
-    // GameCredits: This fixes an issue where a 51% attack can change difficulty at will.
-    // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
-    int blockstogoback = nIntervalnew-1;
-    if ((pindexLast->nHeight+1) != nIntervalnew)
-        blockstogoback = nIntervalnew;
-
-    // Go back by what we want to be 14 days worth of blocks
-    const CBlockIndex* pindexFirst = pindexLast;
-    for (int i = 0; pindexFirst && i < blockstogoback; i++)
-        pindexFirst = pindexFirst->pprev;
-    assert(pindexFirst);
 	
     // Limit adjustment step
+	const CBlockIndex* pindexFirst = pindexLast->pprev;
     int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
 
     if (nActualTimespan < nTargetTimespannew/16)
