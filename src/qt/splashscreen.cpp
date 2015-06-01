@@ -32,8 +32,8 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f, bool isTest
     // define text to place
     QString titleText       = tr("GameCredits Core");
     QString versionText     = QString("Version %1").arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightTextBTM   = QChar(0xA9)+QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core Developers"));
-	QString copyrightText   = QChar(0xA9) + QString(tr(" 2014 The Bitmark Core Developers"));
+    QString copyrightTextBTM   = QChar(0xA9) + QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core Developers"));
+	QString copyrightText   = QChar(0xA9) + QString(" %1 ").arg(COPYRIGHT_YEAR) + QString(tr("The GameCredits Foundation"));
     QString testnetAddText  = QString(tr("[testnet]")); // define text to place as single text object
 
     QString font            = "Arial";
