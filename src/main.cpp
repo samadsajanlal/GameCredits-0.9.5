@@ -1360,38 +1360,31 @@ unsigned int static GetNextWorkRequired_OLD(const CBlockIndex* pindexLast, const
 
 unsigned int static GetNextWorkRequired_V3(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
-	const CBigNum &bnProofOfWorkLimit = Params().ProofOfWorkLimit();
-    unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
-
+    const CBigNum &bnProofOfWorkLimit = Params().ProofOfWorkLimit();
+	unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
+	
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
 
+    const CBlockIndex* pindexFirst = pindexLast->pprev;
+    int64_t nActualSpacing = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
 
-	
-    // Limit adjustment step
-	const CBlockIndex* pindexFirst = pindexLast->pprev;
-    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
-
-    if (nActualTimespan < nTargetTimespannew/16)
-        nActualTimespan = nTargetTimespannew/16;
-    if (nActualTimespan > nTargetTimespannew*16)
-        nActualTimespan = nTargetTimespannew*16;
+    // limit the adjustment
+    if (nActualSpacing < nTargetSpacingnew/16)
+      nActualSpacing = nTargetSpacingnew/16;
+    if (nActualSpacing > nTargetSpacingnew*16)
+      nActualSpacing = nTargetSpacingnew*16;
 
     // Retarget
     CBigNum bnNew;
     bnNew.SetCompact(pindexLast->nBits);
-
-    bnNew *= ((nIntervalnew - 1) * nTargetTimespannew + 2 * nActualTimespan);
-    bnNew /= ((nIntervalnew + 1) * nTargetTimespannew);
+    bnNew *= ((nIntervalnew - 1) * nTargetSpacingnew + 2 * nActualSpacing);
+    bnNew /= ((nIntervalnew + 1) * nTargetSpacingnew);
 
     if (bnNew > bnProofOfWorkLimit)
         bnNew = bnProofOfWorkLimit;
 
-    /// debug print
-    printf("GetNextWorkRequired RETARGET\n");
-    printf("Before: %08x  %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
-    printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
 
     return bnNew.GetCompact();
 }
@@ -1434,10 +1427,6 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 // minimum work required was nBase
 //
 
-//
-// minimum amount of work that could possibly be required nTime after
-// minimum work required was nBase
-//
 unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime)
 {
     const CBigNum &bnLimit = Params().ProofOfWorkLimit();
