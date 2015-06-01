@@ -69,10 +69,10 @@ Value importprivkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 3)
         throw runtime_error(
-            "importprivkey \"bitmarkprivkey\" ( \"label\" rescan )\n"
+            "importprivkey \"gamecreditsprivkey\" ( \"label\" rescan )\n"
             "\nAdds a private key (as returned by dumpprivkey) to your wallet.\n"
             "\nArguments:\n"
-            "1. \"bitmarkprivkey\"   (string, required) The private key (see dumpprivkey)\n"
+            "1. \"gamecreditsprivkey\"   (string, required) The private key (see dumpprivkey)\n"
             "2. \"label\"            (string, optional) an optional label\n"
             "3. rescan               (boolean, optional, default=true) Rescan the wallet for transactions\n"
             "\nExamples:\n"
@@ -236,11 +236,11 @@ Value dumpprivkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "dumpprivkey \"bitmarkaddress\"\n"
-            "\nReveals the private key corresponding to 'bitmarkaddress'.\n"
+            "dumpprivkey \"gamecreditsaddress\"\n"
+            "\nReveals the private key corresponding to 'gamecreditsaddress'.\n"
             "Then the importprivkey can be used with this output\n"
             "\nArguments:\n"
-            "1. \"bitmarkaddress\"   (string, required) The bitmark address for the private key\n"
+            "1. \"gamecreditsaddress\"   (string, required) The gamecredits address for the private key\n"
             "\nResult:\n"
             "\"key\"                (string) The private key\n"
             "\nExamples:\n"

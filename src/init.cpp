@@ -113,7 +113,7 @@ void Shutdown()
     TRY_LOCK(cs_Shutdown, lockShutdown);
     if (!lockShutdown) return;
 
-    RenameThread("bitmark-shutoff");
+    RenameThread("gamecredits-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopRPCThreads();
     ShutdownRPCMining();
@@ -317,7 +317,7 @@ std::string HelpMessage(HelpMessageMode hmm)
     strUsage += "  -rpcallowip=<ip>       " + _("Allow JSON-RPC connections from specified IP address") + "\n";
     strUsage += "  -rpcthreads=<n>        " + _("Set the number of threads to service RPC calls (default: 4)") + "\n";
 
-    strUsage += "\n" + _("RPC SSL options: (see the Bitmark Wiki for SSL setup instructions)") + "\n";
+    strUsage += "\n" + _("RPC SSL options: (see the Gamecredits Wiki for SSL setup instructions)") + "\n";
     strUsage += "  -rpcssl                                  " + _("Use OpenSSL (https) for JSON-RPC connections") + "\n";
     strUsage += "  -rpcsslcertificatechainfile=<file.cert>  " + _("Server certificate file (default: server.cert)") + "\n";
     strUsage += "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n";
@@ -341,7 +341,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("bitmark-loadblk");
+    RenameThread("gamecredits-loadblk");
 
     // -reindex
     if (fReindex) {
