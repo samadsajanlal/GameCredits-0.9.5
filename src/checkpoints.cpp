@@ -47,11 +47,12 @@ namespace Checkpoints
     	( 800000, uint256("a419226ddf647352adc2b4ff769d98b11eda8438dbb7e8a88fbed4ab763f9908"))
     	( 1000000, uint256("b3d2c4dcd5fb752fc552659b69986512836d3b9ea8876e2b412330b27a404c53"))
     	( 1050000, uint256("6fc07beba9589eb986584f69f8574bc4bbf27b97570511ff984b639d7de2ce70")) // POST FORK
+		( 1096772, uint256("3dd493ea7be808f7fb60af5ea90d6ce4a56c34dc92affefea267d082af8b24d8")) // POST KGW
         ;
     static const CCheckpointData data = {
         &mapCheckpoints,
-        1427574224, // * UNIX timestamp of last checkpoint block
-        1270216,   	// * total number of transactions between genesis and last checkpoint
+        1433172793, // * UNIX timestamp of last checkpoint block
+        1348692,   	// * total number of transactions between genesis and last checkpoint
                     //   (the tx=... number in the SetBestChain debug.log lines)
         1000.0      // * estimated number of transactions per day after checkpoint
     };
