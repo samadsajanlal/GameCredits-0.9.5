@@ -62,7 +62,10 @@ public:
         assert(hashGenesisBlock == uint256("0x91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee"));
 
         // todo add more dns seeders
-        vSeeds.push_back(CDNSSeedData("gs.co", "seects.co"));
+        vSeeds.push_back(CDNSSeedData("acidpool.com", "dns.gmcseed1.acidpool.com"));
+        vSeeds.push_back(CDNSSeedData("version2.org", "dns.gmcseed2.version2.org"));
+        vSeeds.push_back(CDNSSeedData("cryptocloudhostingnode", "gmc.cryptocloudhosting.org"));
+        vSeeds.push_back(CDNSSeedData("version2node", "gmcnode1.version2.org"));
 
         base58Prefixes[PUBKEY_ADDRESS] = list_of(38); // b
         base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
