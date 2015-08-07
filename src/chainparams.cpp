@@ -21,7 +21,7 @@ using namespace boost::assign;
 
 unsigned int pnSeed[] =
 {
-	0x2578a0d5 // replace this with your own networks fixed seed nodes
+	0x68ff4383, 0x05c414bd // 104.255.67.131, 5.196.20.189
 };
 
 class CMainParams : public CChainParams {
