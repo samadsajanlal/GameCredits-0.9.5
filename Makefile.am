@@ -31,7 +31,7 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
 COVERAGE_INFO = baseline_filtered_combined.info baseline.info block_test.info \
   leveldb_baseline.info test_gamecredits_filtered.info total_coverage.info \
   baseline_filtered.info block_test_filtered.info \
-  leveldb_baseline_filtered.info test_gamecredits_coverage.info test_bitmark.info
+  leveldb_baseline_filtered.info test_gamecredits_coverage.info test_gamecredits.info
 
 dist-hook:
 	-$(MAKE) -C $(top_distdir)/src/leveldb clean
@@ -119,19 +119,19 @@ leveldb_baseline_filtered.info: leveldb_baseline.info
 baseline_filtered_combined.info: leveldb_baseline_filtered.info baseline_filtered.info
 	$(LCOV) -a leveldb_baseline_filtered.info -a baseline_filtered.info -o $@
 
-test_bitmark.info: baseline_filtered_combined.info
+test_gamecredits.info: baseline_filtered_combined.info
 	$(MAKE) -C src/ check
-	$(LCOV) -c -d $(abs_builddir)/src -t test_bitmark -o $@
+	$(LCOV) -c -d $(abs_builddir)/src -t test_gamecredits -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
 	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
-test_gamecredits_filtered.info: test_bitmark.info
+test_gamecredits_filtered.info: test_gamecredits.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
 block_test.info: test_gamecredits_filtered.info
 	$(MKDIR_P) qa/tmp
 	-@TIMEOUT=15 qa/pull-tester/run-gamecreditsd-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool 0
-	$(LCOV) -c -d $(abs_builddir)/src --t BitmarkJBlockTest -o $@
+	$(LCOV) -c -d $(abs_builddir)/src --t GamecreditsJBlockTest -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
 	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
@@ -144,7 +144,7 @@ test_gamecredits_coverage.info: baseline_filtered_combined.info test_gamecredits
 total_coverage.info:  baseline_filtered_combined.info test_gamecredits_filtered.info block_test_filtered.info
 	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_gamecredits_filtered.info -a block_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-test_bitmark.coverage/.dirstamp:  test_gamecredits_coverage.info
+test_gamecredits.coverage/.dirstamp:  test_gamecredits_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
@@ -152,7 +152,7 @@ total.coverage/.dirstamp: total_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
-cov: test_bitmark.coverage/.dirstamp total.coverage/.dirstamp
+cov: test_gamecredits.coverage/.dirstamp total.coverage/.dirstamp
 
 endif
 
@@ -169,4 +169,4 @@ CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
 .INTERMEDIATE: $(COVERAGE_INFO)
 
 clean-local:
-	rm -rf test_bitmark.coverage/ total.coverage/ $(OSX_APP)
+	rm -rf test_gamecredits.coverage/ total.coverage/ $(OSX_APP)
