@@ -9,7 +9,7 @@
 
 #include "optionsmodel.h"
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 
 #include "init.h"
@@ -57,7 +57,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitmarkUnits::GMC);
+        settings.setValue("nDisplayUnit", BitcoinUnits::GMC);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("bDisplayAddresses"))

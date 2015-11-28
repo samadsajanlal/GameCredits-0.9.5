@@ -3,34 +3,34 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITMARKADDRESSVALIDATOR_H
-#define BITMARKADDRESSVALIDATOR_H
+#ifndef BITCOINADDRESSVALIDATOR_H
+#define BITCOINADDRESSVALIDATOR_H
 
 #include <QValidator>
 
 /** Base58 entry widget validator, checks for valid characters and
  * removes some whitespace.
  */
-class BitmarkAddressEntryValidator : public QValidator
+class BitcoinAddressEntryValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit BitmarkAddressEntryValidator(QObject *parent);
+    explicit BitcoinAddressEntryValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-/** Bitmark address widget validator, checks for a valid bitmark address.
+/** Gamecredits address widget validator, checks for a valid gamecredits address.
  */
-class BitmarkAddressCheckValidator : public QValidator
+class BitcoinAddressCheckValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit BitmarkAddressCheckValidator(QObject *parent);
+    explicit BitcoinAddressCheckValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-#endif // BITMARKADDRESSVALIDATOR_H
+#endif // BITCOINADDRESSVALIDATOR_H

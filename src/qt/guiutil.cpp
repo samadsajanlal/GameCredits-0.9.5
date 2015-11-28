@@ -5,8 +5,8 @@
 
 #include "guiutil.h"
 
-#include "bitmarkaddressvalidator.h"
-#include "bitmarkunits.h"
+#include "bitcoinaddressvalidator.h"
+#include "bitcoinunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -98,10 +98,10 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 
     widget->setFont(bitmarkAddressFont());
 #if QT_VERSION >= 0x040700
-    widget->setPlaceholderText(QObject::tr("Enter a GameCredits address (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)"));
+    widget->setPlaceholderText(QObject::tr("Enter a GameCredits address (e.g. Gq3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)"));
 #endif
-    widget->setValidator(new BitmarkAddressEntryValidator(parent));
-    widget->setCheckValidator(new BitmarkAddressCheckValidator(parent));
+    widget->setValidator(new BitcoinAddressEntryValidator(parent));
+    widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -115,8 +115,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitmarkURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no bitmark: URI
-    if(!uri.isValid() || uri.scheme() != QString("bitmark"))
+    // return if URI is not valid or is no gamecredits: URI
+    if(!uri.isValid() || uri.scheme() != QString("gamecredits"))
         return false;
 
     SendCoinsRecipient rv;
@@ -152,7 +152,7 @@ bool parseBitmarkURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitmarkUnits::parse(BitmarkUnits::GMC, i->second, &rv.amount))
+                if(!BitcoinUnits::parse(BitcoinUnits::GMC, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -172,13 +172,13 @@ bool parseBitmarkURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitmarkURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert bitmark:// to bitmark:
+    // Convert gamecredits:// to gamecredits:
     //
-    //    Cannot handle this later, because bitmark:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because gamecredits:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("bitmark://", Qt::CaseInsensitive))
+    if(uri.startsWith("gamecredits://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "bitmark:");
+        uri.replace(0, 10, "gamecredits:");
     }
     QUrl uriInstance(uri);
     return parseBitmarkURI(uriInstance, out);
@@ -186,12 +186,12 @@ bool parseBitmarkURI(QString uri, SendCoinsRecipient *out)
 
 QString formatBitmarkURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("bitmark:%1").arg(info.address);
+    QString ret = QString("gamecredits:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitmarkUnits::format(BitmarkUnits::GMC, info.amount));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::GMC, info.amount));
         paramCount++;
     }
 
@@ -620,7 +620,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "bitmark.desktop";
+    return GetAutostartDir() / "gamecredits.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -658,7 +658,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
         if (!optionFile.good())
             return false;
-        // Write a bitmark.desktop file to the autostart directory:
+        // Write a gamecredits.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         optionFile << "Name=GameCredits\n";
@@ -680,7 +680,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the bitmark app
+    // loop through the list of startup items and try to find the gamecredits app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -714,7 +714,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitmarkAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add bitmark app to startup item list
+        // add gamecredits app to startup item list
         LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitmarkAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {

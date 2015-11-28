@@ -107,10 +107,10 @@ QT_MOC_CPP = \
   moc_addressbookpage.cpp \
   moc_addresstablemodel.cpp \
   moc_askpassphrasedialog.cpp \
-  moc_bitmarkaddressvalidator.cpp \
-  moc_bitmarkamountfield.cpp \
-  moc_bitmarkgui.cpp \
-  moc_bitmarkunits.cpp \
+  moc_bitcoinaddressvalidator.cpp \
+  moc_bitcoinamountfield.cpp \
+  moc_bitcoingui.cpp \
+  moc_bitcoinunits.cpp \
   moc_clientmodel.cpp \
   moc_coincontroldialog.cpp \
   moc_coincontroltreewidget.cpp \
@@ -148,31 +148,31 @@ QT_MOC_CPP = \
   moc_walletmodel.cpp \
   moc_walletview.cpp
 
-BITMARK_MM = \
+BITCOIN_MM = \
   macdockiconhandler.mm \
   macnotificationhandler.mm
 
 QT_MOC = \
-  bitmark.moc \
+  bitcoin.moc \
   intro.moc \
   overviewpage.moc \
   rpcconsole.moc
 
-QT_QRC_CPP = qrc_bitmark.cpp
-QT_QRC = bitmark.qrc
+QT_QRC_CPP = qrc_bitcoin.cpp
+QT_QRC = bitcoin.qrc
 
 PROTOBUF_CC = paymentrequest.pb.cc
 PROTOBUF_H = paymentrequest.pb.h
 PROTOBUF_PROTO = paymentrequest.proto
 
-BITMARK_QT_H = \
+BITCOIN_QT_H = \
   addressbookpage.h \
   addresstablemodel.h \
   askpassphrasedialog.h \
-  bitmarkaddressvalidator.h \
-  bitmarkamountfield.h \
-  bitmarkgui.h \
-  bitmarkunits.h \
+  bitcoinaddressvalidator.h \
+  bitcoinamountfield.h \
+  bitcoingui.h \
+  bitcoinunits.h \
   clientmodel.h \
   coincontroldialog.h \
   coincontroltreewidget.h \
@@ -260,12 +260,12 @@ RES_ICONS = \
   res/icons/tx_output.png \
   res/icons/tx_mined.png
 
-BITMARK_QT_CPP = \
-  bitmark.cpp \
-  bitmarkaddressvalidator.cpp \
-  bitmarkamountfield.cpp \
-  bitmarkgui.cpp \
-  bitmarkunits.cpp \
+BITCOIN_QT_CPP = \
+  bitcoin.cpp \
+  bitcoinaddressvalidator.cpp \
+  bitcoinamountfield.cpp \
+  bitcoingui.cpp \
+  bitcoinunits.cpp \
   clientmodel.cpp \
   csvmodelwriter.cpp \
   guiutil.cpp \
@@ -283,7 +283,7 @@ BITMARK_QT_CPP = \
   winshutdownmonitor.cpp
 
 if ENABLE_WALLET
-BITMARK_QT_CPP += \
+BITCOIN_QT_CPP += \
   addressbookpage.cpp \
   addresstablemodel.cpp \
   askpassphrasedialog.cpp \
@@ -319,11 +319,11 @@ RES_IMAGES = \
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
-BITMARK_RC = res/bitcoin-qt-res.rc
+BITCOIN_RC = res/bitcoin-qt-res.rc
 
 libbitmarkqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
-libbitmarkqt_a_SOURCES = $(BITMARK_QT_CPP) $(BITMARK_QT_H) $(QT_FORMS_UI) \
+libbitmarkqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
 nodist_libbitmarkqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
@@ -339,12 +339,12 @@ $(QT_MOC_CPP): $(PROTOBUF_H)
 # gamecredits-qt binary #
 gamecredits_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
-gamecredits_qt_SOURCES = bitmark.cpp
+gamecredits_qt_SOURCES = bitcoin.cpp
 if TARGET_DARWIN
-  gamecredits_qt_SOURCES += $(BITMARK_MM)
+  gamecredits_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  gamecredits_qt_SOURCES += $(BITMARK_RC)
+  gamecredits_qt_SOURCES += $(BITCOIN_RC)
 endif
 gamecredits_qt_LDADD = libbitmarkqt.a $(LIBBITMARK_SERVER)
 if ENABLE_WALLET
@@ -363,15 +363,15 @@ QT_QM=$(QT_TS:.ts=.qm)
 .PHONY: FORCE
 .SECONDARY: $(QT_QM)
 
-bitmarkstrings.cpp: FORCE
-	$(MAKE) -C $(top_srcdir)/src qt/bitmarkstrings.cpp
+bitcoinstrings.cpp: FORCE
+	$(MAKE) -C $(top_srcdir)/src qt/bitcoinstrings.cpp
 
-translate: bitmarkstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITMARK_QT_CPP) $(BITMARK_QT_H) $(BITMARK_MM)
+translate: bitcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitmark_en.ts
+	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitcoin_en.ts
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
-	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitmark -o $(abs_builddir)/$@ $< || \
+	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin -o $(abs_builddir)/$@ $< || \
 	  echo error: could not build $@
 	$(SED) -e '/^\*\*.*Created:/d' $@ > $@.n && mv $@{.n,}
 	$(SED) -e '/^\*\*.*by:/d' $@  > $@.n && mv $@{.n,}

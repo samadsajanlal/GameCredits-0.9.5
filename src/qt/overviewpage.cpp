@@ -6,7 +6,7 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -25,7 +25,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitmarkUnits::GMC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::GMC)
     {
 
     }
@@ -73,7 +73,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = BitmarkUnits::formatWithUnit(unit, amount, true);
+        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -142,10 +142,10 @@ void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance, qint64 
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitmarkUnits::formatWithUnit(unit, balance));
-    ui->labelUnconfirmed->setText(BitmarkUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitmarkUnits::formatWithUnit(unit, immatureBalance));
-    ui->labelTotal->setText(BitmarkUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance));
+    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
+    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users

@@ -7,7 +7,7 @@
 #include "bitmark-config.h"
 #endif
 
-#include "bitmarkgui.h"
+#include "bitcoingui.h"
 
 #include "clientmodel.h"
 #include "guiconstants.h"
@@ -74,7 +74,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("bitmark-core", psz).toStdString();
+    return QCoreApplication::translate("gamecredits-core", psz).toStdString();
 }
 
 /** Set up translations */
@@ -142,11 +142,11 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 /** Class encapsulating Gamecredits Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class BitmarkCore: public QObject
+class BitcoinCore: public QObject
 {
     Q_OBJECT
 public:
-    explicit BitmarkCore();
+    explicit BitcoinCore();
 
 public slots:
     void initialize();
@@ -164,13 +164,13 @@ private:
     void handleRunawayException(std::exception *e);
 };
 
-/** Main Bitmark application object */
-class BitmarkApplication: public QApplication
+/** Main Gamecredits application object */
+class BitcoinApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit BitmarkApplication(int &argc, char **argv);
-    ~BitmarkApplication();
+    explicit BitcoinApplication(int &argc, char **argv);
+    ~BitcoinApplication();
 
 #ifdef ENABLE_WALLET
     /// Create payment server
@@ -191,7 +191,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (BitmarkGUI)
+    /// Get window identifier of QMainWindow (BitcoinGUI)
     WId getMainWinId() const;
 
 public slots:
@@ -210,7 +210,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    BitmarkGUI *window;
+    BitcoinGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -221,20 +221,20 @@ private:
     void startThread();
 };
 
-#include "bitmark.moc"
+#include "bitcoin.moc"
 
-BitmarkCore::BitmarkCore():
+BitcoinCore::BitcoinCore():
     QObject()
 {
 }
 
-void BitmarkCore::handleRunawayException(std::exception *e)
+void BitcoinCore::handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
     emit runawayException(QString::fromStdString(strMiscWarning));
 }
 
-void BitmarkCore::initialize()
+void BitcoinCore::initialize()
 {
     try
     {
@@ -255,7 +255,7 @@ void BitmarkCore::initialize()
     }
 }
 
-void BitmarkCore::shutdown()
+void BitcoinCore::shutdown()
 {
     try
     {
@@ -272,7 +272,7 @@ void BitmarkCore::shutdown()
     }
 }
 
-BitmarkApplication::BitmarkApplication(int &argc, char **argv):
+BitcoinApplication::BitcoinApplication(int &argc, char **argv):
     QApplication(argc, argv),
     coreThread(0),
     optionsModel(0),
@@ -289,7 +289,7 @@ BitmarkApplication::BitmarkApplication(int &argc, char **argv):
     startThread();
 }
 
-BitmarkApplication::~BitmarkApplication()
+BitcoinApplication::~BitcoinApplication()
 {
     LogPrintf("Stopping thread\n");
     emit stopThread();
@@ -307,27 +307,27 @@ BitmarkApplication::~BitmarkApplication()
 }
 
 #ifdef ENABLE_WALLET
-void BitmarkApplication::createPaymentServer()
+void BitcoinApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
 }
 #endif
 
-void BitmarkApplication::createOptionsModel()
+void BitcoinApplication::createOptionsModel()
 {
     optionsModel = new OptionsModel();
 }
 
-void BitmarkApplication::createWindow(bool isaTestNet)
+void BitcoinApplication::createWindow(bool isaTestNet)
 {
-    window = new BitmarkGUI(isaTestNet, 0);
+    window = new BitcoinGUI(isaTestNet, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
     pollShutdownTimer->start(200);
 }
 
-void BitmarkApplication::createSplashScreen(bool isaTestNet)
+void BitcoinApplication::createSplashScreen(bool isaTestNet)
 {
     SplashScreen *splash = new SplashScreen(QPixmap(), 0, isaTestNet);
     splash->setAttribute(Qt::WA_DeleteOnClose);
@@ -335,10 +335,10 @@ void BitmarkApplication::createSplashScreen(bool isaTestNet)
     connect(this, SIGNAL(splashFinished(QWidget*)), splash, SLOT(slotFinish(QWidget*)));
 }
 
-void BitmarkApplication::startThread()
+void BitcoinApplication::startThread()
 {
     coreThread = new QThread(this);
-    BitmarkCore *executor = new BitmarkCore();
+    BitcoinCore *executor = new BitcoinCore();
     executor->moveToThread(coreThread);
 
     /*  communication to and from thread */
@@ -354,13 +354,13 @@ void BitmarkApplication::startThread()
     coreThread->start();
 }
 
-void BitmarkApplication::requestInitialize()
+void BitcoinApplication::requestInitialize()
 {
     LogPrintf("Requesting initialize\n");
     emit requestedInitialize();
 }
 
-void BitmarkApplication::requestShutdown()
+void BitcoinApplication::requestShutdown()
 {
     LogPrintf("Requesting shutdown\n");
     window->hide();
@@ -382,7 +382,7 @@ void BitmarkApplication::requestShutdown()
     emit requestedShutdown();
 }
 
-void BitmarkApplication::initializeResult(int retval)
+void BitcoinApplication::initializeResult(int retval)
 {
     LogPrintf("Initialization result: %i\n", retval);
     // Set exit result: 0 if successful, 1 if failure
@@ -423,7 +423,7 @@ void BitmarkApplication::initializeResult(int retval)
         }
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // bitmark: URIs or payment requests:
+        // gamecredits: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                          window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -437,19 +437,19 @@ void BitmarkApplication::initializeResult(int retval)
     }
 }
 
-void BitmarkApplication::shutdownResult(int retval)
+void BitcoinApplication::shutdownResult(int retval)
 {
     LogPrintf("Shutdown result: %i\n", retval);
     quit(); // Exit main loop after shutdown finished
 }
 
-void BitmarkApplication::handleRunawayException(const QString &message)
+void BitcoinApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", BitmarkGUI::tr("A fatal error occurred. GameCredits can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. GameCredits can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 
-WId BitmarkApplication::getMainWinId() const
+WId BitcoinApplication::getMainWinId() const
 {
     if (!window)
         return 0;
@@ -475,11 +475,11 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(bitmark);
+    Q_INIT_RESOURCE(bitcoin);
 
     GUIUtil::SubstituteFonts();
 
-    BitmarkApplication app(argc, argv);
+    BitcoinApplication app(argc, argv);
 #if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -569,7 +569,7 @@ int main(int argc, char *argv[])
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on
-    // bitmark: links repeatedly have their payment requests routed to this process:
+    // gamecredits: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 

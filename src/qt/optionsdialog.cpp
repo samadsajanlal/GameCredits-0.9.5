@@ -10,7 +10,7 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 #include "monitoreddatamapper.h"
 #include "optionsmodel.h"
@@ -101,7 +101,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-    ui->unit->setModel(new BitmarkUnits(this));
+    ui->unit->setModel(new BitcoinUnits(this));
     ui->transactionFee->setSingleStep(CTransaction::nMinTxFee);
 
     /* Widget-to-option mapper */

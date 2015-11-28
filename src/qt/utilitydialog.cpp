@@ -8,7 +8,7 @@
 #include "ui_aboutdialog.h"
 #include "ui_helpmessagedialog.h"
 
-#include "bitmarkgui.h"
+#include "bitcoingui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 
@@ -117,7 +117,7 @@ void HelpMessageDialog::on_okButton_accepted()
 
 
 /** "Shutdown" window */
-void ShutdownWindow::showShutdownWindow(BitmarkGUI *window)
+void ShutdownWindow::showShutdownWindow(BitcoinGUI *window)
 {
     if (!window)
         return;
