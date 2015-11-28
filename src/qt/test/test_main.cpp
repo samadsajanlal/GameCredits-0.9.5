@@ -1,6 +1,6 @@
-#include "bitmark-config.h"
+#include "bitcoin-config.h"
 #if defined(HAVE_CONFIG_H)
-#include "bitmark-config.h"
+#include "bitcoin-config.h"
 #endif
 
 #ifdef ENABLE_WALLET

@@ -81,7 +81,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont bitmarkAddressFont()
+QFont bitcoinAddressFont()
 {
     QFont font("Monospace");
 #if QT_VERSION >= 0x040800
@@ -96,7 +96,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 {
     parent->setFocusProxy(widget);
 
-    widget->setFont(bitmarkAddressFont());
+    widget->setFont(bitcoinAddressFont());
 #if QT_VERSION >= 0x040700
     widget->setPlaceholderText(QObject::tr("Enter a GameCredits address (e.g. Gq3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)"));
 #endif
@@ -113,7 +113,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseBitmarkURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // return if URI is not valid or is no gamecredits: URI
     if(!uri.isValid() || uri.scheme() != QString("gamecredits"))
@@ -170,7 +170,7 @@ bool parseBitmarkURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseBitmarkURI(QString uri, SendCoinsRecipient *out)
+bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
     // Convert gamecredits:// to gamecredits:
     //
@@ -181,10 +181,10 @@ bool parseBitmarkURI(QString uri, SendCoinsRecipient *out)
         uri.replace(0, 10, "gamecredits:");
     }
     QUrl uriInstance(uri);
-    return parseBitmarkURI(uriInstance, out);
+    return parseBitcoinURI(uriInstance, out);
 }
 
-QString formatBitmarkURI(const SendCoinsRecipient &info)
+QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
     QString ret = QString("gamecredits:%1").arg(info.address);
     int paramCount = 0;
@@ -214,7 +214,7 @@ QString formatBitmarkURI(const SendCoinsRecipient &info)
 
 bool isDust(const QString& address, qint64 amount)
 {
-    CTxDestination dest = CBitmarkAddress(address.toStdString()).Get();
+    CTxDestination dest = CBitcoinAddress(address.toStdString()).Get();
     CScript script; script.SetDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(CTransaction::nMinRelayTxFee);
@@ -701,21 +701,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef bitmarkAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitmarkAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef bitmarkAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitmarkAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
         // add gamecredits app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitmarkAppUrl, NULL, NULL);
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitcoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {
         // remove item

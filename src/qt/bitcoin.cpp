@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "bitmark-config.h"
+#include "bitcoin-config.h"
 #endif
 
 #include "bitcoingui.h"
@@ -457,7 +457,7 @@ WId BitcoinApplication::getMainWinId() const
     return window->winId();
 }
 
-#ifndef BITMARK_QT_TEST
+#ifndef BITCOIN_QT_TEST
 int main(int argc, char *argv[])
 {
     SetupEnvironment();
@@ -615,4 +615,4 @@ int main(int argc, char *argv[])
     }
     return app.getReturnValue();
 }
-#endif // BITMARK_QT_TEST
+#endif // BITCOIN_QT_TEST

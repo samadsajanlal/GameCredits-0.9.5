@@ -23,7 +23,7 @@
 #endif
 
 #if defined(HAVE_CONFIG_H)
-#include "bitmark-config.h" /* for USE_QRCODE */
+#include "bitcoin-config.h" /* for USE_QRCODE */
 #endif
 
 #ifdef USE_QRCODE
@@ -136,7 +136,7 @@ void ReceiveRequestDialog::update()
         target = info.address;
     setWindowTitle(tr("Request payment to %1").arg(target));
 
-    QString uri = GUIUtil::formatBitmarkURI(info);
+    QString uri = GUIUtil::formatBitcoinURI(info);
     ui->btnSaveAs->setEnabled(false);
     QString html;
     html += "<html><font face='verdana, arial, helvetica, sans-serif'>";
@@ -189,7 +189,7 @@ void ReceiveRequestDialog::update()
 
 void ReceiveRequestDialog::on_btnCopyURI_clicked()
 {
-    GUIUtil::setClipboard(GUIUtil::formatBitmarkURI(info));
+    GUIUtil::setClipboard(GUIUtil::formatBitcoinURI(info));
 }
 
 void ReceiveRequestDialog::on_btnCopyAddress_clicked()

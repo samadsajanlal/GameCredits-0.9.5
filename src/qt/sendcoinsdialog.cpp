@@ -390,7 +390,7 @@ bool SendCoinsDialog::handlePaymentRequest(const SendCoinsRecipient &rv)
         }
     }
     else {
-        CBitmarkAddress address(rv.address.toStdString());
+        CBitcoinAddress address(rv.address.toStdString());
         if (!address.IsValid()) {
             emit message(strSendCoins, tr("Invalid payment address %1").arg(rv.address),
                 CClientUIInterface::MSG_WARNING);
@@ -554,7 +554,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         CoinControlDialog::coinControl->destChange = CNoDestination();
         ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
 
-        CBitmarkAddress addr = CBitmarkAddress(text.toStdString());
+        CBitcoinAddress addr = CBitcoinAddress(text.toStdString());
 
         if (text.isEmpty()) // Nothing entered
         {

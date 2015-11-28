@@ -90,7 +90,7 @@ QValidator::State BitcoinAddressCheckValidator::validate(QString &input, int &po
 {
     Q_UNUSED(pos);
     // Validate the passed GameCredits address
-    CBitmarkAddress addr(input.toStdString());
+    CBitcoinAddress addr(input.toStdString());
     if (addr.IsValid())
         return QValidator::Acceptable;
 

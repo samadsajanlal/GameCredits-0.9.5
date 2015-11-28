@@ -703,7 +703,7 @@ void CoinControlDialog::updateView()
             QString sAddress = "";
             if(ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress))
             {
-                sAddress = CBitmarkAddress(outputAddress).ToString().c_str();
+                sAddress = CBitcoinAddress(outputAddress).ToString().c_str();
 
                 // if listMode or change => show gamecredits address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))

@@ -71,7 +71,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent) :
         tr("Usage:") + "\n" +
         "  gamecredits-qt [" + tr("command-line options") + "]                     " + "\n";
 
-    coreOptions = QString::fromStdString(HelpMessage(HMM_BITMARK_QT));
+    coreOptions = QString::fromStdString(HelpMessage(HMM_BITCOIN_QT));
 
     uiOptions = tr("UI options") + ":\n" +
         "  -choosedatadir            " + tr("Choose data directory on startup (default: 0)") + "\n" +
@@ -80,7 +80,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent) :
         "  -rootcertificates=<file>  " + tr("Set SSL root certificates for payment request (default: -system-)") + "\n" +
         "  -splash                   " + tr("Show splash screen on startup (default: 1)");
 
-    ui->helpMessageLabel->setFont(GUIUtil::bitmarkAddressFont());
+    ui->helpMessageLabel->setFont(GUIUtil::bitcoinAddressFont());
 
     // Set help message text
     ui->helpMessageLabel->setText(header + "\n" + coreOptions + "\n" + uiOptions);
