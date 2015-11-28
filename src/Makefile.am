@@ -12,11 +12,11 @@ endif
 
 bin_PROGRAMS =
 
-if BUILD_BITMARKD
+if BUILD_BITCOIND
   bin_PROGRAMS += gamecreditsd
 endif
 
-if BUILD_BITMARK_CLI
+if BUILD_BITCOIN_CLI
   bin_PROGRAMS += gamecredits-cli
 endif
 
@@ -160,11 +160,11 @@ gamecreditsd_LDADD = \
 if ENABLE_WALLET
 gamecreditsd_LDADD += libbitmark_wallet.a
 endif
-gamecreditsd_SOURCES = bitmarkd.cpp
+gamecreditsd_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
-gamecreditsd_SOURCES += bitmarkd-res.rc
+gamecreditsd_SOURCES += bitcoind-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
@@ -175,11 +175,11 @@ gamecredits_cli_LDADD = \
   libbitmark_cli.a \
   libbitmark_common.a \
   $(BOOST_LIBS)
-gamecredits_cli_SOURCES = bitmark-cli.cpp
+gamecredits_cli_SOURCES = bitcoin-cli.cpp
 #
 
 if TARGET_WINDOWS
-gamecredits_cli_SOURCES += bitmark-cli-res.rc
+gamecredits_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race

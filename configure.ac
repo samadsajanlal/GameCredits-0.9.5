@@ -502,8 +502,8 @@ fi
 AC_ARG_WITH([cli],
   [AS_HELP_STRING([--with-cli],
   [with CLI (default is yes)])],
-  [build_bitmark_cli=$withval],
-  [build_bitmark_cli=yes])
+  [build_gamecredits_cli=$withval],
+  [build_gamecredits_cli=yes])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
@@ -548,12 +548,12 @@ fi
 BITMARK_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
 AC_MSG_CHECKING([whether to build gamecreditsd])
-AM_CONDITIONAL([BUILD_BITMARKD], [test x$build_gamecreditsd = xyes])
+AM_CONDITIONAL([BUILD_BITCOIND], [test x$build_gamecreditsd = xyes])
 AC_MSG_RESULT($build_gamecreditsd)
 
 AC_MSG_CHECKING([whether to build gamecredits-cli])
-AM_CONDITIONAL([BUILD_BITMARK_CLI], [test x$build_bitmark_cli = xyes])
-AC_MSG_RESULT($build_bitmark_cli)
+AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test x$build_gamecredits_cli = xyes])
+AC_MSG_RESULT($build_gamecredits_cli)
 
 dnl sets $bitmark_enable_qt, $bitmark_enable_qt_test, $bitmark_enable_qt_dbus
 BITMARK_QT_CONFIGURE([$use_pkgconfig], [qt4])

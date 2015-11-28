@@ -10,79 +10,79 @@ noinst_LIBRARIES = libbitmarkqt.a
 SUBDIRS = . $(BUILD_TEST_QT)
 DIST_SUBDIRS = . test
 
-# bitmark qt core #
+# gamecredits qt core #
 QT_TS = \
-  locale/bitmark_ach.ts \
-  locale/bitmark_af_ZA.ts \
-  locale/bitmark_ar.ts \
-  locale/bitmark_be_BY.ts \
-  locale/bitmark_bg.ts \
-  locale/bitmark_bs.ts \
-  locale/bitmark_ca_ES.ts \
-  locale/bitmark_ca.ts \
-  locale/bitmark_ca@valencia.ts \
-  locale/bitmark_cmn.ts \
-  locale/bitmark_cs.ts \
-  locale/bitmark_cy.ts \
-  locale/bitmark_da.ts \
-  locale/bitmark_de.ts \
-  locale/bitmark_el_GR.ts \
-  locale/bitmark_en.ts \
-  locale/bitmark_eo.ts \
-  locale/bitmark_es_CL.ts \
-  locale/bitmark_es_DO.ts \
-  locale/bitmark_es_MX.ts \
-  locale/bitmark_es.ts \
-  locale/bitmark_es_UY.ts \
-  locale/bitmark_et.ts \
-  locale/bitmark_eu_ES.ts \
-  locale/bitmark_fa_IR.ts \
-  locale/bitmark_fa.ts \
-  locale/bitmark_fi.ts \
-  locale/bitmark_fr_CA.ts \
-  locale/bitmark_fr.ts \
-  locale/bitmark_gl.ts \
-  locale/bitmark_gu_IN.ts \
-  locale/bitmark_he.ts \
-  locale/bitmark_hi_IN.ts \
-  locale/bitmark_hr.ts \
-  locale/bitmark_hu.ts \
-  locale/bitmark_id_ID.ts \
-  locale/bitmark_it.ts \
-  locale/bitmark_ja.ts \
-  locale/bitmark_ka.ts \
-  locale/bitmark_kk_KZ.ts \
-  locale/bitmark_ko_KR.ts \
-  locale/bitmark_ky.ts \
-  locale/bitmark_la.ts \
-  locale/bitmark_lt.ts \
-  locale/bitmark_lv_LV.ts \
-  locale/bitmark_mn.ts \
-  locale/bitmark_ms_MY.ts \
-  locale/bitmark_nb.ts \
-  locale/bitmark_nl.ts \
-  locale/bitmark_pam.ts \
-  locale/bitmark_pl.ts \
-  locale/bitmark_pt_BR.ts \
-  locale/bitmark_pt_PT.ts \
-  locale/bitmark_ro_RO.ts \
-  locale/bitmark_ru.ts \
-  locale/bitmark_sah.ts \
-  locale/bitmark_sk.ts \
-  locale/bitmark_sl_SI.ts \
-  locale/bitmark_sq.ts \
-  locale/bitmark_sr.ts \
-  locale/bitmark_sv.ts \
-  locale/bitmark_th_TH.ts \
-  locale/bitmark_tr.ts \
-  locale/bitmark_uk.ts \
-  locale/bitmark_ur_PK.ts \
-  locale/bitmark_uz@Cyrl.ts \
-  locale/bitmark_vi.ts \
-  locale/bitmark_vi_VN.ts \
-  locale/bitmark_zh_CN.ts \
-  locale/bitmark_zh_HK.ts \
-  locale/bitmark_zh_TW.ts
+  locale/bitcoin_ach.ts \
+  locale/bitcoin_af_ZA.ts \
+  locale/bitcoin_ar.ts \
+  locale/bitcoin_be_BY.ts \
+  locale/bitcoin_bg.ts \
+  locale/bitcoin_bs.ts \
+  locale/bitcoin_ca_ES.ts \
+  locale/bitcoin_ca.ts \
+  locale/bitcoin_ca@valencia.ts \
+  locale/bitcoin_cmn.ts \
+  locale/bitcoin_cs.ts \
+  locale/bitcoin_cy.ts \
+  locale/bitcoin_da.ts \
+  locale/bitcoin_de.ts \
+  locale/bitcoin_el_GR.ts \
+  locale/bitcoin_en.ts \
+  locale/bitcoin_eo.ts \
+  locale/bitcoin_es_CL.ts \
+  locale/bitcoin_es_DO.ts \
+  locale/bitcoin_es_MX.ts \
+  locale/bitcoin_es.ts \
+  locale/bitcoin_es_UY.ts \
+  locale/bitcoin_et.ts \
+  locale/bitcoin_eu_ES.ts \
+  locale/bitcoin_fa_IR.ts \
+  locale/bitcoin_fa.ts \
+  locale/bitcoin_fi.ts \
+  locale/bitcoin_fr_CA.ts \
+  locale/bitcoin_fr.ts \
+  locale/bitcoin_gl.ts \
+  locale/bitcoin_gu_IN.ts \
+  locale/bitcoin_he.ts \
+  locale/bitcoin_hi_IN.ts \
+  locale/bitcoin_hr.ts \
+  locale/bitcoin_hu.ts \
+  locale/bitcoin_id_ID.ts \
+  locale/bitcoin_it.ts \
+  locale/bitcoin_ja.ts \
+  locale/bitcoin_ka.ts \
+  locale/bitcoin_kk_KZ.ts \
+  locale/bitcoin_ko_KR.ts \
+  locale/bitcoin_ky.ts \
+  locale/bitcoin_la.ts \
+  locale/bitcoin_lt.ts \
+  locale/bitcoin_lv_LV.ts \
+  locale/bitcoin_mn.ts \
+  locale/bitcoin_ms_MY.ts \
+  locale/bitcoin_nb.ts \
+  locale/bitcoin_nl.ts \
+  locale/bitcoin_pam.ts \
+  locale/bitcoin_pl.ts \
+  locale/bitcoin_pt_BR.ts \
+  locale/bitcoin_pt_PT.ts \
+  locale/bitcoin_ro_RO.ts \
+  locale/bitcoin_ru.ts \
+  locale/bitcoin_sah.ts \
+  locale/bitcoin_sk.ts \
+  locale/bitcoin_sl_SI.ts \
+  locale/bitcoin_sq.ts \
+  locale/bitcoin_sr.ts \
+  locale/bitcoin_sv.ts \
+  locale/bitcoin_th_TH.ts \
+  locale/bitcoin_tr.ts \
+  locale/bitcoin_uk.ts \
+  locale/bitcoin_ur_PK.ts \
+  locale/bitcoin_uz@Cyrl.ts \
+  locale/bitcoin_vi.ts \
+  locale/bitcoin_vi_VN.ts \
+  locale/bitcoin_zh_CN.ts \
+  locale/bitcoin_zh_HK.ts \
+  locale/bitcoin_zh_TW.ts
 
 QT_FORMS_UI = \
   forms/aboutdialog.ui \
@@ -218,10 +218,10 @@ BITMARK_QT_H = \
 RES_ICONS = \
   res/icons/add.png \
   res/icons/address-book.png \
-  res/icons/bitmark.ico \
-  res/icons/bitmark.png \
-  res/icons/bitmark_testnet.ico \
-  res/icons/bitmark_testnet.png \
+  res/icons/gamecredits.ico \
+  res/icons/gamecredits.png \
+  res/icons/gamecredits_testnet.ico \
+  res/icons/gamecredits_testnet.png \
   res/icons/clock1.png \
   res/icons/clock2.png \
   res/icons/clock3.png \
@@ -319,7 +319,7 @@ RES_IMAGES = \
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
-BITMARK_RC = res/bitmark-qt-res.rc
+BITMARK_RC = res/bitcoin-qt-res.rc
 
 libbitmarkqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
