@@ -5,10 +5,10 @@
 # Helpful routines for regression testing
 #
 
-# Add python-bitmarkrpc to module search path:
+# Add python-gamecreditsrpc to module search path:
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "python-bitmarkrpc"))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "python-gamecreditsrpc"))
 
 from decimal import Decimal
 import json
@@ -16,14 +16,14 @@ import shutil
 import subprocess
 import time
 
-from bitmarkrpc.authproxy import AuthServiceProxy, JSONRPCException
+from gamecreditsrpc.authproxy import AuthServiceProxy, JSONRPCException
 from util import *
 
 START_P2P_PORT=11000
 START_RPC_PORT=11100
 
 def check_json_precision():
-    """Make sure json library being used does not lose precision converting BTM values"""
+    """Make sure json library being used does not lose precision converting GMC values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:

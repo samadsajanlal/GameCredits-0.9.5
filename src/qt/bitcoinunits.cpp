@@ -3,26 +3,26 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 
 #include <QStringList>
 
-BitmarkUnits::BitmarkUnits(QObject *parent):
+BitcoinUnits::BitcoinUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<BitmarkUnits::Unit> BitmarkUnits::availableUnits()
+QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
-    QList<BitmarkUnits::Unit> unitlist;
+    QList<BitcoinUnits::Unit> unitlist;
     unitlist.append(GMC);
     unitlist.append(mGMC);
     unitlist.append(uGMC);
     return unitlist;
 }
 
-bool BitmarkUnits::valid(int unit)
+bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
@@ -35,7 +35,7 @@ bool BitmarkUnits::valid(int unit)
     }
 }
 
-QString BitmarkUnits::name(int unit)
+QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
@@ -46,7 +46,7 @@ QString BitmarkUnits::name(int unit)
     }
 }
 
-QString BitmarkUnits::description(int unit)
+QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
@@ -57,7 +57,7 @@ QString BitmarkUnits::description(int unit)
     }
 }
 
-qint64 BitmarkUnits::factor(int unit)
+qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
@@ -68,7 +68,7 @@ qint64 BitmarkUnits::factor(int unit)
     }
 }
 
-qint64 BitmarkUnits::maxAmount(int unit)
+qint64 BitcoinUnits::maxAmount(int unit)
 {
     switch(unit)
     {
@@ -79,7 +79,7 @@ qint64 BitmarkUnits::maxAmount(int unit)
     }
 }
 
-int BitmarkUnits::amountDigits(int unit)
+int BitcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
@@ -90,7 +90,7 @@ int BitmarkUnits::amountDigits(int unit)
     }
 }
 
-int BitmarkUnits::decimals(int unit)
+int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
@@ -101,7 +101,7 @@ int BitmarkUnits::decimals(int unit)
     }
 }
 
-QString BitmarkUnits::format(int unit, qint64 n, bool fPlus)
+QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -128,12 +128,12 @@ QString BitmarkUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString BitmarkUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString BitcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool BitmarkUnits::parse(int unit, const QString &value, qint64 *val_out)
+bool BitcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -170,13 +170,13 @@ bool BitmarkUnits::parse(int unit, const QString &value, qint64 *val_out)
     return ok;
 }
 
-int BitmarkUnits::rowCount(const QModelIndex &parent) const
+int BitcoinUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant BitmarkUnits::data(const QModelIndex &index, int role) const
+QVariant BitcoinUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())

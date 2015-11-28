@@ -6,83 +6,83 @@ AM_CPPFLAGS += -I$(top_srcdir)/src \
   $(PROTOBUF_CFLAGS) \
   $(QR_CFLAGS)
 bin_PROGRAMS = gamecredits-qt
-noinst_LIBRARIES = libbitmarkqt.a
+noinst_LIBRARIES = libbitcoinqt.a
 SUBDIRS = . $(BUILD_TEST_QT)
 DIST_SUBDIRS = . test
 
-# bitmark qt core #
+# gamecredits qt core #
 QT_TS = \
-  locale/bitmark_ach.ts \
-  locale/bitmark_af_ZA.ts \
-  locale/bitmark_ar.ts \
-  locale/bitmark_be_BY.ts \
-  locale/bitmark_bg.ts \
-  locale/bitmark_bs.ts \
-  locale/bitmark_ca_ES.ts \
-  locale/bitmark_ca.ts \
-  locale/bitmark_ca@valencia.ts \
-  locale/bitmark_cmn.ts \
-  locale/bitmark_cs.ts \
-  locale/bitmark_cy.ts \
-  locale/bitmark_da.ts \
-  locale/bitmark_de.ts \
-  locale/bitmark_el_GR.ts \
-  locale/bitmark_en.ts \
-  locale/bitmark_eo.ts \
-  locale/bitmark_es_CL.ts \
-  locale/bitmark_es_DO.ts \
-  locale/bitmark_es_MX.ts \
-  locale/bitmark_es.ts \
-  locale/bitmark_es_UY.ts \
-  locale/bitmark_et.ts \
-  locale/bitmark_eu_ES.ts \
-  locale/bitmark_fa_IR.ts \
-  locale/bitmark_fa.ts \
-  locale/bitmark_fi.ts \
-  locale/bitmark_fr_CA.ts \
-  locale/bitmark_fr.ts \
-  locale/bitmark_gl.ts \
-  locale/bitmark_gu_IN.ts \
-  locale/bitmark_he.ts \
-  locale/bitmark_hi_IN.ts \
-  locale/bitmark_hr.ts \
-  locale/bitmark_hu.ts \
-  locale/bitmark_id_ID.ts \
-  locale/bitmark_it.ts \
-  locale/bitmark_ja.ts \
-  locale/bitmark_ka.ts \
-  locale/bitmark_kk_KZ.ts \
-  locale/bitmark_ko_KR.ts \
-  locale/bitmark_ky.ts \
-  locale/bitmark_la.ts \
-  locale/bitmark_lt.ts \
-  locale/bitmark_lv_LV.ts \
-  locale/bitmark_mn.ts \
-  locale/bitmark_ms_MY.ts \
-  locale/bitmark_nb.ts \
-  locale/bitmark_nl.ts \
-  locale/bitmark_pam.ts \
-  locale/bitmark_pl.ts \
-  locale/bitmark_pt_BR.ts \
-  locale/bitmark_pt_PT.ts \
-  locale/bitmark_ro_RO.ts \
-  locale/bitmark_ru.ts \
-  locale/bitmark_sah.ts \
-  locale/bitmark_sk.ts \
-  locale/bitmark_sl_SI.ts \
-  locale/bitmark_sq.ts \
-  locale/bitmark_sr.ts \
-  locale/bitmark_sv.ts \
-  locale/bitmark_th_TH.ts \
-  locale/bitmark_tr.ts \
-  locale/bitmark_uk.ts \
-  locale/bitmark_ur_PK.ts \
-  locale/bitmark_uz@Cyrl.ts \
-  locale/bitmark_vi.ts \
-  locale/bitmark_vi_VN.ts \
-  locale/bitmark_zh_CN.ts \
-  locale/bitmark_zh_HK.ts \
-  locale/bitmark_zh_TW.ts
+  locale/bitcoin_ach.ts \
+  locale/bitcoin_af_ZA.ts \
+  locale/bitcoin_ar.ts \
+  locale/bitcoin_be_BY.ts \
+  locale/bitcoin_bg.ts \
+  locale/bitcoin_bs.ts \
+  locale/bitcoin_ca_ES.ts \
+  locale/bitcoin_ca.ts \
+  locale/bitcoin_ca@valencia.ts \
+  locale/bitcoin_cmn.ts \
+  locale/bitcoin_cs.ts \
+  locale/bitcoin_cy.ts \
+  locale/bitcoin_da.ts \
+  locale/bitcoin_de.ts \
+  locale/bitcoin_el_GR.ts \
+  locale/bitcoin_en.ts \
+  locale/bitcoin_eo.ts \
+  locale/bitcoin_es_CL.ts \
+  locale/bitcoin_es_DO.ts \
+  locale/bitcoin_es_MX.ts \
+  locale/bitcoin_es.ts \
+  locale/bitcoin_es_UY.ts \
+  locale/bitcoin_et.ts \
+  locale/bitcoin_eu_ES.ts \
+  locale/bitcoin_fa_IR.ts \
+  locale/bitcoin_fa.ts \
+  locale/bitcoin_fi.ts \
+  locale/bitcoin_fr_CA.ts \
+  locale/bitcoin_fr.ts \
+  locale/bitcoin_gl.ts \
+  locale/bitcoin_gu_IN.ts \
+  locale/bitcoin_he.ts \
+  locale/bitcoin_hi_IN.ts \
+  locale/bitcoin_hr.ts \
+  locale/bitcoin_hu.ts \
+  locale/bitcoin_id_ID.ts \
+  locale/bitcoin_it.ts \
+  locale/bitcoin_ja.ts \
+  locale/bitcoin_ka.ts \
+  locale/bitcoin_kk_KZ.ts \
+  locale/bitcoin_ko_KR.ts \
+  locale/bitcoin_ky.ts \
+  locale/bitcoin_la.ts \
+  locale/bitcoin_lt.ts \
+  locale/bitcoin_lv_LV.ts \
+  locale/bitcoin_mn.ts \
+  locale/bitcoin_ms_MY.ts \
+  locale/bitcoin_nb.ts \
+  locale/bitcoin_nl.ts \
+  locale/bitcoin_pam.ts \
+  locale/bitcoin_pl.ts \
+  locale/bitcoin_pt_BR.ts \
+  locale/bitcoin_pt_PT.ts \
+  locale/bitcoin_ro_RO.ts \
+  locale/bitcoin_ru.ts \
+  locale/bitcoin_sah.ts \
+  locale/bitcoin_sk.ts \
+  locale/bitcoin_sl_SI.ts \
+  locale/bitcoin_sq.ts \
+  locale/bitcoin_sr.ts \
+  locale/bitcoin_sv.ts \
+  locale/bitcoin_th_TH.ts \
+  locale/bitcoin_tr.ts \
+  locale/bitcoin_uk.ts \
+  locale/bitcoin_ur_PK.ts \
+  locale/bitcoin_uz@Cyrl.ts \
+  locale/bitcoin_vi.ts \
+  locale/bitcoin_vi_VN.ts \
+  locale/bitcoin_zh_CN.ts \
+  locale/bitcoin_zh_HK.ts \
+  locale/bitcoin_zh_TW.ts
 
 QT_FORMS_UI = \
   forms/aboutdialog.ui \
@@ -107,10 +107,10 @@ QT_MOC_CPP = \
   moc_addressbookpage.cpp \
   moc_addresstablemodel.cpp \
   moc_askpassphrasedialog.cpp \
-  moc_bitmarkaddressvalidator.cpp \
-  moc_bitmarkamountfield.cpp \
-  moc_bitmarkgui.cpp \
-  moc_bitmarkunits.cpp \
+  moc_bitcoinaddressvalidator.cpp \
+  moc_bitcoinamountfield.cpp \
+  moc_bitcoingui.cpp \
+  moc_bitcoinunits.cpp \
   moc_clientmodel.cpp \
   moc_coincontroldialog.cpp \
   moc_coincontroltreewidget.cpp \
@@ -148,31 +148,31 @@ QT_MOC_CPP = \
   moc_walletmodel.cpp \
   moc_walletview.cpp
 
-BITMARK_MM = \
+BITCOIN_MM = \
   macdockiconhandler.mm \
   macnotificationhandler.mm
 
 QT_MOC = \
-  bitmark.moc \
+  bitcoin.moc \
   intro.moc \
   overviewpage.moc \
   rpcconsole.moc
 
-QT_QRC_CPP = qrc_bitmark.cpp
-QT_QRC = bitmark.qrc
+QT_QRC_CPP = qrc_bitcoin.cpp
+QT_QRC = bitcoin.qrc
 
 PROTOBUF_CC = paymentrequest.pb.cc
 PROTOBUF_H = paymentrequest.pb.h
 PROTOBUF_PROTO = paymentrequest.proto
 
-BITMARK_QT_H = \
+BITCOIN_QT_H = \
   addressbookpage.h \
   addresstablemodel.h \
   askpassphrasedialog.h \
-  bitmarkaddressvalidator.h \
-  bitmarkamountfield.h \
-  bitmarkgui.h \
-  bitmarkunits.h \
+  bitcoinaddressvalidator.h \
+  bitcoinamountfield.h \
+  bitcoingui.h \
+  bitcoinunits.h \
   clientmodel.h \
   coincontroldialog.h \
   coincontroltreewidget.h \
@@ -218,10 +218,10 @@ BITMARK_QT_H = \
 RES_ICONS = \
   res/icons/add.png \
   res/icons/address-book.png \
-  res/icons/bitmark.ico \
-  res/icons/bitmark.png \
-  res/icons/bitmark_testnet.ico \
-  res/icons/bitmark_testnet.png \
+  res/icons/gamecredits.ico \
+  res/icons/gamecredits.png \
+  res/icons/gamecredits_testnet.ico \
+  res/icons/gamecredits_testnet.png \
   res/icons/clock1.png \
   res/icons/clock2.png \
   res/icons/clock3.png \
@@ -260,12 +260,12 @@ RES_ICONS = \
   res/icons/tx_output.png \
   res/icons/tx_mined.png
 
-BITMARK_QT_CPP = \
-  bitmark.cpp \
-  bitmarkaddressvalidator.cpp \
-  bitmarkamountfield.cpp \
-  bitmarkgui.cpp \
-  bitmarkunits.cpp \
+BITCOIN_QT_CPP = \
+  bitcoin.cpp \
+  bitcoinaddressvalidator.cpp \
+  bitcoinamountfield.cpp \
+  bitcoingui.cpp \
+  bitcoinunits.cpp \
   clientmodel.cpp \
   csvmodelwriter.cpp \
   guiutil.cpp \
@@ -283,7 +283,7 @@ BITMARK_QT_CPP = \
   winshutdownmonitor.cpp
 
 if ENABLE_WALLET
-BITMARK_QT_CPP += \
+BITCOIN_QT_CPP += \
   addressbookpage.cpp \
   addresstablemodel.cpp \
   askpassphrasedialog.cpp \
@@ -319,17 +319,17 @@ RES_IMAGES = \
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
-BITMARK_RC = res/bitmark-qt-res.rc
+BITCOIN_RC = res/bitcoin-qt-res.rc
 
-libbitmarkqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
+libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
-libbitmarkqt_a_SOURCES = $(BITMARK_QT_CPP) $(BITMARK_QT_H) $(QT_FORMS_UI) \
+libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
-nodist_libbitmarkqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP)
 
-BUILT_SOURCES = $(nodist_libbitmarkqt_a_SOURCES)
+BUILT_SOURCES = $(nodist_libbitcoinqt_a_SOURCES)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
@@ -339,18 +339,18 @@ $(QT_MOC_CPP): $(PROTOBUF_H)
 # gamecredits-qt binary #
 gamecredits_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
-gamecredits_qt_SOURCES = bitmark.cpp
+gamecredits_qt_SOURCES = bitcoin.cpp
 if TARGET_DARWIN
-  gamecredits_qt_SOURCES += $(BITMARK_MM)
+  gamecredits_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  gamecredits_qt_SOURCES += $(BITMARK_RC)
+  gamecredits_qt_SOURCES += $(BITCOIN_RC)
 endif
-gamecredits_qt_LDADD = libbitmarkqt.a $(LIBBITMARK_SERVER)
+gamecredits_qt_LDADD = libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-gamecredits_qt_LDADD += $(LIBBITMARK_WALLET)
+gamecredits_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
-gamecredits_qt_LDADD += $(LIBBITMARK_CLI) $(LIBBITMARK_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
+gamecredits_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
 gamecredits_qt_LDFLAGS = $(QT_LDFLAGS)
 
@@ -363,15 +363,15 @@ QT_QM=$(QT_TS:.ts=.qm)
 .PHONY: FORCE
 .SECONDARY: $(QT_QM)
 
-bitmarkstrings.cpp: FORCE
-	$(MAKE) -C $(top_srcdir)/src qt/bitmarkstrings.cpp
+bitcoinstrings.cpp: FORCE
+	$(MAKE) -C $(top_srcdir)/src qt/bitcoinstrings.cpp
 
-translate: bitmarkstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITMARK_QT_CPP) $(BITMARK_QT_H) $(BITMARK_MM)
+translate: bitcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitmark_en.ts
+	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitcoin_en.ts
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
-	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitmark -o $(abs_builddir)/$@ $< || \
+	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin -o $(abs_builddir)/$@ $< || \
 	  echo error: could not build $@
 	$(SED) -e '/^\*\*.*Created:/d' $@ > $@.n && mv $@{.n,}
 	$(SED) -e '/^\*\*.*by:/d' $@  > $@.n && mv $@{.n,}

@@ -3,24 +3,24 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITMARKUNITS_H
-#define BITMARKUNITS_H
+#ifndef BITCOINUNITS_H
+#define BITCOINUNITS_H
 
 #include <QAbstractListModel>
 #include <QString>
 
-/** Bitmark unit definitions. Encapsulates parsing and formatting
+/** Gamecredits unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class BitmarkUnits: public QAbstractListModel
+class BitcoinUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit BitmarkUnits(QObject *parent);
+    explicit BitcoinUnits(QObject *parent);
 
-    /** Bitmark units.
-      @note Source: https://github.com/coinsolidation/bitmark/wiki/Currency . Please add only sensible ones
+    /** Gamecredits units.
+      @note Source: https://github.com/gamecredits-project/GameCredits 
      */
     enum Unit
     {
@@ -69,8 +69,8 @@ public:
     ///@}
 
 private:
-    QList<BitmarkUnits::Unit> unitlist;
+    QList<BitcoinUnits::Unit> unitlist;
 };
-typedef BitmarkUnits::Unit BitmarkUnit;
+typedef BitcoinUnits::Unit BitcoinUnit;
 
-#endif // BITMARKUNITS_H
+#endif // BITCOINUNITS_H

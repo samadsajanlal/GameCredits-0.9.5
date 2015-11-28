@@ -3,28 +3,28 @@ include Makefile.include
 AM_CPPFLAGS += -I$(builddir)
 
 noinst_LIBRARIES = \
-  libbitmark_server.a \
-  libbitmark_common.a \
-  libbitmark_cli.a
+  libbitcoin_server.a \
+  libbitcoin_common.a \
+  libbitcoin_cli.a
 if ENABLE_WALLET
-noinst_LIBRARIES += libbitmark_wallet.a
+noinst_LIBRARIES += libbitcoin_wallet.a
 endif
 
 bin_PROGRAMS =
 
-if BUILD_BITMARKD
+if BUILD_BITCOIND
   bin_PROGRAMS += gamecreditsd
 endif
 
-if BUILD_BITMARK_CLI
+if BUILD_BITCOIN_CLI
   bin_PROGRAMS += gamecredits-cli
 endif
 
 SUBDIRS = . $(BUILD_QT) $(BUILD_TEST)
 DIST_SUBDIRS = . qt test
 .PHONY: FORCE
-# bitmark core #
-BITMARK_CORE_H = \
+# gamecredits core #
+BITCOIN_CORE_H = \
   addrman.h \
   alert.h \
   allocators.h \
@@ -88,7 +88,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 version.o: obj/build.h
 
-libbitmark_server_a_SOURCES = \
+libbitcoin_server_a_SOURCES = \
   addrman.cpp \
   alert.cpp \
   bloom.cpp \
@@ -110,18 +110,18 @@ libbitmark_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   $(JSON_H) \
-  $(BITMARK_CORE_H)
+  $(BITCOIN_CORE_H)
 
-libbitmark_wallet_a_SOURCES = \
+libbitcoin_wallet_a_SOURCES = \
   db.cpp \
   crypter.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   wallet.cpp \
   walletdb.cpp \
-  $(BITMARK_CORE_H)
+  $(BITCOIN_CORE_H)
 
-libbitmark_common_a_SOURCES = \
+libbitcoin_common_a_SOURCES = \
   base58.cpp \
   allocators.cpp \
   chainparams.cpp \
@@ -136,35 +136,35 @@ libbitmark_common_a_SOURCES = \
   sync.cpp \
   util.cpp \
   version.cpp \
-  $(BITMARK_CORE_H)
+  $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libbitmark_common_a_SOURCES += compat/glibc_compat.cpp
-libbitmark_common_a_SOURCES += compat/glibcxx_compat.cpp
+libbitcoin_common_a_SOURCES += compat/glibc_compat.cpp
+libbitcoin_common_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-libbitmark_cli_a_SOURCES = \
+libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
-  $(BITMARK_CORE_H)
+  $(BITCOIN_CORE_H)
 
-nodist_libbitmark_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
+nodist_libbitcoin_common_a_SOURCES = $(top_srcdir)/src/obj/build.h
 #
 
 # gamecreditsd binary #
 gamecreditsd_LDADD = \
-  libbitmark_server.a \
-  libbitmark_cli.a \
-  libbitmark_common.a \
+  libbitcoin_server.a \
+  libbitcoin_cli.a \
+  libbitcoin_common.a \
   $(LIBLEVELDB) \
   $(LIBMEMENV)
 if ENABLE_WALLET
-gamecreditsd_LDADD += libbitmark_wallet.a
+gamecreditsd_LDADD += libbitcoin_wallet.a
 endif
-gamecreditsd_SOURCES = bitmarkd.cpp
+gamecreditsd_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
-gamecreditsd_SOURCES += bitmarkd-res.rc
+gamecreditsd_SOURCES += bitcoind-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
@@ -172,14 +172,14 @@ gamecreditsd_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
 
 # gamecredits-cli binary #
 gamecredits_cli_LDADD = \
-  libbitmark_cli.a \
-  libbitmark_common.a \
+  libbitcoin_cli.a \
+  libbitcoin_common.a \
   $(BOOST_LIBS)
-gamecredits_cli_SOURCES = bitmark-cli.cpp
+gamecredits_cli_SOURCES = bitcoin-cli.cpp
 #
 
 if TARGET_WINDOWS
-gamecredits_cli_SOURCES += bitmark-cli-res.rc
+gamecredits_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
@@ -190,7 +190,7 @@ leveldb/%.a:
 	  CC="$(CC)" PLATFORM=$(TARGET_OS) AR="$(AR)" $(LEVELDB_TARGET_FLAGS) \
 	  OPT="$(CXXFLAGS) $(CPPFLAGS)"
 
-qt/bitmarkstrings.cpp: $(libbitmark_server_a_SOURCES) $(libbitmark_common_a_SOURCES) $(libbitmark_cli_a_SOURCES)
+qt/bitcoinstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_cli_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	@cd $(top_srcdir); XGETTEXT=$(XGETTEXT) share/qt/extract_strings_qt.py
 

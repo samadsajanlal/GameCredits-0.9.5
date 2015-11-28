@@ -4,12 +4,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "bitmark-config.h"
+#include "bitcoin-config.h"
 #endif
 
 #include "optionsmodel.h"
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 
 #include "init.h"
@@ -57,7 +57,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitmarkUnits::GMC);
+        settings.setValue("nDisplayUnit", BitcoinUnits::GMC);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("bDisplayAddresses"))

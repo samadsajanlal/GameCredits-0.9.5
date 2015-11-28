@@ -3,9 +3,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "bitmarkgui.h"
+#include "bitcoingui.h"
 
-#include "bitmarkunits.h"
+#include "bitcoinunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -56,9 +56,9 @@
 #include <QUrlQuery>
 #endif
 
-const QString BitmarkGUI::DEFAULT_WALLET = "~Default";
+const QString BitcoinGUI::DEFAULT_WALLET = "~Default";
 
-BitmarkGUI::BitmarkGUI(bool fIsTestnet, QWidget *parent) :
+BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
     QMainWindow(parent),
     clientModel(0),
     walletFrame(0),
@@ -90,20 +90,20 @@ BitmarkGUI::BitmarkGUI(bool fIsTestnet, QWidget *parent) :
     if (!fIsTestnet)
     {
 #ifndef Q_OS_MAC
-        QApplication::setWindowIcon(QIcon(":icons/bitmark"));
-        setWindowIcon(QIcon(":icons/bitmark"));
+        QApplication::setWindowIcon(QIcon(":icons/gamecredits"));
+        setWindowIcon(QIcon(":icons/gamecredits"));
 #else
-        MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitmark"));
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/gamecredits"));
 #endif
     }
     else
     {
         windowTitle += " " + tr("[testnet]");
 #ifndef Q_OS_MAC
-        QApplication::setWindowIcon(QIcon(":icons/bitmark_testnet"));
-        setWindowIcon(QIcon(":icons/bitmark_testnet"));
+        QApplication::setWindowIcon(QIcon(":icons/gamecredits_testnet"));
+        setWindowIcon(QIcon(":icons/gamecredits_testnet"));
 #else
-        MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitmark_testnet"));
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/gamecredits_testnet"));
 #endif
     }
     setWindowTitle(windowTitle);
@@ -202,7 +202,7 @@ BitmarkGUI::BitmarkGUI(bool fIsTestnet, QWidget *parent) :
     subscribeToCoreSignals();
 }
 
-BitmarkGUI::~BitmarkGUI()
+BitcoinGUI::~BitcoinGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -216,7 +216,7 @@ BitmarkGUI::~BitmarkGUI()
 #endif
 }
 
-void BitmarkGUI::createActions(bool fIsTestnet)
+void BitcoinGUI::createActions(bool fIsTestnet)
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -235,7 +235,7 @@ void BitmarkGUI::createActions(bool fIsTestnet)
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and bitmark: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and gamecredits: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
@@ -264,9 +264,9 @@ void BitmarkGUI::createActions(bool fIsTestnet)
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     if (!fIsTestnet)
-        aboutAction = new QAction(QIcon(":/icons/bitmark"), tr("&About GameCredits Core"), this);
+        aboutAction = new QAction(QIcon(":/icons/gamecredits"), tr("&About GameCredits Core"), this);
     else
-        aboutAction = new QAction(QIcon(":/icons/bitmark_testnet"), tr("&About GameCredits Core"), this);
+        aboutAction = new QAction(QIcon(":/icons/gamecredits_testnet"), tr("&About GameCredits Core"), this);
     aboutAction->setStatusTip(tr("Show information about GameCredits"));
     aboutAction->setMenuRole(QAction::AboutRole);
 #if QT_VERSION < 0x050000
@@ -280,9 +280,9 @@ void BitmarkGUI::createActions(bool fIsTestnet)
     optionsAction->setStatusTip(tr("Modify configuration options for GameCredits"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     if (!fIsTestnet)
-        toggleHideAction = new QAction(QIcon(":/icons/bitmark"), tr("&Show / Hide"), this);
+        toggleHideAction = new QAction(QIcon(":/icons/gamecredits"), tr("&Show / Hide"), this);
     else
-        toggleHideAction = new QAction(QIcon(":/icons/bitmark_testnet"), tr("&Show / Hide"), this);
+        toggleHideAction = new QAction(QIcon(":/icons/gamecredits_testnet"), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
@@ -306,10 +306,10 @@ void BitmarkGUI::createActions(bool fIsTestnet)
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a bitmark: URI or payment request"));
+    openAction->setStatusTip(tr("Open a gamecredits: URI or payment request"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
-    showHelpMessageAction->setStatusTip(tr("Show the GameCredits Core help message to get a list with possible Bitmark command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the GameCredits Core help message to get a list with possible Gamecredits command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -332,7 +332,7 @@ void BitmarkGUI::createActions(bool fIsTestnet)
 #endif
 }
 
-void BitmarkGUI::createMenuBar()
+void BitcoinGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -377,7 +377,7 @@ void BitmarkGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void BitmarkGUI::createToolBars()
+void BitcoinGUI::createToolBars()
 {
     if(walletFrame)
     {
@@ -391,7 +391,7 @@ void BitmarkGUI::createToolBars()
     }
 }
 
-void BitmarkGUI::setClientModel(ClientModel *clientModel)
+void BitcoinGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -421,7 +421,7 @@ void BitmarkGUI::setClientModel(ClientModel *clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool BitmarkGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool BitcoinGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     if(!walletFrame)
         return false;
@@ -429,14 +429,14 @@ bool BitmarkGUI::addWallet(const QString& name, WalletModel *walletModel)
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool BitmarkGUI::setCurrentWallet(const QString& name)
+bool BitcoinGUI::setCurrentWallet(const QString& name)
 {
     if(!walletFrame)
         return false;
     return walletFrame->setCurrentWallet(name);
 }
 
-void BitmarkGUI::removeAllWallets()
+void BitcoinGUI::removeAllWallets()
 {
     if(!walletFrame)
         return;
@@ -445,7 +445,7 @@ void BitmarkGUI::removeAllWallets()
 }
 #endif
 
-void BitmarkGUI::setWalletActionsEnabled(bool enabled)
+void BitcoinGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -461,7 +461,7 @@ void BitmarkGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void BitmarkGUI::createTrayIcon(bool fIsTestnet)
+void BitcoinGUI::createTrayIcon(bool fIsTestnet)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -483,7 +483,7 @@ void BitmarkGUI::createTrayIcon(bool fIsTestnet)
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void BitmarkGUI::createTrayIconMenu()
+void BitcoinGUI::createTrayIconMenu()
 {
     QMenu *trayIconMenu;
 #ifndef Q_OS_MAC
@@ -521,7 +521,7 @@ void BitmarkGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void BitmarkGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -531,7 +531,7 @@ void BitmarkGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void BitmarkGUI::optionsClicked()
+void BitcoinGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -541,7 +541,7 @@ void BitmarkGUI::optionsClicked()
     dlg.exec();
 }
 
-void BitmarkGUI::aboutClicked()
+void BitcoinGUI::aboutClicked()
 {
     if(!clientModel)
         return;
@@ -551,7 +551,7 @@ void BitmarkGUI::aboutClicked()
     dlg.exec();
 }
 
-void BitmarkGUI::showHelpMessageClicked()
+void BitcoinGUI::showHelpMessageClicked()
 {
     HelpMessageDialog *help = new HelpMessageDialog(this);
     help->setAttribute(Qt::WA_DeleteOnClose);
@@ -559,7 +559,7 @@ void BitmarkGUI::showHelpMessageClicked()
 }
 
 #ifdef ENABLE_WALLET
-void BitmarkGUI::openClicked()
+void BitcoinGUI::openClicked()
 {
     OpenURIDialog dlg(this);
     if(dlg.exec())
@@ -568,42 +568,42 @@ void BitmarkGUI::openClicked()
     }
 }
 
-void BitmarkGUI::gotoOverviewPage()
+void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void BitmarkGUI::gotoHistoryPage()
+void BitcoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void BitmarkGUI::gotoReceiveCoinsPage()
+void BitcoinGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void BitmarkGUI::gotoSendCoinsPage(QString addr)
+void BitcoinGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void BitmarkGUI::gotoSignMessageTab(QString addr)
+void BitcoinGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void BitmarkGUI::gotoVerifyMessageTab(QString addr)
+void BitcoinGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 #endif
 
-void BitmarkGUI::setNumConnections(int count)
+void BitcoinGUI::setNumConnections(int count)
 {
     QString icon;
     switch(count)
@@ -618,7 +618,7 @@ void BitmarkGUI::setNumConnections(int count)
     labelConnectionsIcon->setToolTip(tr("%n active connection(s) to GameCredits network", "", count));
 }
 
-void BitmarkGUI::setNumBlocks(int count)
+void BitcoinGUI::setNumBlocks(int count)
 {
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
     statusBar()->clearMessage();
@@ -725,7 +725,7 @@ void BitmarkGUI::setNumBlocks(int count)
     progressBar->setToolTip(tooltip);
 }
 
-void BitmarkGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
     QString strTitle = tr("GameCredits"); // default title
     // Default to information icon
@@ -788,7 +788,7 @@ void BitmarkGUI::message(const QString &title, const QString &message, unsigned 
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void BitmarkGUI::changeEvent(QEvent *e)
+void BitcoinGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -807,7 +807,7 @@ void BitmarkGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void BitmarkGUI::closeEvent(QCloseEvent *event)
+void BitcoinGUI::closeEvent(QCloseEvent *event)
 {
     if(clientModel)
     {
@@ -823,7 +823,7 @@ void BitmarkGUI::closeEvent(QCloseEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-void BitmarkGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
+void BitcoinGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
 {
     // On new transaction, make an info balloon
     message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
@@ -832,20 +832,20 @@ void BitmarkGUI::incomingTransaction(const QString& date, int unit, qint64 amoun
                 "Type: %3\n"
                 "Address: %4\n")
                   .arg(date)
-                  .arg(BitmarkUnits::formatWithUnit(unit, amount, true))
+                  .arg(BitcoinUnits::formatWithUnit(unit, amount, true))
                   .arg(type)
                   .arg(address), CClientUIInterface::MSG_INFORMATION);
 }
 #endif
 
-void BitmarkGUI::dragEnterEvent(QDragEnterEvent *event)
+void BitcoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void BitmarkGUI::dropEvent(QDropEvent *event)
+void BitcoinGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -857,7 +857,7 @@ void BitmarkGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-bool BitmarkGUI::eventFilter(QObject *object, QEvent *event)
+bool BitcoinGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -870,7 +870,7 @@ bool BitmarkGUI::eventFilter(QObject *object, QEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-bool BitmarkGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     // URI has to be valid
     if (walletFrame && walletFrame->handlePaymentRequest(recipient))
@@ -883,7 +883,7 @@ bool BitmarkGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
         return false;
 }
 
-void BitmarkGUI::setEncryptionStatus(int status)
+void BitcoinGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -913,7 +913,7 @@ void BitmarkGUI::setEncryptionStatus(int status)
 }
 #endif
 
-void BitmarkGUI::showNormalIfMinimized(bool fToggleHidden)
+void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     // activateWindow() (sometimes) helps with keyboard focus on Windows
     if (isHidden())
@@ -935,12 +935,12 @@ void BitmarkGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void BitmarkGUI::toggleHidden()
+void BitcoinGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void BitmarkGUI::detectShutdown()
+void BitcoinGUI::detectShutdown()
 {
     if (ShutdownRequested())
     {
@@ -950,7 +950,7 @@ void BitmarkGUI::detectShutdown()
     }
 }
 
-static bool ThreadSafeMessageBox(BitmarkGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(BitcoinGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     bool ret = false;
@@ -964,13 +964,13 @@ static bool ThreadSafeMessageBox(BitmarkGUI *gui, const std::string& message, co
     return ret;
 }
 
-void BitmarkGUI::subscribeToCoreSignals()
+void BitcoinGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
 }
 
-void BitmarkGUI::unsubscribeFromCoreSignals()
+void BitcoinGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));

@@ -28,7 +28,7 @@ using namespace std;
 using namespace boost;
 
 #if defined(NDEBUG)
-# error "Bitmark cannot be compiled without assertions."
+# error "GameCredits cannot be compiled without assertions."
 #endif
 
 //
@@ -1875,7 +1875,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("bitmark-scriptch");
+    RenameThread("gamecredits-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -3097,11 +3097,11 @@ bool LoadBlockIndex()
     return true;
 }
 
-void static BitmarkGenesisMiner(CBlock block, int start, int threads)
+void static BitcoinGenesisMiner(CBlock block, int start, int threads)
 {
-    LogPrintf("BitmarkMiner started\n");
+    LogPrintf("GamecreditsMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("bitmark-miner");
+    RenameThread("gamecredits-miner");
     block.nTime += start;
     try { while (true) {
         printf("Searching for genesis block...\n");
@@ -3131,12 +3131,12 @@ void static BitmarkGenesisMiner(CBlock block, int start, int threads)
     } }
     catch (boost::thread_interrupted)
     {
-        LogPrintf("BitmarkMiner terminated\n");
+        LogPrintf("GamecreditsMiner terminated\n");
         throw;
     }
 }
 
-void GenesisBitmark(CBlock block)
+void GenesisBitcoin(CBlock block)
 {
     static boost::thread_group* minerThreads = NULL;
 
@@ -3154,7 +3154,7 @@ void GenesisBitmark(CBlock block)
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&BitmarkGenesisMiner, block, i, nThreads));
+        minerThreads->create_thread(boost::bind(&BitcoinGenesisMiner, block, i, nThreads));
 }
 
 bool InitBlockIndex() {
@@ -3174,7 +3174,7 @@ bool InitBlockIndex() {
         if (false)
         {
             CBlock &block = const_cast<CBlock&>(Params().GenesisBlock());
-            GenesisBitmark(block);
+            GenesisBitcoin(block);
             block.print();
             while(true) {}
         }
