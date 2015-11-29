@@ -122,6 +122,9 @@ private:
     void subscribeToCoreSignals();
     /** Disconnect core signals from GUI client */
     void unsubscribeFromCoreSignals();
+	
+    void updateStyle();
+    void writeDefaultStyleSheet(const QString &qssPath);
 
 signals:
     /** Signal raised when a URI was entered or dragged to the GUI */
@@ -192,6 +195,8 @@ private slots:
 
     /** called by a timer to check if fRequestShutdown has been set **/
     void detectShutdown();
+	
+    void updateStyleSlot();
 };
 
 #endif // BITCOINGUI_H

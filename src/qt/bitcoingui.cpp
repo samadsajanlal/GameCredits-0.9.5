@@ -29,6 +29,7 @@
 
 #include <iostream>
 
+#include <QDebug>
 #include <QApplication>
 #include <QDateTime>
 #include <QDesktopWidget>
@@ -71,6 +72,7 @@ BitcoinGUI::BitcoinGUI(bool fIsTestnet, QWidget *parent) :
     prevBlocks(0),
     spinnerFrame(0)
 {
+    updateStyle();
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
     QString windowTitle = tr("GameCredits Core") + " - ";
@@ -974,4 +976,43 @@ void BitcoinGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
+}
+
+void BitcoinGUI::updateStyleSlot()
+{
+    updateStyle();
+}
+
+void BitcoinGUI::updateStyle()
+{
+    if (!fUseGamecreditsTheme)
+        return;
+
+    QString qssPath = QString::fromStdString( GetDataDir().string() ) + "/gamecredits.qss";
+
+    QFile f( qssPath );
+
+    if (!f.exists())
+        writeDefaultStyleSheet( qssPath );
+
+    if (!f.open(QFile::ReadOnly))
+    {
+        qDebug() << "failed to open style sheet";
+        return;
+    }
+
+    qDebug() << "loading theme";
+    qApp->setStyleSheet( f.readAll() );
+}
+
+void BitcoinGUI::writeDefaultStyleSheet(const QString &qssPath)
+{
+    qDebug() << "writing default style sheet";
+
+    QFile qss( ":/text/stylesheet" );
+    qss.open( QFile::ReadOnly );
+
+    QFile f( qssPath );
+    f.open( QFile::ReadWrite );
+    f.write( qss.readAll() );
 }
