@@ -157,4 +157,7 @@
         <file alias="zh_HK">locale/bitcoin_zh_HK.qm</file>
         <file alias="zh_TW">locale/bitcoin_zh_TW.qm</file>
     </qresource>
+    <qresource prefix="/text">
+        <file alias="stylesheet">res/text/gamecredits.qss</file>
+    </qresource>
 </RCC>

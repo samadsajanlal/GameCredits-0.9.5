@@ -14,6 +14,8 @@
 
 #include <boost/filesystem.hpp>
 
+extern bool fUseGamecreditsTheme;
+
 class QValidatedLineEdit;
 class SendCoinsRecipient;
 

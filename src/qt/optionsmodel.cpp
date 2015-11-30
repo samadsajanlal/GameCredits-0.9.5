@@ -12,6 +12,9 @@
 #include "bitcoinunits.h"
 #include "guiutil.h"
 
+// shared UI settings in guiutil.h
+bool fUseGamecreditsTheme;
+
 #include "init.h"
 #include "main.h"
 #include "net.h"
@@ -71,6 +74,10 @@ void OptionsModel::Init()
     if (!settings.contains("fCoinControlFeatures"))
         settings.setValue("fCoinControlFeatures", false);
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
+	
+    if (!settings.contains("fUseGamecreditsTheme"))
+        settings.setValue("fUseGamecreditsTheme", true);
+    fUseGamecreditsTheme = settings.value("fUseGamecreditsTheme", true).toBool();
 
     // These are shared with the core or have a command-line parameter
     // and we want command-line parameters to overwrite the GUI settings.
@@ -214,6 +221,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language");
         case CoinControlFeatures:
             return fCoinControlFeatures;
+        case UseGamecreditsTheme:
+            return fUseGamecreditsTheme;
         case DatabaseCache:
             return settings.value("nDatabaseCache");
         case ThreadsScriptVerif:
@@ -328,6 +337,10 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             fCoinControlFeatures = value.toBool();
             settings.setValue("fCoinControlFeatures", fCoinControlFeatures);
             emit coinControlFeaturesChanged(fCoinControlFeatures);
+            break;
+        case UseGamecreditsTheme:
+            fUseGamecreditsTheme = value.toBool();
+            settings.setValue("fUseGamecreditsTheme", fUseGamecreditsTheme);
             break;
         case DatabaseCache:
             if (settings.value("nDatabaseCache") != value) {

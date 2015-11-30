@@ -461,6 +461,13 @@
          </item>
         </layout>
        </item>
+        <item>
+        <widget class="QCheckBox" name="useGamecreditsTheme">
+         <property name="text">
+          <string>Use Gamecredits visual theme (requires restart)</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QCheckBox" name="displayAddresses">
          <property name="toolTip">
