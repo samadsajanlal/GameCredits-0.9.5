@@ -1,6 +1,6 @@
 #GameCredits integration/staging tree
 ================================
-Copyright (c) 2009-2013 Bitcoin Developers<br>
+Copyright (c) 2009-2011 Bitcoin Developers<br>
 Copyright (c) 2011-2013 Litecoin Developers<br>
 Copyright (c) 2013-2014 GamersCoin Developers<br>
 Copyright (c) 2015-2016 GameCredits Developers<br>
