@@ -11,6 +11,8 @@ Copyright (c) 2015-2016 GameCredits Developers<br>
 ----------------
 [![GameCredits](http://i.imgur.com/aA99Ryn.jpg)](https://www.youtube.com/watch?v=ls8ad6G5ejA)
 
+A new and exciting Open Source Gaming currency that will revolutionize in-game purchases and bring developers a monetization based on fair-play rules.
+
 GameCredits is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 1.5 minute block targets
  - subsidy halves in 840k blocks
