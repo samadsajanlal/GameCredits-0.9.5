@@ -56,7 +56,7 @@ The process for compiling the GameCredits daemon, gamecreditsd, from the source 
 
 ```
 apt-get update && apt-get upgrade
-apt-get install ntp git build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev autoconf automake pkg-config
+apt-get install ntp git build-essential libssl-dev libdb-dev libdb++-dev libboost-all-dev libqrencode-dev autoconf automake pkg-config unzip
 
 wget http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.8.tar.gz && tar -zxf download.php\?file\=miniupnpc-1.8.tar.gz && cd miniupnpc-1.8/
 make && make install && cd .. && rm -rf miniupnpc-1.8 download.php\?file\=miniupnpc-1.8.tar.gz
@@ -119,6 +119,7 @@ txindex=1
 #it's an optional thing. It takes a lot longerr to sync that way 0 if you don't care
 rpcport=40001
 port=40002
+rpcallowip=127.0.0.1
 addnode=194.135.81.138
 addnode=46.105.118.15:40002
 addnode=142.4.218.175:40002
@@ -149,6 +150,13 @@ addnode=89.216.241.17:50126
 You can just copy the username and password provided by the error message when you first ran gamecreditsd.
 
 Run gamecreditsd once more to start the daemon! 
+
+###Optional Download GameCredits bootstrap
+```
+cd /home/gamecredits/.gamecredits/
+wget http://gmc.cryptocloudhosting.org/bootstrap/bootstrap.zip
+unzip bootstrap.zip
+```
 
 ###Using gamecreditsd
 ```
