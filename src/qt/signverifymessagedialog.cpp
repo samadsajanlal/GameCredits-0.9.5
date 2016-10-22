@@ -1,5 +1,6 @@
-// Copyright (c) 2011-2013 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Original Code: Copyright (c) 2011-2014 The Bitcoin Core Developers
+// Modified Code: Copyright (c) 2015 Gamecredits Foundation
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "signverifymessagedialog.h"
@@ -7,13 +8,11 @@
 
 #include "addressbookpage.h"
 #include "guiutil.h"
-#include "scicon.h"
 #include "walletmodel.h"
 
 #include "base58.h"
 #include "init.h"
-#include "main.h" // For strMessageMagic
-#include "wallet/wallet.h"
+#include "wallet.h"
 
 #include <string>
 #include <vector>
@@ -27,17 +26,9 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->addressBookButton_SM->setIcon(SingleColorIcon(":/icons/address-book"));
-    ui->pasteButton_SM->setIcon(SingleColorIcon(":/icons/editpaste"));
-    ui->copySignatureButton_SM->setIcon(SingleColorIcon(":/icons/editcopy"));
-    ui->signMessageButton_SM->setIcon(SingleColorIcon(":/icons/edit"));
-    ui->clearButton_SM->setIcon(SingleColorIcon(":/icons/remove"));
-    ui->addressBookButton_VM->setIcon(SingleColorIcon(":/icons/address-book"));
-    ui->verifyMessageButton_VM->setIcon(SingleColorIcon(":/icons/transaction_0"));
-    ui->clearButton_VM->setIcon(SingleColorIcon(":/icons/remove"));
-
 #if QT_VERSION >= 0x040700
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a GameCredits address (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
