@@ -78,6 +78,18 @@ cd src
 strip gamecreditsd
 ```
 
+### If Ubuntu >= 16.04 (libboost=1.58)
+```
+cd GameCredits
+git checkout ubuntu16.04
+./autogen.sh
+./configure CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -fPIC" --with-incompatible-bdb
+make
+cd src
+strip gamecreditsd
+```
+
+
 ###Compile gamecreditsd with Berkeley DB 4.8 Recommended
 ```
 cd GameCredits
