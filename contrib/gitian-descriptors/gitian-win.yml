@@ -19,7 +19,7 @@ packages:
 
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/noise23/gamecredits.git"
+- "url": "https://github.com/gamecredits-project/GameCredits.git"
   "dir": "gamecredits"
 files:
 - "qt-win32-5.2.0-gitian-r3.zip"
