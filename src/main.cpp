@@ -1227,6 +1227,9 @@ static const int64_t nTargetTimespannew = 30 * 60; // every 30 minutes
 static const int64_t nTargetSpacingnew = 1.5 * 60; // 90 sec
 static const int64_t nIntervalnew = nTargetTimespannew / nTargetSpacingnew;
 
+// DGW V3 fork activation block
+static const int64_t dgwForkActivationBlock = 1981542;
+
 
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
 	/* current difficulty formula, megacoin - kimoto gravity well */
@@ -1399,15 +1402,15 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
     int64_t PastBlocksMin = 24;
     int64_t PastBlocksMax = 24;
     int64_t CountBlocks = 0;
-    int64_t ForkActivationBlock = 1980511; // change this to match whatever is defined in GetNextWorkRequired else statement
+    // int64_t ForkActivationBlock = 1980511; // change this to match whatever is defined in GetNextWorkRequired else statement
     CBigNum PastDifficultyAverage;
     CBigNum PastDifficultyAveragePrev;
 
-    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < ForkActivationBlock + PastBlocksMin) {
+    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < dgwForkActivationBlock + PastBlocksMin) {
         return bnProofOfWorkLimit.GetCompact();
     }
 
-    for (unsigned int i = 1; BlockReading && BlockReading->nHeight >= ForkActivationBlock; i++) {
+    for (unsigned int i = 1; BlockReading && BlockReading->nHeight >= dgwForkActivationBlock; i++) {
         if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
         CountBlocks++;
 
@@ -1475,7 +1478,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 	uint64_t PastBlocksMax = PastSecondsMax / BlocksTargetSpacing;
 	return KimotoGravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
 	}
-	else if(nHeight < 1980511) { // change this to match block defined in DGW function above
+	else if(nHeight < dgwForkActivationBlock) {
 			return GetNextWorkRequired_V3(pindexLast, pblock);
 	} else {
         // DGW v3
