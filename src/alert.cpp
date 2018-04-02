@@ -1,14 +1,19 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin Core Developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "alert.h"
 
-#include "key.h"
+#include "clientversion.h"
 #include "net.h"
+#include "netmessagemaker.h"
+#include "protocol.h"
+#include "pubkey.h"
+#include "timedata.h"
 #include "ui_interface.h"
 #include "util.h"
+#include "utilstrencodings.h"
 
 #include <stdint.h>
 #include <algorithm>
@@ -17,6 +22,7 @@
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/foreach.hpp>
+#include <boost/thread.hpp>
 
 using namespace std;
 
@@ -47,7 +53,7 @@ std::string CUnsignedAlert::ToString() const
     BOOST_FOREACH(int n, setCancel)
         strSetCancel += strprintf("%d ", n);
     std::string strSetSubVer;
-    BOOST_FOREACH(std::string str, setSubVer)
+    BOOST_FOREACH(const std::string& str, setSubVer)
         strSetSubVer += "\"" + str + "\" ";
     return strprintf(
         "CAlert(\n"
@@ -76,11 +82,6 @@ std::string CUnsignedAlert::ToString() const
         nPriority,
         strComment,
         strStatusBar);
-}
-
-void CUnsignedAlert::print() const
-{
-    LogPrintf("%s", ToString());
 }
 
 void CAlert::SetNull()
@@ -112,7 +113,7 @@ bool CAlert::Cancels(const CAlert& alert) const
     return (alert.nID <= nCancel || setCancel.count(alert.nID));
 }
 
-bool CAlert::AppliesTo(int nVersion, std::string strSubVerIn) const
+bool CAlert::AppliesTo(int nVersion, const std::string& strSubVerIn) const
 {
     // TODO: rework for client-version-embedded-in-strSubVer ?
     return (IsInEffect() &&
@@ -122,12 +123,15 @@ bool CAlert::AppliesTo(int nVersion, std::string strSubVerIn) const
 
 bool CAlert::AppliesToMe() const
 {
-    return AppliesTo(PROTOCOL_VERSION, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<std::string>()));
+    return AppliesTo(CLIENT_VERSION, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<std::string>()));
 }
 
-bool CAlert::RelayTo(CNode* pnode) const
+bool CAlert::RelayTo(CNode* pnode, CConnman& connman) const
 {
     if (!IsInEffect())
+        return false;
+    // don't relay to nodes which haven't sent their version message
+    if (pnode->nVersion == 0)
         return false;
     // returns true if wasn't already contained in the set
     if (pnode->setKnown.insert(GetHash()).second)
@@ -136,18 +140,19 @@ bool CAlert::RelayTo(CNode* pnode) const
             AppliesToMe() ||
             GetAdjustedTime() < nRelayUntil)
         {
-            pnode->PushMessage("alert", *this);
+            const CNetMsgMaker msgMaker(PROTOCOL_VERSION);
+            connman.PushMessage(pnode, msgMaker.Make(NetMsgType::ALERT, *this));
             return true;
         }
     }
     return false;
 }
 
-bool CAlert::CheckSignature() const
+bool CAlert::CheckSignature(const std::vector<unsigned char>& alertKey) const
 {
-    CPubKey key(Params().AlertKey());
+    CPubKey key(alertKey);
     if (!key.Verify(Hash(vchMsg.begin(), vchMsg.end()), vchSig))
-        return error("CAlert::CheckSignature() : verify signature failed");
+        return error("CAlert::CheckSignature(): verify signature failed");
 
     // Now unserialize the data
     CDataStream sMsg(vchMsg, SER_NETWORK, PROTOCOL_VERSION);
@@ -167,9 +172,9 @@ CAlert CAlert::getAlertByHash(const uint256 &hash)
     return retval;
 }
 
-bool CAlert::ProcessAlert(bool fThread)
+bool CAlert::ProcessAlert(const std::vector<unsigned char>& alertKey, bool fThread)
 {
-    if (!CheckSignature())
+    if (!CheckSignature(alertKey))
         return false;
     if (!IsInEffect())
         return false;

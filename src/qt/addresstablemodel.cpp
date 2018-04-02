@@ -1,6 +1,5 @@
-// Original Code: Copyright (c) 2011-2014 The Bitcoin Core Developers
-// Modified Code: Copyright (c) 2015 Gamecredits Foundation
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "addresstablemodel.h"
@@ -9,7 +8,8 @@
 #include "walletmodel.h"
 
 #include "base58.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
+
 
 #include <QFont>
 #include <QDebug>
@@ -30,8 +30,8 @@ struct AddressTableEntry
     QString address;
 
     AddressTableEntry() {}
-    AddressTableEntry(Type type, const QString &label, const QString &address):
-        type(type), label(label), address(address) {}
+    AddressTableEntry(Type _type, const QString &_label, const QString &_address):
+        type(_type), label(_label), address(_address) {}
 };
 
 struct AddressTableEntryLessThan
@@ -72,15 +72,15 @@ public:
     QList<AddressTableEntry> cachedAddressTable;
     AddressTableModel *parent;
 
-    AddressTablePriv(CWallet *wallet, AddressTableModel *parent):
-        wallet(wallet), parent(parent) {}
+    AddressTablePriv(CWallet *_wallet, AddressTableModel *_parent):
+        wallet(_wallet), parent(_parent) {}
 
     void refreshAddressTable()
     {
         cachedAddressTable.clear();
         {
             LOCK(wallet->cs_wallet);
-            BOOST_FOREACH(const PAIRTYPE(CTxDestination, CAddressBookData)& item, wallet->mapAddressBook)
+            for (const std::pair<CTxDestination, CAddressBookData>& item : wallet->mapAddressBook)
             {
                 const CBitcoinAddress& address = item.first;
                 bool fMine = IsMine(*wallet, address.Get());
@@ -115,7 +115,7 @@ public:
         case CT_NEW:
             if(inModel)
             {
-                qDebug() << "AddressTablePriv::updateEntry : Warning: Got CT_NEW, but entry is already in model";
+                qWarning() << "AddressTablePriv::updateEntry: Warning: Got CT_NEW, but entry is already in model";
                 break;
             }
             parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex);
@@ -125,7 +125,7 @@ public:
         case CT_UPDATED:
             if(!inModel)
             {
-                qDebug() << "AddressTablePriv::updateEntry : Warning: Got CT_UPDATED, but entry is not in model";
+                qWarning() << "AddressTablePriv::updateEntry: Warning: Got CT_UPDATED, but entry is not in model";
                 break;
             }
             lower->type = newEntryType;
@@ -135,7 +135,7 @@ public:
         case CT_DELETED:
             if(!inModel)
             {
-                qDebug() << "AddressTablePriv::updateEntry : Warning: Got CT_DELETED, but entry is not in model";
+                qWarning() << "AddressTablePriv::updateEntry: Warning: Got CT_DELETED, but entry is not in model";
                 break;
             }
             parent->beginRemoveRows(QModelIndex(), lowerIndex, upperIndex-1);
@@ -163,8 +163,8 @@ public:
     }
 };
 
-AddressTableModel::AddressTableModel(CWallet *wallet, WalletModel *parent) :
-    QAbstractTableModel(parent),walletModel(parent),wallet(wallet),priv(0)
+AddressTableModel::AddressTableModel(CWallet *_wallet, WalletModel *parent) :
+    QAbstractTableModel(parent),walletModel(parent),wallet(_wallet),priv(0)
 {
     columns << tr("Label") << tr("Address");
     priv = new AddressTablePriv(wallet, this);
@@ -217,7 +217,7 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
         QFont font;
         if(index.column() == Address)
         {
-            font = GUIUtil::bitcoinAddressFont();
+            font = GUIUtil::fixedPitchFont();
         }
         return font;
     }
@@ -337,7 +337,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par
 void AddressTableModel::updateEntry(const QString &address,
         const QString &label, bool isMine, const QString &purpose, int status)
 {
-    // Update address book model from GameCredits core
+    // Update address book model from Bitcoin core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 
@@ -449,5 +449,5 @@ int AddressTableModel::lookupAddress(const QString &address) const
 
 void AddressTableModel::emitDataChanged(int idx)
 {
-    emit dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length()-1, QModelIndex()));
+    Q_EMIT dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length()-1, QModelIndex()));
 }

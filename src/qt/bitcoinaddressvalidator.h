@@ -1,10 +1,9 @@
-// Original Code: Copyright (c) 2011-2014 The Bitcoin Core Developers
-// Modified Code: Copyright (c) 2015 Gamecredits Foundation
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2014 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOINADDRESSVALIDATOR_H
-#define BITCOINADDRESSVALIDATOR_H
+#ifndef BITCOIN_QT_BITCOINADDRESSVALIDATOR_H
+#define BITCOIN_QT_BITCOINADDRESSVALIDATOR_H
 
 #include <QValidator>
 
@@ -21,7 +20,7 @@ public:
     State validate(QString &input, int &pos) const;
 };
 
-/** Gamecredits address widget validator, checks for a valid gamecredits address.
+/** Bitcoin address widget validator, checks for a valid bitcoin address.
  */
 class BitcoinAddressCheckValidator : public QValidator
 {
@@ -33,4 +32,4 @@ public:
     State validate(QString &input, int &pos) const;
 };
 
-#endif // BITCOINADDRESSVALIDATOR_H
+#endif // BITCOIN_QT_BITCOINADDRESSVALIDATOR_H

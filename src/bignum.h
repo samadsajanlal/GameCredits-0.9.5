@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Original Code: Copyright (c) 2009-2014 The Bitcoin Core Developers
-// Modified Code: Copyright (c) 2015 Gamecredits Foundation
+// Copyright (c) 2009-2013 The Nautiluscoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +7,7 @@
 #define BITCOIN_BIGNUM_H
 
 #include "serialize.h"
-#include "uint256.h"
+#include "arith_uint256.h"
 #include "version.h"
 
 #include <stdexcept>
@@ -85,17 +84,17 @@ public:
     }
 
     //CBigNum(char n) is not portable.  Use 'signed char' or 'unsigned char'.
-    CBigNum(signed char n)        { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
-    CBigNum(short n)              { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
-    CBigNum(int n)                { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
-    CBigNum(long n)               { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
-    CBigNum(long long n)          { BN_init(this); setint64(n); }
-    CBigNum(unsigned char n)      { BN_init(this); setulong(n); }
-    CBigNum(unsigned short n)     { BN_init(this); setulong(n); }
-    CBigNum(unsigned int n)       { BN_init(this); setulong(n); }
-    CBigNum(unsigned long n)      { BN_init(this); setulong(n); }
-    CBigNum(unsigned long long n) { BN_init(this); setuint64(n); }
-    explicit CBigNum(uint256 n)   { BN_init(this); setuint256(n); }
+    CBigNum(signed char n)      { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+    CBigNum(short n)            { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+    CBigNum(int n)              { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+//    CBigNum(long n)             { BN_init(this); if (n >= 0) setulong(n); else setint64(n); }
+    CBigNum(int64_t n)            { BN_init(this); setint64(n); }
+    CBigNum(unsigned char n)    { BN_init(this); setulong(n); }
+    CBigNum(unsigned short n)   { BN_init(this); setulong(n); }
+    CBigNum(unsigned int n)     { BN_init(this); setulong(n); }
+//    CBigNum(unsigned long n)    { BN_init(this); setulong(n); }
+    CBigNum(uint64_t n)           { BN_init(this); setuint64(n); }
+    explicit CBigNum(uint256 n) { BN_init(this); setuint256(n); }
 
     explicit CBigNum(const std::vector<unsigned char>& vch)
     {
@@ -232,12 +231,12 @@ public:
     {
         unsigned int nSize = BN_bn2mpi(this, NULL);
         if (nSize < 4)
-            return 0;
+            return uint256S("0000000000000000000000000000000000000000000000000000000000000000");
         std::vector<unsigned char> vch(nSize);
         BN_bn2mpi(this, &vch[0]);
         if (vch.size() > 4)
             vch[4] &= 0x7f;
-        uint256 n = 0;
+        uint256 n = uint256S("0000000000000000000000000000000000000000000000000000000000000000");
         for (unsigned int i = 0, j = vch.size()-1; i < sizeof(n) && j >= 4; i++, j--)
             ((unsigned char*)&n)[i] = vch[j];
         return n;
@@ -285,7 +284,7 @@ public:
     // and  0xc0de000000 is compact (0x0600c0de)
     // (0x05c0de00) would be -0x40de000000
     //
-    // Gamecredits only uses this "compact" format for encoding difficulty
+    // Bitcoin only uses this "compact" format for encoding difficulty
     // targets, which are unsigned 256bit quantities.  Thus, all the
     // complexities of the sign bit and using base 256 are probably an
     // implementation accident.
@@ -353,13 +352,13 @@ public:
             psz++;
 
         // hex string to bignum
+        static const signed char phexdigit[256] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,1,2,3,4,5,6,7,8,9,0,0,0,0,0,0, 0,0xa,0xb,0xc,0xd,0xe,0xf,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0,0xa,0xb,0xc,0xd,0xe,0xf,0,0,0,0,0,0,0,0,0 };
         *this = 0;
-        int n;
-        while ((n = HexDigit(*psz)) != -1)
+        while (isxdigit(*psz))
         {
             *this <<= 4;
+            int n = phexdigit[(unsigned char)*psz++];
             *this += n;
-            ++psz;
         }
         if (fNegative)
             *this = 0 - *this;
@@ -594,3 +593,4 @@ inline bool operator<(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(&a, 
 inline bool operator>(const CBigNum& a, const CBigNum& b)  { return (BN_cmp(&a, &b) > 0); }
 
 #endif
+ 
