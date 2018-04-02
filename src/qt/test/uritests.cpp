@@ -1,7 +1,3 @@
-// Copyright (c) 2009-2014 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
 #include "uritests.h"
 
 #include "guiutil.h"
@@ -13,54 +9,54 @@ void URITests::uriTests()
 {
     SendCoinsRecipient rv;
     QUrl uri;
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?req-dontexist="));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?req-dontexist="));
     QVERIFY(!GUIUtil::parseBitcoinURI(uri, &rv));
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?dontexist="));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?dontexist="));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.label == QString());
     QVERIFY(rv.amount == 0);
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?label=GameCredits Dev Example Address"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?label=Gamecredits Example Address"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
-    QVERIFY(rv.label == QString("GameCredits Dev Example Address"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
+    QVERIFY(rv.label == QString("Gamecredits Example Address"));
     QVERIFY(rv.amount == 0);
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?amount=0.001"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?amount=0.001"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.label == QString());
     QVERIFY(rv.amount == 100000);
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?amount=1.001"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?amount=1.001"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.label == QString());
     QVERIFY(rv.amount == 100100000);
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?amount=100&label=Wikipedia Example"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?amount=100&label=Gamecredits Example"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.amount == 10000000000LL);
-    QVERIFY(rv.label == QString("Wikipedia Example"));
+    QVERIFY(rv.label == QString("Gamecredits Example"));
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?message=GameCredits Dev Example Address"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?message=Gamecredits Example Address"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.label == QString());
 
-    QVERIFY(GUIUtil::parseBitcoinURI("gamecredits://GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?message=GameCredits Dev Example Address", &rv));
-    QVERIFY(rv.address == QString("GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ"));
+    QVERIFY(GUIUtil::parseBitcoinURI("gamecredits://bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?message=Gamecredits Example Address", &rv));
+    QVERIFY(rv.address == QString("bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8"));
     QVERIFY(rv.label == QString());
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?req-message=GameCredits Dev Example Address"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?req-message=Gamecredits Example Address"));
     QVERIFY(GUIUtil::parseBitcoinURI(uri, &rv));
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?amount=1,000&label=Wikipedia Example"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?amount=1,000&label=Gamecredits Example"));
     QVERIFY(!GUIUtil::parseBitcoinURI(uri, &rv));
 
-    uri.setUrl(QString("gamecredits:GX3Gk7VRYQXLTJYWMdK3ohQZKJg5FaJ9sQ?amount=1,000.0&label=Wikipedia Example"));
+    uri.setUrl(QString("gamecredits:bGfikGxWjawwxnBQSsinRZXFFQNSoudzk8?amount=1,000.0&label=Gamecredits Example"));
     QVERIFY(!GUIUtil::parseBitcoinURI(uri, &rv));
 }

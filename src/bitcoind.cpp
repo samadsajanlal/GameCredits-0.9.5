@@ -1,28 +1,19 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Original Code: Copyright (c) 2009-2014 The Bitcoin Core Developers
+// Modified Code: Copyright (c) 2015 Gamecredits Foundation
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
-#endif
-
-#include "chainparams.h"
-#include "clientversion.h"
-#include "compat.h"
-#include "fs.h"
-#include "rpc/server.h"
+#include "rpcserver.h"
+#include "rpcclient.h"
 #include "init.h"
+#include "main.h"
 #include "noui.h"
-#include "scheduler.h"
+#include "ui_interface.h"
 #include "util.h"
-#include "httpserver.h"
-#include "httprpc.h"
-#include "utilstrencodings.h"
 
-#include <boost/thread.hpp>
-
-#include <stdio.h>
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/filesystem.hpp>
 
 /* Introduction text for doxygen: */
 
@@ -30,8 +21,8 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called Bitcoin (https://www.bitcoin.org/),
- * which enables instant payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
+ * This is the developer documentation of the reference client for an experimental new digital currency called Gamecredits (https://github.com/gamecredits-project/GameCredits/),
+ * which enables instant payments to anyone, anywhere in the world. Gamecredits uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
  * The software is a community-driven open source project, released under the MIT license.
@@ -40,7 +31,9 @@
  * Use the buttons <code>Namespaces</code>, <code>Classes</code> or <code>Files</code> at the top of the page to start navigating the code.
  */
 
-void WaitForShutdown(boost::thread_group* threadGroup)
+static bool fDaemon;
+
+void DetectShutdownThread(boost::thread_group* threadGroup)
 {
     bool fShutdown = ShutdownRequested();
     // Tell the main threads to shutdown.
@@ -51,7 +44,7 @@ void WaitForShutdown(boost::thread_group* threadGroup)
     }
     if (threadGroup)
     {
-        Interrupt(*threadGroup);
+        threadGroup->interrupt_all();
         threadGroup->join_all();
     }
 }
@@ -63,122 +56,115 @@ void WaitForShutdown(boost::thread_group* threadGroup)
 bool AppInit(int argc, char* argv[])
 {
     boost::thread_group threadGroup;
-    CScheduler scheduler;
+    boost::thread* detectShutdownThread = NULL;
 
     bool fRet = false;
-
-    //
-    // Parameters
-    //
-    // If Qt is used, parameters/bitcoin.conf are parsed in qt/bitcoin.cpp's main()
-    gArgs.ParseParameters(argc, argv);
-
-    // Process help and version before taking care about datadir
-    if (gArgs.IsArgSet("-?") || gArgs.IsArgSet("-h") ||  gArgs.IsArgSet("-help") || gArgs.IsArgSet("-version"))
-    {
-        std::string strUsage = strprintf(_("%s Daemon"), _(PACKAGE_NAME)) + " " + _("version") + " " + FormatFullVersion() + "\n";
-
-        if (gArgs.IsArgSet("-version"))
-        {
-            strUsage += FormatParagraph(LicenseInfo());
-        }
-        else
-        {
-            strUsage += "\n" + _("Usage:") + "\n" +
-                  "  gamecreditsd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
-
-            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
-        }
-
-        fprintf(stdout, "%s", strUsage.c_str());
-        return true;
-    }
-
     try
     {
-        if (!fs::is_directory(GetDataDir(false)))
+        //
+        // Parameters
+        //
+        // If Qt is used, parameters/gamecredits.conf are parsed in qt/bitcoin.cpp's main()
+        ParseParameters(argc, argv);
+        if (!boost::filesystem::is_directory(GetDataDir(false)))
         {
-            fprintf(stderr, "Error: Specified data directory \"%s\" does not exist.\n", gArgs.GetArg("-datadir", "").c_str());
+            fprintf(stderr, "Error: Specified data directory \"%s\" does not exist.\n", mapArgs["-datadir"].c_str());
             return false;
         }
         try
         {
-            gArgs.ReadConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME));
-        } catch (const std::exception& e) {
+            ReadConfigFile(mapArgs, mapMultiArgs);
+        } catch(std::exception &e) {
             fprintf(stderr,"Error reading configuration file: %s\n", e.what());
             return false;
         }
-        // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
-        try {
-            SelectParams(ChainNameFromCommandLine());
-        } catch (const std::exception& e) {
-            fprintf(stderr, "Error: %s\n", e.what());
+        // Check for -testnet or -regtest parameter (TestNet() calls are only valid after this clause)
+        if (!SelectParamsFromCommandLine()) {
+            fprintf(stderr, "Error: Invalid combination of -regtest and -testnet.\n");
             return false;
         }
 
-        // Error out when loose non-argument tokens are encountered on command line
-        for (int i = 1; i < argc; i++) {
-            if (!IsSwitchChar(argv[i][0])) {
-                fprintf(stderr, "Error: Command line contains unexpected token '%s', see gamecreditsd -h for a list of options.\n", argv[i]);
-                exit(EXIT_FAILURE);
-            }
+        if (mapArgs.count("-?") || mapArgs.count("--help"))
+        {
+            // First part of help message is specific to gamecreditsd / RPC client
+            std::string strUsage = _("GameCredits Core Daemon") + " " + _("version") + " " + FormatFullVersion() + "\n\n" +
+                _("Usage:") + "\n" +
+                  "  gamecreditsd [options]                     " + _("Start GameCredits Core Daemon") + "\n" +
+                _("Usage (deprecated, use gamecredits-cli):") + "\n" +
+                  "  gamecreditsd [options] <command> [params]  " + _("Send command to GameCredits Core") + "\n" +
+                  "  gamecreditsd [options] help                " + _("List commands") + "\n" +
+                  "  gamecreditsd [options] help <command>      " + _("Get help for a command") + "\n";
+
+            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
+            strUsage += "\n" + HelpMessageCli(false);
+
+            fprintf(stdout, "%s", strUsage.c_str());
+            return false;
         }
 
-        // -server defaults to true for bitcoind but not for the GUI so do this here
-        gArgs.SoftSetBoolArg("-server", true);
-        // Set this early so that parameter interactions go to console
-        InitLogging();
-        InitParameterInteraction();
-        if (!AppInitBasicSetup())
+        // Command-line RPC
+        bool fCommandLine = false;
+        for (int i = 1; i < argc; i++)
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "gamecredits:"))
+                fCommandLine = true;
+
+        if (fCommandLine)
         {
-            // InitError will have been called with detailed error, which ends up on console
-            exit(EXIT_FAILURE);
+            int ret = CommandLineRPC(argc, argv);
+            exit(ret);
         }
-        if (!AppInitParameterInteraction())
+#ifndef WIN32
+        fDaemon = GetBoolArg("-daemon", false);
+        if (fDaemon)
         {
-            // InitError will have been called with detailed error, which ends up on console
-            exit(EXIT_FAILURE);
-        }
-        if (!AppInitSanityChecks())
-        {
-            // InitError will have been called with detailed error, which ends up on console
-            exit(EXIT_FAILURE);
-        }
-        if (gArgs.GetBoolArg("-daemon", false))
-        {
-#if HAVE_DECL_DAEMON
-            fprintf(stdout, "gamecredits server starting\n");
+            fprintf(stdout, "GameCredits server starting\n");
 
             // Daemonize
-            if (daemon(1, 0)) { // don't chdir (1), do close FDs (0)
-                fprintf(stderr, "Error: daemon() failed: %s\n", strerror(errno));
+            pid_t pid = fork();
+            if (pid < 0)
+            {
+                fprintf(stderr, "Error: fork() returned %d errno %d\n", pid, errno);
                 return false;
             }
-#else
-            fprintf(stderr, "Error: -daemon is not supported on this operating system\n");
-            return false;
-#endif // HAVE_DECL_DAEMON
+            if (pid > 0) // Parent process, pid is child process id
+            {
+                CreatePidFile(GetPidFile(), pid);
+                return true;
+            }
+            // Child process falls through to rest of initialization
+
+            pid_t sid = setsid();
+            if (sid < 0)
+                fprintf(stderr, "Error: setsid() returned %d errno %d\n", sid, errno);
         }
-        // Lock data directory after daemonization
-        if (!AppInitLockDataDirectory())
-        {
-            // If locking the data directory failed, exit immediately
-            exit(EXIT_FAILURE);
-        }
-        fRet = AppInitMain(threadGroup, scheduler);
+#endif
+        SoftSetBoolArg("-server", true);
+
+        detectShutdownThread = new boost::thread(boost::bind(&DetectShutdownThread, &threadGroup));
+        fRet = AppInit2(threadGroup);
     }
-    catch (const std::exception& e) {
+    catch (std::exception& e) {
         PrintExceptionContinue(&e, "AppInit()");
     } catch (...) {
-        PrintExceptionContinue(nullptr, "AppInit()");
+        PrintExceptionContinue(NULL, "AppInit()");
     }
 
     if (!fRet)
     {
-        Interrupt(threadGroup);
-        threadGroup.join_all();
-    } else {
-        WaitForShutdown(&threadGroup);
+        if (detectShutdownThread)
+            detectShutdownThread->interrupt();
+
+        threadGroup.interrupt_all();
+        // threadGroup.join_all(); was left out intentionally here, because we didn't re-test all of
+        // the startup-failure cases to make sure they don't result in a hang due to some
+        // thread-blocking-waiting-for-another-thread-during-startup case
+    }
+
+    if (detectShutdownThread)
+    {
+        detectShutdownThread->join();
+        delete detectShutdownThread;
+        detectShutdownThread = NULL;
     }
     Shutdown();
 
@@ -189,8 +175,15 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    // Connect bitcoind signal handlers
+    bool fRet = false;
+
+    // Connect gamecreditsd signal handlers
     noui_connect();
 
-    return (AppInit(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);
+    fRet = AppInit(argc, argv);
+
+    if (fRet && fDaemon)
+        return 0;
+
+    return (fRet ? 0 : 1);
 }

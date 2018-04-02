@@ -1,5 +1,6 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Original Code: Copyright (c) 2011-2014 The Bitcoin Core Developers
+// Modified Code: Copyright (c) 2015 Gamecredits Foundation
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "signverifymessagedialog.h"
@@ -7,38 +8,27 @@
 
 #include "addressbookpage.h"
 #include "guiutil.h"
-#include "platformstyle.h"
 #include "walletmodel.h"
 
 #include "base58.h"
 #include "init.h"
-#include "validation.h" // For strMessageMagic
-#include "wallet/wallet.h"
+#include "wallet.h"
 
 #include <string>
 #include <vector>
 
 #include <QClipboard>
 
-SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle *_platformStyle, QWidget *parent) :
+SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SignVerifyMessageDialog),
-    model(0),
-    platformStyle(_platformStyle)
+    model(0)
 {
     ui->setupUi(this);
 
-    ui->addressBookButton_SM->setIcon(platformStyle->SingleColorIcon(":/icons/address-book"));
-    ui->pasteButton_SM->setIcon(platformStyle->SingleColorIcon(":/icons/editpaste"));
-    ui->copySignatureButton_SM->setIcon(platformStyle->SingleColorIcon(":/icons/editcopy"));
-    ui->signMessageButton_SM->setIcon(platformStyle->SingleColorIcon(":/icons/edit"));
-    ui->clearButton_SM->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
-    ui->addressBookButton_VM->setIcon(platformStyle->SingleColorIcon(":/icons/address-book"));
-    ui->verifyMessageButton_VM->setIcon(platformStyle->SingleColorIcon(":/icons/transaction_0"));
-    ui->clearButton_VM->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
-
 #if QT_VERSION >= 0x040700
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a GameCredits address (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
@@ -51,8 +41,8 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(const PlatformStyle *_platformS
     ui->messageIn_VM->installEventFilter(this);
     ui->signatureIn_VM->installEventFilter(this);
 
-    ui->signatureOut_SM->setFont(GUIUtil::fixedPitchFont());
-    ui->signatureIn_VM->setFont(GUIUtil::fixedPitchFont());
+    ui->signatureOut_SM->setFont(GUIUtil::bitcoinAddressFont());
+    ui->signatureIn_VM->setFont(GUIUtil::bitcoinAddressFont());
 }
 
 SignVerifyMessageDialog::~SignVerifyMessageDialog()
@@ -60,9 +50,9 @@ SignVerifyMessageDialog::~SignVerifyMessageDialog()
     delete ui;
 }
 
-void SignVerifyMessageDialog::setModel(WalletModel *_model)
+void SignVerifyMessageDialog::setModel(WalletModel *model)
 {
-    this->model = _model;
+    this->model = model;
 }
 
 void SignVerifyMessageDialog::setAddress_SM(const QString &address)
@@ -95,7 +85,7 @@ void SignVerifyMessageDialog::on_addressBookButton_SM_clicked()
 {
     if (model && model->getAddressTableModel())
     {
-        AddressBookPage dlg(platformStyle, AddressBookPage::ForSelection, AddressBookPage::ReceivingTab, this);
+        AddressBookPage dlg(AddressBookPage::ForSelection, AddressBookPage::ReceivingTab, this);
         dlg.setModel(model->getAddressTableModel());
         if (dlg.exec())
         {
@@ -142,19 +132,19 @@ void SignVerifyMessageDialog::on_signMessageButton_SM_clicked()
     }
 
     CKey key;
-    if (!model->getPrivKey(keyID, key))
+    if (!pwalletMain->GetKey(keyID, key))
     {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("Private key for the entered address is not available."));
         return;
     }
 
-    CHashWriter ss(SER_GETHASH, 0);
+    CDataStream ss(SER_GETHASH, 0);
     ss << strMessageMagic;
     ss << ui->messageIn_SM->document()->toPlainText().toStdString();
 
     std::vector<unsigned char> vchSig;
-    if (!key.SignCompact(ss.GetHash(), vchSig))
+    if (!key.SignCompact(Hash(ss.begin(), ss.end()), vchSig))
     {
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(QString("<nobr>") + tr("Message signing failed.") + QString("</nobr>"));
@@ -186,7 +176,7 @@ void SignVerifyMessageDialog::on_addressBookButton_VM_clicked()
 {
     if (model && model->getAddressTableModel())
     {
-        AddressBookPage dlg(platformStyle, AddressBookPage::ForSelection, AddressBookPage::SendingTab, this);
+        AddressBookPage dlg(AddressBookPage::ForSelection, AddressBookPage::SendingTab, this);
         dlg.setModel(model->getAddressTableModel());
         if (dlg.exec())
         {
@@ -224,12 +214,12 @@ void SignVerifyMessageDialog::on_verifyMessageButton_VM_clicked()
         return;
     }
 
-    CHashWriter ss(SER_GETHASH, 0);
+    CDataStream ss(SER_GETHASH, 0);
     ss << strMessageMagic;
     ss << ui->messageIn_VM->document()->toPlainText().toStdString();
 
     CPubKey pubkey;
-    if (!pubkey.RecoverCompact(ss.GetHash(), vchSig))
+    if (!pubkey.RecoverCompact(Hash(ss.begin(), ss.end()), vchSig))
     {
         ui->signatureIn_VM->setValid(false);
         ui->statusLabel_VM->setStyleSheet("QLabel { color: red; }");

@@ -1,9 +1,46 @@
-<TS language="ru" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
+<context>
+    <name>AboutDialog</name>
+    <message>
+        <source>About GameCredits Core</source>
+        <translation>О GameCredits Core</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;GameCredits Core&lt;/b&gt; version</source>
+        <translation>версия &lt;b&gt;GameCredits Core&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>
+This is experimental software.
+
+Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
+        <translation>
+Это экспериментальная программа.
+
+Распространяется на правах лицензии MIT/X11, см. файл license.txt или http://www.opensource.org/licenses/mit-license.php.
+
+Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (http://www.openssl.org/) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com) и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
+    </message>
+    <message>
+        <source>Copyright</source>
+        <translation>Все права защищены</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core Developers</source>
+        <translation>Разработчики GameCredits Core</translation>
+    </message>
+    <message>
+        <source>(%1-bit)</source>
+        <translation>(%1-бит)</translation>
+    </message>
+</context>
 <context>
     <name>AddressBookPage</name>
     <message>
-        <source>Right-click to edit address or label</source>
-        <translation>Клик правой кнопкой для редактирования адреса или метки</translation>
+        <source>Double-click to edit address or label</source>
+        <translation>Для того, чтобы изменить адрес или метку, дважды кликните по изменяемому объекту</translation>
     </message>
     <message>
         <source>Create a new address</source>
@@ -26,6 +63,10 @@
         <translation>&amp;Закрыть</translation>
     </message>
     <message>
+        <source>&amp;Copy Address</source>
+        <translation>&amp;Копировать адрес</translation>
+    </message>
+    <message>
         <source>Delete the currently selected address from the list</source>
         <translation>Удалить выбранный адрес из списка</translation>
     </message>
@@ -43,11 +84,11 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>Выберите адрес для отправки перевода</translation>
+        <translation>Выберите адрес для отправки на него монет</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>Выберите адрес для получения перевода</translation>
+        <translation>Выберите адрес для получения монет</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
@@ -62,16 +103,12 @@
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Это ваши адреса Litecoin для отправки платежей. Всегда проверяйте сумму и адрес получателя перед отправкой перевода.</translation>
+        <source>These are your GameCredits addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Это ваши адреса GameCredits для отправки платежей. Всегда проверяйте количество и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Это ваши адреса Litecoin для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
-    </message>
-    <message>
-        <source>&amp;Copy Address</source>
-        <translation>Копировать &amp;адрес</translation>
+        <source>These are your GameCredits addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Это ваши адреса GameCredits для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -94,8 +131,8 @@
         <translation>Экспорт не удался</translation>
     </message>
     <message>
-        <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>Произошла ошибка при сохранении списка адресов в %1. Пожалуйста, попробуйте еще раз.</translation>
+        <source>There was an error trying to save the address list to %1.</source>
+        <translation>Произошла ошибка при сохранении списка адресов в %1.</translation>
     </message>
 </context>
 <context>
@@ -110,7 +147,7 @@
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(нет метки)</translation>
+        <translation>[нет метки]</translation>
     </message>
 </context>
 <context>
@@ -132,8 +169,8 @@
         <translation>Повторите новый пароль</translation>
     </message>
     <message>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Введите новый пароль бумажника.&lt;br/&gt;Используйте пароль, состоящий из &lt;b&gt;десяти или более случайных символов&lt;/b&gt;, или &lt;b&gt;восьми или более слов&lt;/b&gt;.</translation>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Введите новый пароль для бумажника. &lt;br/&gt; Пожалуйста, используйте фразы из &lt;b&gt;10 или более случайных символов,&lt;/b&gt; или &lt;b&gt;восьми и более слов.&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
@@ -160,7 +197,7 @@
         <translation>Сменить пароль</translation>
     </message>
     <message>
-        <source>Enter the old passphrase and new passphrase to the wallet.</source>
+        <source>Enter the old and new passphrase to the wallet.</source>
         <translation>Введите старый и новый пароль для бумажника.</translation>
     </message>
     <message>
@@ -168,24 +205,28 @@
         <translation>Подтвердите шифрование бумажника</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Предупреждение: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ БИТКОИНЫ&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR GameCreditsS&lt;/b&gt;!</source>
+        <translation>Внимание: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ БИТКОЙНЫ&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Вы уверены, что хотите зашифровать ваш бумажник?</translation>
     </message>
     <message>
+        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
+        <translation>ВАЖНО: все предыдущие резервные копии вашего бумажника должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии незашифрованного бумажника станут бесполезны, как только вы начнёте использовать новый зашифрованный бумажник.</translation>
+    </message>
+    <message>
+        <source>Warning: The Caps Lock key is on!</source>
+        <translation>Внимание: Caps Lock включен!</translation>
+    </message>
+    <message>
         <source>Wallet encrypted</source>
         <translation>Бумажник зашифрован</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your litecoins from being stolen by malware infecting your computer.</source>
-        <translation>Сейчас %1 закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши биткоины от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
-    </message>
-    <message>
-        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>ВАЖНО: все предыдущие резервные копии вашего бумажника должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии незашифрованного бумажника станут бесполезны, как только вы начнёте использовать новый зашифрованный бумажник.</translation>
+        <source>GameCredits will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your gamecreditss from being stolen by malware infecting your computer.</source>
+        <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши биткойны от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -205,34 +246,19 @@
     </message>
     <message>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Неверный пароль для расшифровки бумажника.</translation>
+        <translation>Указанный пароль не подходит.</translation>
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>Расшифровка бумажника не удалась</translation>
+        <translation>Расшифрование бумажника не удалось</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Пароль бумажника успешно изменён.</translation>
     </message>
-    <message>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>Внимание: Caps Lock включен!</translation>
-    </message>
 </context>
 <context>
-    <name>BanTableModel</name>
-    <message>
-        <source>IP/Netmask</source>
-        <translation>IP/префикс</translation>
-    </message>
-    <message>
-        <source>Banned Until</source>
-        <translation>Заблокировано до</translation>
-    </message>
-</context>
-<context>
-    <name>BitcoinGUI</name>
+    <name>GameCreditsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Подписать сообщение...</translation>
@@ -270,12 +296,8 @@
         <translation>Закрыть приложение</translation>
     </message>
     <message>
-        <source>&amp;About %1</source>
-        <translation>&amp;О %1</translation>
-    </message>
-    <message>
-        <source>Show information about %1</source>
-        <translation>Показать информацию о %1</translation>
+        <source>Show information about GameCredits</source>
+        <translation>Показать информацию о GameCredits</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -287,11 +309,7 @@
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>&amp;Параметры</translation>
-    </message>
-    <message>
-        <source>Modify configuration options for %1</source>
-        <translation>Изменить конфигурационные настройки для %1</translation>
+        <translation>Опции</translation>
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
@@ -318,28 +336,20 @@
         <translation>Открыть &amp;URI...</translation>
     </message>
     <message>
-        <source>Click to disable network activity.</source>
-        <translation>Кликните, чтобы запретить сетевую активность.</translation>
-    </message>
-    <message>
-        <source>Network activity disabled.</source>
-        <translation>Сетевая активность запрещена.</translation>
-    </message>
-    <message>
-        <source>Click to enable network activity again.</source>
-        <translation>Кликните, чтобы снова разрешить сетевую активность.</translation>
-    </message>
-    <message>
-        <source>Syncing Headers (%1%)...</source>
-        <translation>Синхронизация заголовков (%1%)...</translation>
+        <source>Importing blocks from disk...</source>
+        <translation>Импортируются блоки с диска...</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Идёт переиндексация блоков на диске...</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Отправить монеты на указанный адрес Litecoin</translation>
+        <source>Send coins to a GameCredits address</source>
+        <translation>Отправить монеты на указанный адрес GameCredits</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for GameCredits</source>
+        <translation>Изменить параметры конфигурации GameCredits</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,8 +372,8 @@
         <translation>&amp;Проверить сообщение...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>GameCredits</source>
+        <translation>GameCredits</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -390,12 +400,12 @@
         <translation>Зашифровать приватные ключи, принадлежащие вашему бумажнику</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>Подписать сообщения вашим адресом Litecoin, чтобы доказать, что вы им владеете</translation>
+        <source>Sign messages with your GameCredits addresses to prove you own them</source>
+        <translation>Подписать сообщения вашим адресом GameCredits, чтобы доказать, что вы им владеете</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом Litecoin</translation>
+        <source>Verify messages to ensure they were signed with specified GameCredits addresses</source>
+        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом GameCredits</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -414,8 +424,20 @@
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and litecoin: URIs)</source>
-        <translation>Запросить платежи (создаёт QR-коды и litecoin: ссылки)</translation>
+        <source>[testnet]</source>
+        <translation>[тестовая сеть]</translation>
+    </message>
+    <message>
+        <source>GameCredits Core</source>
+        <translation>GameCredits Core</translation>
+    </message>
+    <message>
+        <source>Request payments (generates QR codes and gamecredits: URIs)</source>
+        <translation>Запросить платежи (создаёт QR-коды и gamecredits: ссылки)</translation>
+    </message>
+    <message>
+        <source>&amp;About GameCredits Core</source>
+        <translation>&amp;О GameCredits Core</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -426,28 +448,56 @@
         <translation>Показать список использованных адресов и меток получения</translation>
     </message>
     <message>
-        <source>Open a litecoin: URI or payment request</source>
-        <translation>Открыть litecoin: URI или запрос платежа</translation>
+        <source>Open a gamecredits: URI or payment request</source>
+        <translation>Открыть gamecredits: URI или запрос платежа</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>&amp;Параметры командной строки</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n active connection(s) to Litecoin network</source>
-        <translation><numerusform>%n активных соединений с сетью Litecoin</numerusform><numerusform>%n активных соединений с сетью Litecoin</numerusform><numerusform>%n активных соединений с сетью Litecoin</numerusform><numerusform>%n активных соединений с сетью Litecoin</numerusform></translation>
+        <translation>&amp;Опции командной строки</translation>
     </message>
     <message>
-        <source>Indexing blocks on disk...</source>
-        <translation>Индексация блоков на диске...</translation>
+        <source>Show the GameCredits Core help message to get a list with possible GameCredits command-line options</source>
+        <translation>Показать помощь по GameCredits Core и получить список доступных опций командной строки.</translation>
     </message>
     <message>
-        <source>Processing blocks on disk...</source>
-        <translation>Обработка блоков на диске...</translation>
+        <source>GameCredits client</source>
+        <translation>GameCredits клиент</translation>
     </message>
     <message numerus="yes">
-        <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>Обработан %n блок истории транзакций.</numerusform><numerusform>Обработано %n блока истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform><numerusform>Обработано %n блоков истории транзакций.</numerusform></translation>
+        <source>%n active connection(s) to GameCredits network</source>
+        <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform><numerusform>%n активных соединений с сетью GameCredits</numerusform></translation>
+    </message>
+    <message>
+        <source>No block source available...</source>
+        <translation>Источник блоков недоступен...</translation>
+    </message>
+    <message>
+        <source>Processed %1 of %2 (estimated) blocks of transaction history.</source>
+        <translation>Обработано %1 из %2 (примерно) блоков истории транзакций.</translation>
+    </message>
+    <message>
+        <source>Processed %1 blocks of transaction history.</source>
+        <translation>Обработано %1 блоков истории транзакций.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n день</numerusform><numerusform>%n дня</numerusform><numerusform>%n дней</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n неделя</numerusform><numerusform>%n недели</numerusform><numerusform>%n недель</numerusform></translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation>%1 и %2</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n год</numerusform><numerusform>%n лет</numerusform><numerusform>%n года</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -478,50 +528,8 @@
         <translation>Синхронизировано</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Litecoin command-line options</source>
-        <translation>Показать помощь по %1, чтобы получить список доступных параметров командной строки</translation>
-    </message>
-    <message>
-        <source>%1 client</source>
-        <translation>%1 клиент</translation>
-    </message>
-    <message>
-        <source>Connecting to peers...</source>
-        <translation>Подключение к пирам...</translation>
-    </message>
-    <message>
         <source>Catching up...</source>
         <translation>Синхронизируется...</translation>
-    </message>
-    <message>
-        <source>Date: %1
-</source>
-        <translation>Дата: %1
-</translation>
-    </message>
-    <message>
-        <source>Amount: %1
-</source>
-        <translation>Количество: %1
-</translation>
-    </message>
-    <message>
-        <source>Type: %1
-</source>
-        <translation>Тип: %1
-</translation>
-    </message>
-    <message>
-        <source>Label: %1
-</source>
-        <translation>Метка: %1
-</translation>
-    </message>
-    <message>
-        <source>Address: %1
-</source>
-        <translation>Адрес: %1
-</translation>
     </message>
     <message>
         <source>Sent transaction</source>
@@ -532,12 +540,16 @@
         <translation>Входящая транзакция</translation>
     </message>
     <message>
-        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
-        <translation>Генерация HD-ключей &lt;b&gt;разрешена&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
-        <translation>Генерация HD-ключей &lt;b&gt;запрещена&lt;/b&gt;</translation>
+        <source>Date: %1
+Amount: %2
+Type: %3
+Address: %4
+</source>
+        <translation>Дата: %1
+Сумма: %2
+Тип: %3
+Адрес: %4
+</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
@@ -548,15 +560,22 @@
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Litecoin can no longer continue safely and will quit.</source>
-        <translation>Произошла неисправимая ошибка. Litecoin не может безопасно продолжать работу и будет закрыт.</translation>
+        <source>A fatal error occurred. GameCredits can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. GameCredits не может безопасно продолжать работу и будет закрыт.</translation>
+    </message>
+</context>
+<context>
+    <name>ClientModel</name>
+    <message>
+        <source>Network Alert</source>
+        <translation>Сетевая Тревога</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
-        <source>Coin Selection</source>
-        <translation>Выбор монет</translation>
+        <source>Coin Control Address Selection</source>
+        <translation>Выбор адреса контроля монет</translation>
     </message>
     <message>
         <source>Quantity:</source>
@@ -571,12 +590,16 @@
         <translation>Сумма:</translation>
     </message>
     <message>
+        <source>Priority:</source>
+        <translation>Приоритет:</translation>
+    </message>
+    <message>
         <source>Fee:</source>
         <translation>Комиссия:</translation>
     </message>
     <message>
-        <source>Dust:</source>
-        <translation>Пыль:</translation>
+        <source>Low Output:</source>
+        <translation>Малый выход:</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -603,12 +626,8 @@
         <translation>Сумма</translation>
     </message>
     <message>
-        <source>Received with label</source>
-        <translation>Получено с пометкой</translation>
-    </message>
-    <message>
-        <source>Received with address</source>
-        <translation>Получено с адреса</translation>
+        <source>Address</source>
+        <translation>Адрес</translation>
     </message>
     <message>
         <source>Date</source>
@@ -623,6 +642,10 @@
         <translation>Подтверждено</translation>
     </message>
     <message>
+        <source>Priority</source>
+        <translation>Приоритет</translation>
+    </message>
+    <message>
         <source>Copy address</source>
         <translation>Копировать адрес</translation>
     </message>
@@ -632,11 +655,11 @@
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Копировать сумму</translation>
+        <translation>Скопировать сумму</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Копировать ID транзакции</translation>
+        <translation>Скопировать ID транзакции</translation>
     </message>
     <message>
         <source>Lock unspent</source>
@@ -663,16 +686,64 @@
         <translation>Копировать байты</translation>
     </message>
     <message>
-        <source>Copy dust</source>
-        <translation>Копировать пыль</translation>
+        <source>Copy priority</source>
+        <translation>Копировать приоритет</translation>
+    </message>
+    <message>
+        <source>Copy low output</source>
+        <translation>Копировать малый выход</translation>
     </message>
     <message>
         <source>Copy change</source>
         <translation>Копировать сдачу</translation>
     </message>
     <message>
+        <source>highest</source>
+        <translation>самый высокий</translation>
+    </message>
+    <message>
+        <source>higher</source>
+        <translation>выше</translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation>высокий</translation>
+    </message>
+    <message>
+        <source>medium-high</source>
+        <translation>выше среднего</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>средний</translation>
+    </message>
+    <message>
+        <source>low-medium</source>
+        <translation>ниже среднего</translation>
+    </message>
+    <message>
+        <source>low</source>
+        <translation>низкий</translation>
+    </message>
+    <message>
+        <source>lower</source>
+        <translation>ниже</translation>
+    </message>
+    <message>
+        <source>lowest</source>
+        <translation>самый низкий</translation>
+    </message>
+    <message>
         <source>(%1 locked)</source>
         <translation>(%1 заблокировано)</translation>
+    </message>
+    <message>
+        <source>none</source>
+        <translation>ничего</translation>
+    </message>
+    <message>
+        <source>Dust</source>
+        <translation>Пыль</translation>
     </message>
     <message>
         <source>yes</source>
@@ -683,16 +754,44 @@
         <translation>нет</translation>
     </message>
     <message>
-        <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
-        <translation>Эта метка станет красной, если любой получатель получит сумму меньше, чем текущий порог пыли.</translation>
+        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
+        <translation>Эта пометка становится красной, если размер транзакции больше 1000 байт.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation>Может отличаться на +/- %1 сатоши на вход.</translation>
+        <source>This means a fee of at least %1 per kB is required.</source>
+        <translation>Это значит, что требуется комиссия как минимум %1 на КБ.</translation>
+    </message>
+    <message>
+        <source>Can vary +/- 1 byte per input.</source>
+        <translation>Может отличаться на +/- 1 байт на вход.</translation>
+    </message>
+    <message>
+        <source>Transactions with higher priority are more likely to get included into a block.</source>
+        <translation>Транзакции с более высоким приоритетом будут вероятнее других включены в блок.</translation>
+    </message>
+    <message>
+        <source>This label turns red, if the priority is smaller than &quot;medium&quot;.</source>
+        <translation>Эта пометка становится красной, если приоритет ниже, чем &quot;средний&quot;.</translation>
+    </message>
+    <message>
+        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
+        <translation>Эта пометка становится красной, если какой-либо из адресатов получает сумму менее %1.</translation>
+    </message>
+    <message>
+        <source>This means a fee of at least %1 is required.</source>
+        <translation>Это значит, что требуется комиссия как минимум %1.</translation>
+    </message>
+    <message>
+        <source>Amounts below 0.546 times the minimum relay fee are shown as dust.</source>
+        <translation>Суммы ниже, чем 0.546 минимальных комиссий ретрансляции, показаны как пыль.</translation>
+    </message>
+    <message>
+        <source>This label turns red, if the change is smaller than %1.</source>
+        <translation>Эта пометка становится красной, если сдача меньше %1.</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(нет метки)</translation>
+        <translation>[нет метки]</translation>
     </message>
     <message>
         <source>change from %1 (%2)</source>
@@ -700,7 +799,7 @@
     </message>
     <message>
         <source>(change)</source>
-        <translation>(сдача)</translation>
+        <translation>(размен)</translation>
     </message>
 </context>
 <context>
@@ -727,27 +826,27 @@
     </message>
     <message>
         <source>New receiving address</source>
-        <translation>Новый адрес получения</translation>
+        <translation>Новый адрес для получения</translation>
     </message>
     <message>
         <source>New sending address</source>
-        <translation>Новый адрес отправки</translation>
+        <translation>Новый адрес для отправки</translation>
     </message>
     <message>
         <source>Edit receiving address</source>
-        <translation>Изменить адрес получения</translation>
+        <translation>Изменение адреса для получения</translation>
     </message>
     <message>
         <source>Edit sending address</source>
-        <translation>Изменить адрес отправки</translation>
+        <translation>Изменение адреса для отправки</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Litecoin address.</source>
-        <translation>Введённый адрес "%1" не является правильным Litecoin-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book.</source>
+        <translation>Введённый адрес «%1» уже находится в адресной книге.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book.</source>
-        <translation>Введённый адрес "%1" уже находится в адресной книге.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid GameCredits address.</source>
+        <translation>Введённый адрес &quot;%1&quot; не является правильным GameCredits-адресом.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -784,20 +883,16 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
+        <source>GameCredits Core - Command-line options</source>
+        <translation>GameCredits Core - опции командной строки</translation>
+    </message>
+    <message>
+        <source>GameCredits Core</source>
+        <translation>GameCredits Core</translation>
+    </message>
+    <message>
         <source>version</source>
         <translation>версия</translation>
-    </message>
-    <message>
-        <source>(%1-bit)</source>
-        <translation>(%1-бит)</translation>
-    </message>
-    <message>
-        <source>About %1</source>
-        <translation>О %1</translation>
-    </message>
-    <message>
-        <source>Command-line options</source>
-        <translation>Параметры командной строки</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -805,19 +900,15 @@
     </message>
     <message>
         <source>command-line options</source>
-        <translation>параметры командной строки</translation>
+        <translation>опции командной строки</translation>
     </message>
     <message>
-        <source>UI Options:</source>
-        <translation>Настройки интерфейса:</translation>
+        <source>UI options</source>
+        <translation>Опции интерфейса</translation>
     </message>
     <message>
-        <source>Choose data directory on startup (default: %u)</source>
-        <translation>Выбрать каталог данных при запуске (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Set language, for example "de_DE" (default: system locale)</source>
-        <translation>Выберите язык, например "de_DE" (по умолчанию: как в системе)</translation>
+        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <translation>Выберите язык, например &quot;de_DE&quot; (по умолчанию: как в системе)</translation>
     </message>
     <message>
         <source>Start minimized</source>
@@ -828,12 +919,12 @@
         <translation>Указать корневые SSL-сертификаты для запроса платежа (по умолчанию: -system-)</translation>
     </message>
     <message>
-        <source>Show splash screen on startup (default: %u)</source>
-        <translation>Показывать экран-заставку при запуске (по умолчанию: %u)</translation>
+        <source>Show splash screen on startup (default: 1)</source>
+        <translation>Показывать сплэш при запуске (по умолчанию: 1)</translation>
     </message>
     <message>
-        <source>Reset all settings changed in the GUI</source>
-        <translation>Сбросить все настройки, измененные в графическом интерфейсе</translation>
+        <source>Choose data directory on startup (default: 0)</source>
+        <translation>Выбрать каталог данных при запуске (по умолчанию: 0)</translation>
     </message>
 </context>
 <context>
@@ -843,16 +934,16 @@
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <source>Welcome to %1.</source>
-        <translation>Добро пожаловать в %1</translation>
+        <source>Welcome to GameCredits Core.</source>
+        <translation>Добро пожаловать в GameCredits Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
-        <translation>При первом запуске программы вы можете выбрать где %1 будет хранить свои данные.</translation>
+        <source>As this is the first time the program is launched, you can choose where GameCredits Core will store its data.</source>
+        <translation>Так как вы впервые запустили программу, вы можете выбрать, где GameCredits Core будет хранить данные.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Litecoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 скачает и сохранит копию цепи блоков. Как минимум %2GB будут записаны в этот каталог, и со временем он будет расти. Бумажник также будет сохранен в этом каталоге.</translation>
+        <source>GameCredits Core will download and store a copy of the GameCredits block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>GameCredits Core скачает и сохранит копию цепи блоков. Как минимум, %1ГБ данных будет храниться в этом каталоге, и со временем он будет расти. Бумажник будет также сохранён в этом каталоге.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -863,71 +954,24 @@
         <translation>Использовать другой каталог данных:</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Ошибка: не удалось создать указанный каталог данных "%1".</translation>
+        <source>GameCredits</source>
+        <translation>GameCredits</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory &quot;%1&quot; can not be created.</source>
+        <translation>Ошибка: не удалось создать указанный каталог данных &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
-    <message numerus="yes">
-        <source>%n GB of free space available</source>
-        <translation><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform><numerusform>%n ГБ свободного места доступно</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>(of %n GB needed)</source>
-        <translation><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform><numerusform>(из необходимых %n ГБ)</numerusform></translation>
-    </message>
-</context>
-<context>
-    <name>ModalOverlay</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
+        <source>GB of free space available</source>
+        <translation>ГБ свободного места доступно</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the litecoin network, as detailed below.</source>
-        <translation>Недавние транзакции могут быть пока не видны, поэтому ваш баланс может отображаться некорректно. Эта информация станет корректной, как только ваш бумажник будет синхронизирован с сетью, см. подробности ниже.</translation>
-    </message>
-    <message>
-        <source>Attempting to spend litecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Попытка потратить биткоины из ещё не отображённых транзакций будет отвергнута сетью.</translation>
-    </message>
-    <message>
-        <source>Number of blocks left</source>
-        <translation>Число оставшихся блоков</translation>
-    </message>
-    <message>
-        <source>Unknown...</source>
-        <translation>Неизвестно...</translation>
-    </message>
-    <message>
-        <source>Last block time</source>
-        <translation>Время последнего блока</translation>
-    </message>
-    <message>
-        <source>Progress</source>
-        <translation>Прогресс</translation>
-    </message>
-    <message>
-        <source>Progress increase per hour</source>
-        <translation>Прогресс за час</translation>
-    </message>
-    <message>
-        <source>calculating...</source>
-        <translation>расчёт...</translation>
-    </message>
-    <message>
-        <source>Estimated time left until synced</source>
-        <translation>Примерное время до завершения синхронизации</translation>
-    </message>
-    <message>
-        <source>Hide</source>
-        <translation>Скрыть</translation>
-    </message>
-    <message>
-        <source>Unknown. Syncing Headers (%1)...</source>
-        <translation>Неизвестно. Синхронизация заголовков (%1)...</translation>
+        <source>(of %1GB needed)</source>
+        <translation>(из необходимых %1ГБ)</translation>
     </message>
 </context>
 <context>
@@ -957,19 +1001,27 @@
     <name>OptionsDialog</name>
     <message>
         <source>Options</source>
-        <translation>Параметры</translation>
+        <translation>Опции</translation>
     </message>
     <message>
         <source>&amp;Main</source>
         <translation>&amp;Главная</translation>
     </message>
     <message>
-        <source>Automatically start %1 after logging in to the system.</source>
-        <translation>Автоматически запускать %1 после входа в систему.</translation>
+        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB.</source>
+        <translation>Необязательная комиссия за каждый КБ транзакции, которая ускоряет обработку Ваших транзакций.  Большинство транзакций занимают 1КБ.</translation>
     </message>
     <message>
-        <source>&amp;Start %1 on system login</source>
-        <translation>&amp;Запускать %1 при входе в систему</translation>
+        <source>Pay transaction &amp;fee</source>
+        <translation>Заплатить ко&amp;миссию</translation>
+    </message>
+    <message>
+        <source>Automatically start GameCredits after logging in to the system.</source>
+        <translation>Автоматически запускать GameCredits после входа в систему</translation>
+    </message>
+    <message>
+        <source>&amp;Start GameCredits on system login</source>
+        <translation>&amp;Запускать GameCredits при входе в систему</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
@@ -984,20 +1036,16 @@
         <translation>Число потоков проверки &amp;сценария</translation>
     </message>
     <message>
-        <source>Accept connections from outside</source>
-        <translation>Принимать входящие соединения</translation>
+        <source>Connect to the GameCredits network through a SOCKS proxy.</source>
+        <translation>Подключаться к сети GameCredits через прокси SOCKS.</translation>
     </message>
     <message>
-        <source>Allow incoming connections</source>
-        <translation>Разрешить входящие подключения</translation>
+        <source>&amp;Connect through SOCKS proxy (default proxy):</source>
+        <translation>&amp;Подключаться через SOCKS прокси (прокси по умолчанию):</translation>
     </message>
     <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
         <translation>IP-адрес прокси (например IPv4: 127.0.0.1 / IPv6: ::1)</translation>
-    </message>
-    <message>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
-        <translation>Сворачивать вместо закрытия. Если данная опция будет выбрана — приложение закроется только после выбора соответствующего пункта в меню.</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
@@ -1013,11 +1061,11 @@
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>Сбросить все настройки клиента на значения по умолчанию.</translation>
+        <translation>Сбросить все опции клиента на значения по умолчанию.</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Сбросить параметры</translation>
+        <translation>&amp;Сбросить опции</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -1048,20 +1096,12 @@
         <translation>&amp;Тратить неподтверждённую сдачу</translation>
     </message>
     <message>
-        <source>Automatically open the Litecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для Litecoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+        <source>Automatically open the GameCredits client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для GameCredits-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Пробросить порт через &amp;UPnP</translation>
-    </message>
-    <message>
-        <source>Connect to the Litecoin network through a SOCKS5 proxy.</source>
-        <translation>Подключаться к сети Litecoin через прокси SOCKS5</translation>
-    </message>
-    <message>
-        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
-        <translation>&amp;Подключаться к сети Litecoin через прокси SOCKS5 (прокси по умолчанию):</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1076,44 +1116,16 @@
         <translation>Порт прокси-сервера (например, 9050)</translation>
     </message>
     <message>
-        <source>Used for reaching peers via:</source>
-        <translation>Используется для достижения участников через:</translation>
+        <source>SOCKS &amp;Version:</source>
+        <translation>&amp;Версия SOCKS:</translation>
     </message>
     <message>
-        <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>Показывается, если включено прокси SOCKS5 по умолчанию, используемое для соединения с участниками по этому типу сети.</translation>
-    </message>
-    <message>
-        <source>IPv4</source>
-        <translation>IPv4</translation>
-    </message>
-    <message>
-        <source>IPv6</source>
-        <translation>IPv6</translation>
-    </message>
-    <message>
-        <source>Tor</source>
-        <translation>Tor</translation>
-    </message>
-    <message>
-        <source>Connect to the Litecoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Подключаться к сети Litecoin через прокси SOCKS5 для скрытых сервисов Tor.</translation>
-    </message>
-    <message>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
-        <translation>Использовать отдельный прокси SOCKS5 для соединения с участниками через скрытые сервисы Tor:</translation>
+        <source>SOCKS version of the proxy (e.g. 5)</source>
+        <translation>Версия SOCKS-прокси (например, 5)</translation>
     </message>
     <message>
         <source>&amp;Window</source>
         <translation>&amp;Окно</translation>
-    </message>
-    <message>
-        <source>&amp;Hide the icon from the system tray.</source>
-        <translation>&amp;Скрыть иконку из системного трея.</translation>
-    </message>
-    <message>
-        <source>Hide tray icon</source>
-        <translation>Скрыть иконку в трее</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
@@ -1122,6 +1134,10 @@
     <message>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
         <translation>&amp;Cворачивать в системный лоток вместо панели задач</translation>
+    </message>
+    <message>
+        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
+        <translation>Сворачивать вместо закрытия. Если данная опция будет выбрана — приложение закроется только после выбора соответствующего пункта в меню.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
@@ -1136,8 +1152,8 @@
         <translation>&amp;Язык интерфейса:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
-        <translation>Здесь можно установить язык пользовательского интерфейса. Настройки вступят в силу после перезагрузки %1</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting GameCredits.</source>
+        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска GameCredits.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -1146,6 +1162,14 @@
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Выберите единицу измерения монет при отображении и отправке.</translation>
+    </message>
+    <message>
+        <source>Whether to show GameCredits addresses in the transaction list or not.</source>
+        <translation>Показывать ли адреса GameCredits в списке транзакций.</translation>
+    </message>
+    <message>
+        <source>&amp;Display addresses in transaction list</source>
+        <translation>&amp;Показывать адреса в списке транзакций</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -1169,15 +1193,15 @@
     </message>
     <message>
         <source>Confirm options reset</source>
-        <translation>Подтвердите сброс параметров</translation>
+        <translation>Подтвердите сброс опций</translation>
     </message>
     <message>
         <source>Client restart required to activate changes.</source>
         <translation>Для применения изменений требуется перезапуск клиента.</translation>
     </message>
     <message>
-        <source>Client will be shut down. Do you want to proceed?</source>
-        <translation>Клиент будет выключен. Желаете продолжить?</translation>
+        <source>Client will be shutdown, do you want to proceed?</source>
+        <translation>Клиент будет выключен, желаете продолжить?</translation>
     </message>
     <message>
         <source>This change would require a client restart.</source>
@@ -1195,12 +1219,12 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Litecoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью Litecoin после подключения, но этот процесс пока не завершён.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GameCredits network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью GameCredits после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
-        <source>Watch-only:</source>
-        <translation>Только наблюдение:</translation>
+        <source>Wallet</source>
+        <translation>Бумажник</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1227,10 +1251,6 @@
         <translation>Баланс добытых монет, который ещё не созрел</translation>
     </message>
     <message>
-        <source>Balances</source>
-        <translation>Балансы</translation>
-    </message>
-    <message>
         <source>Total:</source>
         <translation>Итого:</translation>
     </message>
@@ -1239,224 +1259,110 @@
         <translation>Ваш текущий общий баланс</translation>
     </message>
     <message>
-        <source>Your current balance in watch-only addresses</source>
-        <translation>Ваш текущий баланс в адресах наблюдения</translation>
+        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Недавние транзакции&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Spendable:</source>
-        <translation>Доступно:</translation>
-    </message>
-    <message>
-        <source>Recent transactions</source>
-        <translation>Последние транзакции</translation>
-    </message>
-    <message>
-        <source>Unconfirmed transactions to watch-only addresses</source>
-        <translation>Неподтверждённые транзакции на адреса наблюдения</translation>
-    </message>
-    <message>
-        <source>Mined balance in watch-only addresses that has not yet matured</source>
-        <translation>Баланс добытых монет на адресах наблюдения, который ещё не созрел</translation>
-    </message>
-    <message>
-        <source>Current total balance in watch-only addresses</source>
-        <translation>Текущий общий баланс на адресах наблюдения</translation>
+        <source>out of sync</source>
+        <translation>не синхронизировано</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <source>Payment request error</source>
-        <translation>Ошибка запроса платежа</translation>
-    </message>
-    <message>
-        <source>Cannot start litecoin: click-to-pay handler</source>
-        <translation>Не удаётся запустить litecoin: обработчик click-to-pay</translation>
-    </message>
-    <message>
         <source>URI handling</source>
         <translation>Обработка URI</translation>
     </message>
     <message>
-        <source>Payment request fetch URL is invalid: %1</source>
-        <translation>Неверный URL запроса платежа: %1</translation>
-    </message>
-    <message>
-        <source>Invalid payment address %1</source>
-        <translation>Неверный адрес платежа %1</translation>
-    </message>
-    <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Litecoin address or malformed URI parameters.</source>
-        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом Litecoin или неправильными параметрами URI.</translation>
-    </message>
-    <message>
-        <source>Payment request file handling</source>
-        <translation>Обработка файла запроса платежа</translation>
-    </message>
-    <message>
-        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
-        <translation>Файл запроса платежа не может быть прочитан! Обычно это происходит из-за неверного файла запроса платежа.</translation>
-    </message>
-    <message>
-        <source>Payment request rejected</source>
-        <translation>Запрос платежа отклонён</translation>
-    </message>
-    <message>
-        <source>Payment request network doesn't match client network.</source>
-        <translation>Сеть запроса платежа не совпадает с сетью клиента.</translation>
-    </message>
-    <message>
-        <source>Payment request expired.</source>
-        <translation>Запрос платежа просрочен.</translation>
-    </message>
-    <message>
-        <source>Payment request is not initialized.</source>
-        <translation>Запрос платежа не инициализирован.</translation>
-    </message>
-    <message>
-        <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>Непроверенные запросы платежей с нестандартными платёжными сценариями не поддерживаются.</translation>
-    </message>
-    <message>
-        <source>Invalid payment request.</source>
-        <translation>Неверный запрос платежа.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid GameCredits address or malformed URI parameters.</source>
+        <translation>Не удалось разобрать URI! Это может быть связано с неверным адресом GameCredits или неправильными параметрами URI.</translation>
     </message>
     <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
         <translation>Запрошенная сумма платежа %1 слишком мала (считается пылью).</translation>
     </message>
     <message>
-        <source>Refund from %1</source>
-        <translation>Возврат от %1</translation>
+        <source>Payment request error</source>
+        <translation>Ошибка запроса платежа</translation>
     </message>
     <message>
-        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
-        <translation>Запрос платежа %1 слишком большой (%2 байтов, разрешено %3 байтов).</translation>
+        <source>Cannot start gamecredits: click-to-pay handler</source>
+        <translation>Не удаётся запустить gamecredits: обработчик click-to-pay</translation>
+    </message>
+    <message>
+        <source>Net manager warning</source>
+        <translation>Предупреждение менеджера сети</translation>
+    </message>
+    <message>
+        <source>Your active proxy doesn&apos;t support SOCKS5, which is required for payment requests via proxy.</source>
+        <translation>Активный прокси не поддерживает SOCKS5, который необходим для запроса платежей через прокси.</translation>
+    </message>
+    <message>
+        <source>Payment request fetch URL is invalid: %1</source>
+        <translation>Неверный URL запроса платежа: %1</translation>
+    </message>
+    <message>
+        <source>Payment request file handling</source>
+        <translation>Обработка файла запроса платежа</translation>
+    </message>
+    <message>
+        <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
+        <translation>Файл запроса платежа не может быть прочитан или обработан! Обычно это происходит из-за неверного файла запроса платежа.</translation>
+    </message>
+    <message>
+        <source>Unverified payment requests to custom payment scripts are unsupported.</source>
+        <translation>Непроверенные запросы платежей с нестандартными платёжными сценариями не поддерживаются.</translation>
+    </message>
+    <message>
+        <source>Refund from %1</source>
+        <translation>Возврат от %1</translation>
     </message>
     <message>
         <source>Error communicating with %1: %2</source>
         <translation>Ошибка связи с %1: %2</translation>
     </message>
     <message>
-        <source>Payment request cannot be parsed!</source>
-        <translation>Запрос платежа не может быть разобран!</translation>
+        <source>Payment request can not be parsed or processed!</source>
+        <translation>Запрос платежа не может быть разобран или обработан!</translation>
     </message>
     <message>
         <source>Bad response from server %1</source>
-        <translation>Плохой ответ сервера %1</translation>
-    </message>
-    <message>
-        <source>Network request error</source>
-        <translation>Ошибка сетевого запроса</translation>
+        <translation>Плохой ответ от сервера %1</translation>
     </message>
     <message>
         <source>Payment acknowledged</source>
         <translation>Платёж принят</translation>
     </message>
-</context>
-<context>
-    <name>PeerTableModel</name>
     <message>
-        <source>User Agent</source>
-        <translation>Юзер-агент</translation>
-    </message>
-    <message>
-        <source>Node/Service</source>
-        <translation>Узел/сервис</translation>
-    </message>
-    <message>
-        <source>NodeId</source>
-        <translation>Id узла</translation>
-    </message>
-    <message>
-        <source>Ping</source>
-        <translation>Пинг</translation>
+        <source>Network request error</source>
+        <translation>Ошибка сетевого запроса</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <source>Amount</source>
-        <translation>Сумма</translation>
+        <source>GameCredits</source>
+        <translation>GameCredits</translation>
     </message>
     <message>
-        <source>Enter a Litecoin address (e.g. %1)</source>
-        <translation>Введите адрес Litecoin (например, %1)</translation>
-    </message>
-    <message>
-        <source>%1 d</source>
-        <translation>%1 д</translation>
-    </message>
-    <message>
-        <source>%1 h</source>
-        <translation>%1 ч</translation>
-    </message>
-    <message>
-        <source>%1 m</source>
-        <translation>%1 мин</translation>
-    </message>
-    <message>
-        <source>%1 s</source>
-        <translation>%1 с</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation>Ничего</translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation>Н/Д</translation>
-    </message>
-    <message>
-        <source>%1 ms</source>
-        <translation>%1 мс</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n second(s)</source>
-        <translation><numerusform>%n секунда</numerusform><numerusform>%n секунды</numerusform><numerusform>%n секунд</numerusform><numerusform>%n секунд</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n minute(s)</source>
-        <translation><numerusform>%n минута</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform><numerusform>%n минут</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform><numerusform>%n часов</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n day(s)</source>
-        <translation><numerusform>%n день</numerusform><numerusform>%n дня</numerusform><numerusform>%n дней</numerusform><numerusform>%n дней</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n week(s)</source>
-        <translation><numerusform>%n неделя</numerusform><numerusform>%n недели</numerusform><numerusform>%n недель</numerusform><numerusform>%n недель</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 и %2</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n year(s)</source>
-        <translation><numerusform>%n год</numerusform><numerusform>%n года</numerusform><numerusform>%n лет</numerusform><numerusform>%n лет</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 didn't yet exit safely...</source>
-        <translation>%1 ещё не завершился безопасно...</translation>
-    </message>
-</context>
-<context>
-    <name>QObject::QObject</name>
-    <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Ошибка: указанный каталог "%1" не существует.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Ошибка: указанный каталог &quot;%1&quot; не существует.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
         <translation>Ошибка: не удалось разобрать конфигурационный файл: %1. Используйте синтаксис вида ключ=значение.</translation>
     </message>
     <message>
-        <source>Error: %1</source>
-        <translation>Ошибка: %1</translation>
+        <source>Error: Invalid combination of -regtest and -testnet.</source>
+        <translation>Ошибка: неверная комбинация -regtest и -testnet.</translation>
+    </message>
+    <message>
+        <source>GameCredits Core didn&apos;t yet exit safely...</source>
+        <translation>GameCredits Core ещё не завершился безопасно...</translation>
+    </message>
+    <message>
+        <source>Enter a GameCredits address (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</source>
+        <translation>Введите GameCredits-адрес (например bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</translation>
     </message>
 </context>
 <context>
@@ -1467,7 +1373,7 @@
     </message>
     <message>
         <source>&amp;Copy Image</source>
-        <translation>Копировать &amp;изображение</translation>
+        <translation>&amp;Копировать изображение</translation>
     </message>
     <message>
         <source>Save QR Code</source>
@@ -1480,6 +1386,10 @@
 </context>
 <context>
     <name>RPCConsole</name>
+    <message>
+        <source>Client name</source>
+        <translation>Имя клиента</translation>
+    </message>
     <message>
         <source>N/A</source>
         <translation>Н/Д</translation>
@@ -1501,12 +1411,8 @@
         <translation>Общие</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB version</source>
-        <translation>Используется версия BerkeleyDB</translation>
-    </message>
-    <message>
-        <source>Datadir</source>
-        <translation>Каталог для данных</translation>
+        <source>Using OpenSSL version</source>
+        <translation>Используется версия OpenSSL</translation>
     </message>
     <message>
         <source>Startup time</source>
@@ -1533,116 +1439,8 @@
         <translation>Текущее число блоков</translation>
     </message>
     <message>
-        <source>Memory Pool</source>
-        <translation>Пул памяти</translation>
-    </message>
-    <message>
-        <source>Current number of transactions</source>
-        <translation>Текущее число транзакций</translation>
-    </message>
-    <message>
-        <source>Memory usage</source>
-        <translation>Использование памяти</translation>
-    </message>
-    <message>
-        <source>Received</source>
-        <translation>Получено</translation>
-    </message>
-    <message>
-        <source>Sent</source>
-        <translation>Отправлено</translation>
-    </message>
-    <message>
-        <source>&amp;Peers</source>
-        <translation>&amp;Участники</translation>
-    </message>
-    <message>
-        <source>Banned peers</source>
-        <translation>Заблокированные участники</translation>
-    </message>
-    <message>
-        <source>Select a peer to view detailed information.</source>
-        <translation>Выберите участника для просмотра подробностей.</translation>
-    </message>
-    <message>
-        <source>Whitelisted</source>
-        <translation>Доверенный</translation>
-    </message>
-    <message>
-        <source>Direction</source>
-        <translation>Направление</translation>
-    </message>
-    <message>
-        <source>Version</source>
-        <translation>Версия</translation>
-    </message>
-    <message>
-        <source>Starting Block</source>
-        <translation>Начальный блок</translation>
-    </message>
-    <message>
-        <source>Synced Headers</source>
-        <translation>Синхронизировано заголовков</translation>
-    </message>
-    <message>
-        <source>Synced Blocks</source>
-        <translation>Синхронизировано блоков</translation>
-    </message>
-    <message>
-        <source>User Agent</source>
-        <translation>Юзер-агент</translation>
-    </message>
-    <message>
-        <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл %1 из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
-    </message>
-    <message>
-        <source>Decrease font size</source>
-        <translation>Уменьшить размер текста</translation>
-    </message>
-    <message>
-        <source>Increase font size</source>
-        <translation>Увеличить размер текста</translation>
-    </message>
-    <message>
-        <source>Services</source>
-        <translation>Сервисы</translation>
-    </message>
-    <message>
-        <source>Ban Score</source>
-        <translation>Очков бана</translation>
-    </message>
-    <message>
-        <source>Connection Time</source>
-        <translation>Время соединения</translation>
-    </message>
-    <message>
-        <source>Last Send</source>
-        <translation>Последняя отправка</translation>
-    </message>
-    <message>
-        <source>Last Receive</source>
-        <translation>Последний раз получено</translation>
-    </message>
-    <message>
-        <source>Ping Time</source>
-        <translation>Время задержки</translation>
-    </message>
-    <message>
-        <source>The duration of a currently outstanding ping.</source>
-        <translation>Длительность текущего пинга.</translation>
-    </message>
-    <message>
-        <source>Ping Wait</source>
-        <translation>Время задержки</translation>
-    </message>
-    <message>
-        <source>Min Ping</source>
-        <translation>Мин. пинг</translation>
-    </message>
-    <message>
-        <source>Time Offset</source>
-        <translation>Смещение времени</translation>
+        <source>Estimated total blocks</source>
+        <translation>Расчётное число блоков</translation>
     </message>
     <message>
         <source>Last block time</source>
@@ -1677,44 +1475,24 @@
         <translation>Выход:</translation>
     </message>
     <message>
+        <source>Build date</source>
+        <translation>Дата сборки</translation>
+    </message>
+    <message>
         <source>Debug log file</source>
         <translation>Отладочный лог-файл</translation>
+    </message>
+    <message>
+        <source>Open the GameCredits debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл GameCredits из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
     </message>
     <message>
         <source>Clear console</source>
         <translation>Очистить консоль</translation>
     </message>
     <message>
-        <source>1 &amp;hour</source>
-        <translation>1 &amp;час</translation>
-    </message>
-    <message>
-        <source>1 &amp;day</source>
-        <translation>1 &amp;день</translation>
-    </message>
-    <message>
-        <source>1 &amp;week</source>
-        <translation>1 &amp;неделю</translation>
-    </message>
-    <message>
-        <source>1 &amp;year</source>
-        <translation>1 &amp;год</translation>
-    </message>
-    <message>
-        <source>&amp;Disconnect</source>
-        <translation>&amp;Отключиться</translation>
-    </message>
-    <message>
-        <source>Ban for</source>
-        <translation>Бан на</translation>
-    </message>
-    <message>
-        <source>&amp;Unban</source>
-        <translation>&amp;Разбанить</translation>
-    </message>
-    <message>
-        <source>Welcome to the %1 RPC console.</source>
-        <translation>Добро пожаловать в консоль RPC %1.</translation>
+        <source>Welcome to the GameCredits RPC console.</source>
+        <translation>Добро пожаловать в RPC-консоль GameCredits.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1723,14 +1501,6 @@
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Напишите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
-    </message>
-    <message>
-        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
-        <translation>ВНИМАНИЕ: мошенники предлагали пользователям вводить сюда команды, похищая таким образом содержимое их бумажников. Не используйте эту консоль без полного понимания смысла команд.</translation>
-    </message>
-    <message>
-        <source>Network activity disabled</source>
-        <translation>Сетевая активность запрещена</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1749,36 +1519,16 @@
         <translation>%1 ГБ</translation>
     </message>
     <message>
-        <source>(node id: %1)</source>
-        <translation>(номер узла: %1)</translation>
+        <source>%1 m</source>
+        <translation>%1 мин</translation>
     </message>
     <message>
-        <source>via %1</source>
-        <translation>через %1</translation>
+        <source>%1 h</source>
+        <translation>%1 ч</translation>
     </message>
     <message>
-        <source>never</source>
-        <translation>никогда</translation>
-    </message>
-    <message>
-        <source>Inbound</source>
-        <translation>Входящие</translation>
-    </message>
-    <message>
-        <source>Outbound</source>
-        <translation>Исходящие</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>Да</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>Нет</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Неизвестно</translation>
+        <source>%1 h %2 m</source>
+        <translation>%1 ч %2 мин</translation>
     </message>
 </context>
 <context>
@@ -1804,8 +1554,8 @@
         <translation>&amp;Повторно использовать существующий адрес получения (не рекомендуется)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Litecoin network.</source>
-        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть Litecoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the GameCredits network.</source>
+        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть GameCredits.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1852,10 +1602,6 @@
         <translation>Удалить</translation>
     </message>
     <message>
-        <source>Copy URI</source>
-        <translation>Копировать URI</translation>
-    </message>
-    <message>
         <source>Copy label</source>
         <translation>Копировать метку</translation>
     </message>
@@ -1865,7 +1611,7 @@
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Копировать сумму</translation>
+        <translation>Скопировать сумму</translation>
     </message>
 </context>
 <context>
@@ -1938,20 +1684,20 @@
         <translation>Сообщение</translation>
     </message>
     <message>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
         <source>(no label)</source>
-        <translation>(нет метки)</translation>
+        <translation>[нет метки]</translation>
     </message>
     <message>
         <source>(no message)</source>
         <translation>(нет сообщения)</translation>
     </message>
     <message>
-        <source>(no amount requested)</source>
-        <translation>(нет запрошенной суммы)</translation>
-    </message>
-    <message>
-        <source>Requested</source>
-        <translation>Запрошено</translation>
+        <source>(no amount)</source>
+        <translation>(нет суммы)</translation>
     </message>
 </context>
 <context>
@@ -1989,8 +1735,16 @@
         <translation>Сумма:</translation>
     </message>
     <message>
+        <source>Priority:</source>
+        <translation>Приоритет:</translation>
+    </message>
+    <message>
         <source>Fee:</source>
         <translation>Комиссия:</translation>
+    </message>
+    <message>
+        <source>Low Output:</source>
+        <translation>Малый выход:</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -2009,62 +1763,6 @@
         <translation>Свой адрес для сдачи</translation>
     </message>
     <message>
-        <source>Transaction Fee:</source>
-        <translation>Комиссия</translation>
-    </message>
-    <message>
-        <source>Choose...</source>
-        <translation>Выберите...</translation>
-    </message>
-    <message>
-        <source>collapse fee-settings</source>
-        <translation>Свернуть настройки комиссии</translation>
-    </message>
-    <message>
-        <source>per kilobyte</source>
-        <translation>за килобайт</translation>
-    </message>
-    <message>
-        <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then "per kilobyte" only pays 250 satoshis in fee, while "total at least" pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Если комиссия установлена в 1000 сатоши, а транзакция составляет лишь 250 байт, тогда комиссия "на килобайт" составит 250 сатоши, а "всего как минимум" — 1000 сатоши. Для транзакций крупнее килобайта в обоих случаях будет использоваться платёж "на килобайт".</translation>
-    </message>
-    <message>
-        <source>Hide</source>
-        <translation>Скрыть</translation>
-    </message>
-    <message>
-        <source>total at least</source>
-        <translation>Итого как минимум</translation>
-    </message>
-    <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for litecoin transactions than the network can process.</source>
-        <translation>Уплата минимальной комиссии — не проблема, пока объём транзакций меньше, чем свободное место в блоках. Учтите, однако, что такая транзакция может никогда не подтвердиться, если спрос на транзакции превышает возможности сети по их обработке.</translation>
-    </message>
-    <message>
-        <source>(read the tooltip)</source>
-        <translation>(прочтите подсказку)</translation>
-    </message>
-    <message>
-        <source>Recommended:</source>
-        <translation>Рекомендовано:</translation>
-    </message>
-    <message>
-        <source>Custom:</source>
-        <translation>Выборочно:</translation>
-    </message>
-    <message>
-        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
-        <translation>(Умная комиссия пока не инициализирована. Обычно для этого требуется несколько блоков...)</translation>
-    </message>
-    <message>
-        <source>normal</source>
-        <translation>обычный</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>ускоренный</translation>
-    </message>
-    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Отправить нескольким получателям одновременно</translation>
     </message>
@@ -2075,14 +1773,6 @@
     <message>
         <source>Clear all fields of the form.</source>
         <translation>Очистить все поля формы</translation>
-    </message>
-    <message>
-        <source>Dust:</source>
-        <translation>Пыль:</translation>
-    </message>
-    <message>
-        <source>Confirmation time target:</source>
-        <translation>Время подтверждения:</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -2101,12 +1791,20 @@
         <translation>&amp;Отправить</translation>
     </message>
     <message>
+        <source>Confirm send coins</source>
+        <translation>Подтвердите отправку монет</translation>
+    </message>
+    <message>
+        <source>%1 to %2</source>
+        <translation>С %1 на %2</translation>
+    </message>
+    <message>
         <source>Copy quantity</source>
         <translation>Копировать количество</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Копировать сумму</translation>
+        <translation>Скопировать сумму</translation>
     </message>
     <message>
         <source>Copy fee</source>
@@ -2121,16 +1819,64 @@
         <translation>Копировать байты</translation>
     </message>
     <message>
-        <source>Copy dust</source>
-        <translation>Копировать пыль</translation>
+        <source>Copy priority</source>
+        <translation>Копировать приоритет</translation>
+    </message>
+    <message>
+        <source>Copy low output</source>
+        <translation>Копировать малый выход</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>Копировать сдачу</translation>
+        <translation>Копировать размен</translation>
     </message>
     <message>
-        <source>%1 to %2</source>
-        <translation>С %1 на %2</translation>
+        <source>Total Amount %1 (= %2)</source>
+        <translation>Общая сумма %1 (= %2)</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>или</translation>
+    </message>
+    <message>
+        <source>The recipient address is not valid, please recheck.</source>
+        <translation>Адрес получателя неверный, пожалуйста, перепроверьте.</translation>
+    </message>
+    <message>
+        <source>The amount to pay must be larger than 0.</source>
+        <translation>Сумма для отправки должно быть больше 0.</translation>
+    </message>
+    <message>
+        <source>The amount exceeds your balance.</source>
+        <translation>Сумма превышает Ваш баланс</translation>
+    </message>
+    <message>
+        <source>The total exceeds your balance when the %1 transaction fee is included.</source>
+        <translation>Сумма превысит Ваш баланс, если комиссия в размере %1 будет добавлена к транзакции</translation>
+    </message>
+    <message>
+        <source>Duplicate address found, can only send to each address once per send operation.</source>
+        <translation>Обнаружен дублирующийся адрес. Отправка на один и тот же адрес возможна только один раз за одну операцию отправки</translation>
+    </message>
+    <message>
+        <source>Transaction creation failed!</source>
+        <translation>Не удалось создать транзакцию!</translation>
+    </message>
+    <message>
+        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>Транзакция была отклонена! Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию бумажника (wallet.dat), а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.</translation>
+    </message>
+    <message>
+        <source>Warning: Invalid GameCredits address</source>
+        <translation>Внимание: неверный адрес GameCredits</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>[нет метки]</translation>
+    </message>
+    <message>
+        <source>Warning: Unknown change address</source>
+        <translation>Внимание: неизвестный адрес для сдачи</translation>
     </message>
     <message>
         <source>Are you sure you want to send?</source>
@@ -2141,84 +1887,12 @@
         <translation>добавлено как комиссия</translation>
     </message>
     <message>
-        <source>Total Amount %1</source>
-        <translation>Общая сумма %1</translation>
+        <source>Payment request expired</source>
+        <translation>Запрос платежа просрочен</translation>
     </message>
     <message>
-        <source>or</source>
-        <translation>или</translation>
-    </message>
-    <message>
-        <source>Confirm send coins</source>
-        <translation>Подтвердите отправку монет</translation>
-    </message>
-    <message>
-        <source>The recipient address is not valid. Please recheck.</source>
-        <translation>Адрес получателя неверный. Пожалуйста, перепроверьте.</translation>
-    </message>
-    <message>
-        <source>The amount to pay must be larger than 0.</source>
-        <translation>Сумма для отправки должна быть больше 0.</translation>
-    </message>
-    <message>
-        <source>The amount exceeds your balance.</source>
-        <translation>Сумма превышает ваш баланс.</translation>
-    </message>
-    <message>
-        <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>Сумма с учётом комиссии %1 превысит ваш баланс.</translation>
-    </message>
-    <message>
-        <source>Duplicate address found: addresses should only be used once each.</source>
-        <translation>Обнаружен дублирующийся адрес: используйте каждый адрес только один раз.</translation>
-    </message>
-    <message>
-        <source>Transaction creation failed!</source>
-        <translation>Не удалось создать транзакцию!</translation>
-    </message>
-    <message>
-        <source>The transaction was rejected with the following reason: %1</source>
-        <translation>Транзакция была отвергнута по следующей причине: %1</translation>
-    </message>
-    <message>
-        <source>A fee higher than %1 is considered an absurdly high fee.</source>
-        <translation>Комиссия больше чем %1 считается невероятно большой.</translation>
-    </message>
-    <message>
-        <source>Payment request expired.</source>
-        <translation>Запрос платежа просрочен.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n block(s)</source>
-        <translation><numerusform>%n блок</numerusform><numerusform>%n блока</numerusform><numerusform>%n блоков</numerusform><numerusform>%n блоков</numerusform></translation>
-    </message>
-    <message>
-        <source>Pay only the required fee of %1</source>
-        <translation>Заплатить только обязательную комиссию %1</translation>
-    </message>
-    <message numerus="yes">
-        <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Начало подтверждения ожидается через %n блок.</numerusform><numerusform>Начало подтверждения ожидается через %n блока.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform></translation>
-    </message>
-    <message>
-        <source>Warning: Invalid Litecoin address</source>
-        <translation>Внимание: неверный адрес Litecoin</translation>
-    </message>
-    <message>
-        <source>Warning: Unknown change address</source>
-        <translation>Внимание: неизвестный адрес для сдачи</translation>
-    </message>
-    <message>
-        <source>Confirm custom change address</source>
-        <translation>Подтвердите свой адрес для сдачи</translation>
-    </message>
-    <message>
-        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
-        <translation>Выбранный вами адрес для сдачи не принадлежит этому кошельку. Часть или все средства могут быть отправлены на этот адрес. Вы уверены?</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(нет метки)</translation>
+        <source>Invalid payment address %1</source>
+        <translation>Неверный адрес платежа %1</translation>
     </message>
 </context>
 <context>
@@ -2232,6 +1906,14 @@
         <translation>Полу&amp;чатель:</translation>
     </message>
     <message>
+        <source>The address to send the payment to (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</source>
+        <translation>Адрес, на который будет выслан платёж (например bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Введите метку для данного адреса (для добавления в адресную книгу)</translation>
+    </message>
+    <message>
         <source>&amp;Label:</source>
         <translation>&amp;Метка:</translation>
     </message>
@@ -2242,10 +1924,6 @@
     <message>
         <source>This is a normal payment.</source>
         <translation>Это нормальный платёж.</translation>
-    </message>
-    <message>
-        <source>The Litecoin address to send the payment to</source>
-        <translation>Адрес Litecoin, на который отправить платёж</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2264,32 +1942,24 @@
         <translation>Удалить эту запись</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less litecoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>С отправляемой суммы будет удержана комиссия. Получателю придёт меньше биткоинов, чем вы вводите в поле количества. Если выбрано несколько получателей, комиссия распределяется поровну.</translation>
-    </message>
-    <message>
-        <source>S&amp;ubtract fee from amount</source>
-        <translation>Вычесть комиссию из суммы</translation>
-    </message>
-    <message>
         <source>Message:</source>
         <translation>Сообщение:</translation>
     </message>
     <message>
-        <source>This is an unauthenticated payment request.</source>
-        <translation>Это неавторизованный запрос платежа.</translation>
-    </message>
-    <message>
-        <source>This is an authenticated payment request.</source>
-        <translation>Это авторизованный запрос платежа.</translation>
+        <source>This is a verified payment request.</source>
+        <translation>Это проверенный запрос платежа.</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
         <translation>Введите метку для этого адреса, чтобы добавить его в список использованных</translation>
     </message>
     <message>
-        <source>A message that was attached to the litecoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Litecoin network.</source>
-        <translation>К litecoin: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Заметьте: сообщение не будет отправлено через сеть Litecoin.</translation>
+        <source>A message that was attached to the gamecredits: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the GameCredits network.</source>
+        <translation>К gamecredits: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Заметьте: сообщение не будет отправлено через сеть GameCredits.</translation>
+    </message>
+    <message>
+        <source>This is an unverified payment request.</source>
+        <translation>Это непроверенный запрос платежа.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2299,23 +1969,12 @@
         <source>Memo:</source>
         <translation>Примечание:</translation>
     </message>
-    <message>
-        <source>Enter a label for this address to add it to your address book</source>
-        <translation>Введите метку для данного адреса, чтобы добавить его в адресную книгу</translation>
-    </message>
-</context>
-<context>
-    <name>SendConfirmationDialog</name>
-    <message>
-        <source>Yes</source>
-        <translation>Да</translation>
-    </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>%1 is shutting down...</source>
-        <translation>%1 выключается...</translation>
+        <source>GameCredits Core is shutting down...</source>
+        <translation>GameCredits Core выключается...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2333,12 +1992,12 @@
         <translation>&amp;Подписать сообщение</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive litecoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Вы можете подписывать сообщения/соглашения своими адресами, чтобы доказать свою возможность получать биткоины на них. Будьте осторожны, не подписывайте что-то неопределённое или случайное, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
+        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Вы можете подписывать сообщения своими адресами, чтобы доказать владение ими. Будьте осторожны, не подписывайте что-то неопределённое, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
     </message>
     <message>
-        <source>The Litecoin address to sign the message with</source>
-        <translation>Адрес Litecoin, которым подписать сообщение</translation>
+        <source>The address to sign the message with (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</source>
+        <translation>Адрес, которым вы хотите подписать сообщение  (напр. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2369,8 +2028,8 @@
         <translation>Скопировать текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Litecoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом Litecoin</translation>
+        <source>Sign the message to prove you own this GameCredits address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом GameCredits</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2389,16 +2048,16 @@
         <translation>&amp;Проверить сообщение</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки "man-in-the-middle". Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
+        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
+        <translation>Введите ниже адрес для подписи, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки &quot;man-in-the-middle&quot;.</translation>
     </message>
     <message>
-        <source>The Litecoin address the message was signed with</source>
-        <translation>Адрес Litecoin, которым было подписано сообщение</translation>
+        <source>The address the message was signed with (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</source>
+        <translation>Адрес, которым было подписано сообщение (напр. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Litecoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Litecoin</translation>
+        <source>Verify the message to ensure it was signed with the specified GameCredits address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом GameCredits</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2409,12 +2068,16 @@
         <translation>Сбросить все поля проверки сообщения</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Нажмите "Подписать сообщение" для создания подписи</translation>
+        <source>Enter a GameCredits address (e.g. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</source>
+        <translation>Введите адрес GameCredits (напр. bQ3Gyigyd12kJDkhwi9M9QSZ9qu6M4NZzR)</translation>
+    </message>
+    <message>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Нажмите &quot;Подписать сообщение&quot; для создания подписи</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
-        <translation>Введённый адрес неверен.</translation>
+        <translation>Введённый адрес неверен</translation>
     </message>
     <message>
         <source>Please check the address and try again.</source>
@@ -2422,7 +2085,7 @@
     </message>
     <message>
         <source>The entered address does not refer to a key.</source>
-        <translation>Введённый адрес не связан с ключом.</translation>
+        <translation>Введённый адрес не связан с ключом</translation>
     </message>
     <message>
         <source>Wallet unlock was cancelled.</source>
@@ -2430,15 +2093,15 @@
     </message>
     <message>
         <source>Private key for the entered address is not available.</source>
-        <translation>Недоступен секретный ключ для введённого адреса.</translation>
+        <translation>Для введённого адреса недоступен закрытый ключ</translation>
     </message>
     <message>
         <source>Message signing failed.</source>
-        <translation>Не удалось подписать сообщение.</translation>
+        <translation>Не удалось подписать сообщение</translation>
     </message>
     <message>
         <source>Message signed.</source>
-        <translation>Сообщение подписано.</translation>
+        <translation>Сообщение подписано</translation>
     </message>
     <message>
         <source>The signature could not be decoded.</source>
@@ -2454,7 +2117,7 @@
     </message>
     <message>
         <source>Message verification failed.</source>
-        <translation>Сообщение не прошло проверку.</translation>
+        <translation>Проверка сообщения не удалась.</translation>
     </message>
     <message>
         <source>Message verified.</source>
@@ -2463,6 +2126,14 @@
 </context>
 <context>
     <name>SplashScreen</name>
+    <message>
+        <source>GameCredits Core</source>
+        <translation>GameCredits Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core Developers</source>
+        <translation>Разработчики GameCredits Core</translation>
+    </message>
     <message>
         <source>[testnet]</source>
         <translation>[тестовая сеть]</translation>
@@ -2477,37 +2148,17 @@
 </context>
 <context>
     <name>TransactionDesc</name>
-    <message numerus="yes">
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
-    </message>
     <message>
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
     <message>
-        <source>conflicted with a transaction with %1 confirmations</source>
-        <translation>конфликт с транзакцией с %1 подтверждений</translation>
+        <source>conflicted</source>
+        <translation>в противоречии</translation>
     </message>
     <message>
         <source>%1/offline</source>
         <translation>%1/отключен</translation>
-    </message>
-    <message>
-        <source>0/unconfirmed, %1</source>
-        <translation>0/не подтверждено, %1</translation>
-    </message>
-    <message>
-        <source>in memory pool</source>
-        <translation>В памяти</translation>
-    </message>
-    <message>
-        <source>not in memory pool</source>
-        <translation>Не в памяти</translation>
-    </message>
-    <message>
-        <source>abandoned</source>
-        <translation>заброшено</translation>
     </message>
     <message>
         <source>%1/unconfirmed</source>
@@ -2521,13 +2172,9 @@
         <source>Status</source>
         <translation>Статус</translation>
     </message>
-    <message>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>, ещё не было успешно разослано</translation>
-    </message>
     <message numerus="yes">
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
+        <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
@@ -2546,20 +2193,12 @@
         <translation>От</translation>
     </message>
     <message>
-        <source>unknown</source>
-        <translation>неизвестно</translation>
-    </message>
-    <message>
         <source>To</source>
         <translation>Для</translation>
     </message>
     <message>
         <source>own address</source>
         <translation>свой адрес</translation>
-    </message>
-    <message>
-        <source>watch-only</source>
-        <translation>только наблюдение</translation>
     </message>
     <message>
         <source>label</source>
@@ -2571,7 +2210,7 @@
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>будет доступно через %n блок</numerusform><numerusform>будет доступно через %n блока</numerusform><numerusform>будет доступно через %n блоков</numerusform><numerusform>будет доступно через %n блоков</numerusform></translation>
+        <translation><numerusform>будет доступно через %n блок</numerusform><numerusform>будет доступно через %n блока</numerusform><numerusform>будет доступно через %n блоков</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2580,14 +2219,6 @@
     <message>
         <source>Debit</source>
         <translation>Дебет</translation>
-    </message>
-    <message>
-        <source>Total debit</source>
-        <translation>Всего дебет</translation>
-    </message>
-    <message>
-        <source>Total credit</source>
-        <translation>Всего кредит</translation>
     </message>
     <message>
         <source>Transaction fee</source>
@@ -2603,27 +2234,19 @@
     </message>
     <message>
         <source>Comment</source>
-        <translation>Комментарий</translation>
+        <translation>Комментарий:</translation>
     </message>
     <message>
         <source>Transaction ID</source>
         <translation>ID транзакции</translation>
     </message>
     <message>
-        <source>Transaction total size</source>
-        <translation>Общий размер транзакции</translation>
-    </message>
-    <message>
-        <source>Output index</source>
-        <translation>Номер выхода</translation>
-    </message>
-    <message>
         <source>Merchant</source>
         <translation>Продавец</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Сгенерированные монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда вы сгенерировали этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепь, его статус изменится на "не принят", и монеты будут недействительны. Это иногда происходит в случае, если другой узел сгенерирует блок на несколько секунд раньше вас.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Сгенерированные монеты должны подождать %1 блоков, прежде чем они могут быть потрачены. Когда Вы сгенерировали этот блок, он был отправлен в сеть для добавления в цепочку блоков. Если он не попадёт в цепь, его статус изменится на &quot;не принят&quot;, и монеты будут недействительны. Это иногда происходит в случае, если другой узел сгенерирует блок на несколько секунд раньше вас.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2649,16 +2272,28 @@
         <source>false</source>
         <translation>ложь</translation>
     </message>
+    <message>
+        <source>, has not been successfully broadcast yet</source>
+        <translation>, ещё не было успешно разослано</translation>
+    </message>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation>неизвестно</translation>
+    </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <source>This pane shows a detailed description of the transaction</source>
-        <translation>Эта панель отображает детальное описание транзакции.</translation>
+        <source>Transaction details</source>
+        <translation>Детали транзакции</translation>
     </message>
     <message>
-        <source>Details for %1</source>
-        <translation>Подробности %1</translation>
+        <source>This pane shows a detailed description of the transaction</source>
+        <translation>Эта панель отображает детальное описание транзакции.</translation>
     </message>
 </context>
 <context>
@@ -2672,44 +2307,28 @@
         <translation>Тип</translation>
     </message>
     <message>
-        <source>Label</source>
-        <translation>Метка</translation>
+        <source>Address</source>
+        <translation>Адрес</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
+        <source>Immature (%1 confirmations, will be available after %2)</source>
+        <translation>Незрелый (%1 подтверждений, будет доступен после %2)</translation>
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
+        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
     <message>
-        <source>Offline</source>
-        <translation>Отключен</translation>
-    </message>
-    <message>
-        <source>Unconfirmed</source>
-        <translation>Не подтверждено</translation>
-    </message>
-    <message>
-        <source>Abandoned</source>
-        <translation>Заброшено</translation>
-    </message>
-    <message>
-        <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Подтверждается (%1 из %2 рекомендуемых подтверждений)</translation>
-    </message>
-    <message>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Подтверждено (%1 подтверждений)</translation>
-    </message>
-    <message>
-        <source>Conflicted</source>
-        <translation>В противоречии</translation>
-    </message>
-    <message>
-        <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Незрелый (%1 подтверждений, будет доступно после %2)</translation>
     </message>
     <message>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
@@ -2717,11 +2336,27 @@
     </message>
     <message>
         <source>Generated but not accepted</source>
-        <translation>Сгенерировано, но не принято</translation>
+        <translation>Сгенерированно, но не подтверждено</translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation>Нет активных соединений с сетью</translation>
+    </message>
+    <message>
+        <source>Unconfirmed</source>
+        <translation>Неподтверждено</translation>
+    </message>
+    <message>
+        <source>Confirming (%1 of %2 recommended confirmations)</source>
+        <translation>Подтверждено(%1 подтверждений, рекомендуется 2% подтверждений)</translation>
+    </message>
+    <message>
+        <source>Conflicted</source>
+        <translation>В противоречии</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>Получено на</translation>
+        <translation>Получено</translation>
     </message>
     <message>
         <source>Received from</source>
@@ -2729,7 +2364,7 @@
     </message>
     <message>
         <source>Sent to</source>
-        <translation>Отправлено на</translation>
+        <translation>Отправлено</translation>
     </message>
     <message>
         <source>Payment to yourself</source>
@@ -2740,40 +2375,28 @@
         <translation>Добыто</translation>
     </message>
     <message>
-        <source>watch-only</source>
-        <translation>только наблюдение</translation>
-    </message>
-    <message>
         <source>(n/a)</source>
-        <translation>(недоступно)</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(нет метки)</translation>
+        <translation>[не доступно]</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Статус транзакции. Подведите курсор к этому полю, чтобы увидеть количество подтверждений.</translation>
+        <translation>Статус транзакции. Подведите курсор к нужному полю для того, чтобы увидеть количество подтверждений.</translation>
     </message>
     <message>
         <source>Date and time that the transaction was received.</source>
-        <translation>Дата и время получения транзакции.</translation>
+        <translation>Дата и время, когда транзакция была получена.</translation>
     </message>
     <message>
         <source>Type of transaction.</source>
         <translation>Тип транзакции.</translation>
     </message>
     <message>
-        <source>Whether or not a watch-only address is involved in this transaction.</source>
-        <translation>Использовался ли в транзакции адрес для наблюдения.</translation>
-    </message>
-    <message>
-        <source>User-defined intent/purpose of the transaction.</source>
-        <translation>Определяемое пользователем намерение/цель транзакции.</translation>
+        <source>Destination address of transaction.</source>
+        <translation>Адрес назначения транзакции.</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Снятая или добавленная к балансу сумма.</translation>
+        <translation>Сумма, добавленная, или снятая с баланса.</translation>
     </message>
 </context>
 <context>
@@ -2804,7 +2427,7 @@
     </message>
     <message>
         <source>Range...</source>
-        <translation>Диапазон...</translation>
+        <translation>Промежуток...</translation>
     </message>
     <message>
         <source>Received with</source>
@@ -2816,11 +2439,11 @@
     </message>
     <message>
         <source>To yourself</source>
-        <translation>Себе</translation>
+        <translation>Отправленные себе</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>Добыто</translation>
+        <translation>Добытые</translation>
     </message>
     <message>
         <source>Other</source>
@@ -2835,10 +2458,6 @@
         <translation>Мин. сумма</translation>
     </message>
     <message>
-        <source>Abandon transaction</source>
-        <translation>Отказаться от транзакции</translation>
-    </message>
-    <message>
         <source>Copy address</source>
         <translation>Копировать адрес</translation>
     </message>
@@ -2848,19 +2467,11 @@
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Копировать сумму</translation>
+        <translation>Скопировать сумму</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Копировать ID транзакции</translation>
-    </message>
-    <message>
-        <source>Copy raw transaction</source>
-        <translation>Копировать исходный код транзакции</translation>
-    </message>
-    <message>
-        <source>Copy full transaction details</source>
-        <translation>Копировать все подробности транзакции</translation>
+        <translation>Скопировать ID транзакции</translation>
     </message>
     <message>
         <source>Edit label</source>
@@ -2873,38 +2484,6 @@
     <message>
         <source>Export Transaction History</source>
         <translation>Экспортировать историю транзакций</translation>
-    </message>
-    <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Текст, разделённый запятыми (*.csv)</translation>
-    </message>
-    <message>
-        <source>Confirmed</source>
-        <translation>Подтверждено</translation>
-    </message>
-    <message>
-        <source>Watch-only</source>
-        <translation>Для наблюдения</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Дата</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Тип</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Метка</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Адрес</translation>
-    </message>
-    <message>
-        <source>ID</source>
-        <translation>ID</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
@@ -2923,19 +2502,44 @@
         <translation>История транзакций была успешно сохранена в %1.</translation>
     </message>
     <message>
+        <source>Comma separated file (*.csv)</source>
+        <translation>Текст, разделённый запятыми (*.csv)</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Подтверждено</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Метка</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адрес</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
         <source>Range:</source>
-        <translation>Диапазон:</translation>
+        <translation>Промежуток от:</translation>
     </message>
     <message>
         <source>to</source>
         <translation>до</translation>
-    </message>
-</context>
-<context>
-    <name>UnitDisplayStatusBarControl</name>
-    <message>
-        <source>Unit to show amounts in. Click to select another unit.</source>
-        <translation>Единица измерения количества монет. Щёлкните для выбора другой единицы.</translation>
     </message>
 </context>
 <context>
@@ -2960,11 +2564,11 @@
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Экспортировать данные текущей вкладки в файл</translation>
+        <translation>Экспортировать данные из вкладки в файл</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
-        <translation>Резервная копия бумажника</translation>
+        <translation>Сделать резервную копию бумажника</translation>
     </message>
     <message>
         <source>Wallet Data (*.dat)</source>
@@ -2979,235 +2583,264 @@
         <translation>Произошла ошибка при сохранении данных бумажника в %1.</translation>
     </message>
     <message>
-        <source>Backup Successful</source>
-        <translation>Резервное копирование успешно завершено</translation>
-    </message>
-    <message>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>Данные бумажника были успешно сохранены в %1.</translation>
     </message>
+    <message>
+        <source>Backup Successful</source>
+        <translation>Резервное копирование успешно завершено</translation>
+    </message>
 </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>gamecredits-core</name>
+    <message>
+        <source>Usage:</source>
+        <translation>Использование:</translation>
+    </message>
+    <message>
+        <source>List commands</source>
+        <translation>Список команд
+</translation>
+    </message>
+    <message>
+        <source>Get help for a command</source>
+        <translation>Получить помощь по команде</translation>
+    </message>
     <message>
         <source>Options:</source>
-        <translation>Параметры:</translation>
+        <translation>Опции:</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: gamecredits.conf)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: gamecredits.conf)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: gamecreditsd.pid)</source>
+        <translation>Задать pid-файл (по умолчанию: gamecredits.pid)</translation>
     </message>
     <message>
         <source>Specify data directory</source>
         <translation>Задать каталог данных</translation>
     </message>
     <message>
+        <source>Listen for connections on &lt;port&gt; (default: 40002 or testnet: 50001)</source>
+        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 40002 или 50001 в тестовой сети)</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
+        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 125)</translation>
+    </message>
+    <message>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Подключиться к участнику, чтобы получить список адресов других участников и отключиться</translation>
+        <translation>Подключиться к узлу, чтобы получить список адресов других участников и отключиться</translation>
     </message>
     <message>
         <source>Specify your own public address</source>
         <translation>Укажите ваш собственный публичный адрес</translation>
     </message>
     <message>
+        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
+        <translation>Порог для отключения неправильно ведущих себя узлов (по умолчанию: 100)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
+        <translation>Число секунд блокирования неправильно ведущих себя узлов (по умолчанию: 86400)</translation>
+    </message>
+    <message>
+        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
+        <translation>Произошла ошибка при открытии RPC-порта %u для прослушивания на IPv4: %s</translation>
+    </message>
+    <message>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 40001 or testnet: 50000)</source>
+        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 40001 или для testnet: 50000)</translation>
+    </message>
+    <message>
         <source>Accept command line and JSON-RPC commands</source>
         <translation>Принимать командную строку и команды JSON-RPC</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
-        <translation>Принимать подключения снаружи (по умолчанию: 1, если не -proxy или -connect/-disconnect)</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
-        <translation>Подключаться только к указанному узлу(ам); -noconnect или -connect=0 для запрета автоматических подключений</translation>
-    </message>
-    <message>
-        <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
-        <translation>Распространяется под лицензией MIT, см. приложенный файл %s или %s</translation>
-    </message>
-    <message>
-        <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
-        <translation>Если &lt;category&gt; не предоставлена или равна 1, выводить всю отладочную информацию.</translation>
-    </message>
-    <message>
-        <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
-        <translation>Удаление блоков выставлено ниже, чем минимум в %d Мб. Пожалуйста, используйте большее значение.</translation>
-    </message>
-    <message>
-        <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
-        <translation>Удаление: последняя синхронизация кошелька вышла за рамки удаленных данных. Вам нужен -reindex (скачать всю  цепь блоков в случае удаленного узла)</translation>
-    </message>
-    <message>
-        <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
-        <translation>Повторное сканирование не возможно в режиме удаления. Вам надо будет использовать -reindex, который загрузит заново всю цепь блоков.</translation>
-    </message>
-    <message>
-        <source>Error: A fatal internal error occurred, see debug.log for details</source>
-        <translation>Ошибка: произошла неустранимая ошибка, подробности в debug.log</translation>
-    </message>
-    <message>
-        <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
-        <translation>Комиссия (в %s/Кб) для добавления к вашим транзакциям (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Pruning blockstore...</source>
-        <translation>Очистка хранилища блоков...</translation>
+        <source>GameCredits Core RPC client version</source>
+        <translation>Версия RPC-клиента GameCredits Core</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
         <translation>Запускаться в фоне как демон и принимать команды</translation>
     </message>
     <message>
-        <source>Unable to start HTTP server. See debug log for details.</source>
-        <translation>Невозможно запустить HTTP сервер. Смотри debug лог для подробностей.</translation>
+        <source>Use the test network</source>
+        <translation>Использовать тестовую сеть</translation>
     </message>
     <message>
-        <source>Litecoin Core</source>
-        <translation>Litecoin Core</translation>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
     </message>
     <message>
-        <source>The %s developers</source>
-        <translation>Разработчики %s</translation>
+        <source>%s, you must set a rpcpassword in the configuration file:
+%s
+It is recommended you use the following random password:
+rpcuser=gamecreditsrpc
+rpcpassword=%s
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %%s | mail -s &quot;GameCredits Alert&quot; admin@foo.com
+</source>
+        <translation>%s, вы должны установить опцию rpcpassword в конфигурационном файле:
+ %s
+Рекомендуется использовать следующий случайный пароль:
+rpcuser=gamecreditsrpc
+rpcpassword=%s
+(вам не нужно запоминать этот пароль)
+Имя и пароль ДОЛЖНЫ различаться.
+Если файл не существует, создайте его и установите права доступа только для владельца, только для чтения.
+Также рекомендуется включить alertnotify для оповещения о проблемах;
+Например: alertnotify=echo %%s | mail -s &quot;GameCredits Alert&quot; admin@foo.com
+</translation>
     </message>
     <message>
-        <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
-        <translation>Принимать транзакции пересылаемые от узлов из белого списка даже если они не удовлетворяют требованиям ретрансляции (по умолчанию: %d)</translation>
+        <source>Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</source>
+        <translation>Разрешённые алгоритмы(по умолчанию: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)</translation>
+    </message>
+    <message>
+        <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
+        <translation>Произошла ошибка при открытии на прослушивание IPv6 RCP-порта %u, возвращаемся к IPv4: %s</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Привязаться к указанному адресу и всегда прослушивать только его. Используйте [хост]:порт для IPv6</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
-        <translation>Невозможно заблокировать каталог данных %s. %s возможно уже работает.</translation>
+        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:15)</source>
+        <translation>Ограничить скорость передачи бесплатных транзакций до &lt;n&gt;*1000 байт в минуту (по умолчанию: 15)</translation>
     </message>
     <message>
-        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
-        <translation>Удалить все транзакции бумажника с возможностью восстановить эти части цепи блоков с помощью -rescan при запуске</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly. This is intended for regression testing tools and app development.</source>
+        <translation>Войти в режим тестирования на регрессии, в котором используется специальная цепь, где блоки находятся мгновенно. Этот режим рассчитан на инструменты регрессионного тестирования и разработку приложений.</translation>
     </message>
     <message>
-        <source>Error loading %s: You can't enable HD on a already existing non-HD wallet</source>
-        <translation>Ошибка загрузки %s: Вы не можете включить HD в уже существующем не-HD кошельке</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <translation>Войти в режим тестирования на регрессии, в котором используется специальная цепь, где блоки находятся мгновенно.</translation>
     </message>
     <message>
-        <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Ошибка чтения %s! Все ключи прочитаны верно, но данные транзакций или записи адресной книги могут отсутствовать или быть неправильными.</translation>
+        <source>Error: Listening for incoming connections failed (listen returned error %d)</source>
+        <translation>Ошибка: не удалось начать прослушивание входящих подключений (прослушивание вернуло ошибку %d)</translation>
+    </message>
+    <message>
+        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>Ошибка: транзакция была отклонена! Это могло произойти в случае, если некоторые монеты в вашем бумажнике уже были потрачены, например, если вы используете копию wallet.dat, и монеты были использованы в копии, но не отмечены как потраченные здесь.</translation>
+    </message>
+    <message>
+        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
+        <translation>Ошибка: эта транзакция требует комиссию как минимум %s из-за суммы, сложности или использования недавно полученных средств!</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
         <translation>Выполнить команду, когда меняется транзакция в бумажнике (%s в команде заменяется на TxID)</translation>
     </message>
     <message>
-        <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
-        <translation>Хранить в памяти дополнительные транзакции для реконструкции компактных блоков (по умолчанию: %u)</translation>
+        <source>Fees smaller than this are considered zero fee (for transaction creation) (default:</source>
+        <translation>Комиссии меньшие этого значения считаются нулевыми (для создания транзакции) (по умолчанию:</translation>
     </message>
     <message>
-        <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
-        <translation>Если этот блок в цепи, считать его и последующие блоки верными и потенциально пропускать проверку их скриптов (0 для проверки всех, по умолчанию: %s, тестовая сеть: %s)</translation>
+        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: 100)</source>
+        <translation>Сбрасывать активность базы данных из памяти на диск каждые &lt;n&gt; мегабайт (по умолчанию: 100)</translation>
     </message>
     <message>
-        <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
-        <translation>Максимально допустимое среднее отклонение времени участников. Локальное представление времени может меняться вперед или назад на это количество. (по умолчанию: %u секунд)</translation>
+        <source>How thorough the block verification of -checkblocks is (0-4, default: 3)</source>
+        <translation>Насколько тщательна проверка контрольных блоков -checkblocks (0-4, по умолчанию: 3)</translation>
     </message>
     <message>
-        <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>Максимальная сумма комиссий (%s) для одной транзакции в бумажнике или сырой транзакции; слишком низкое значение может вызвать прерывание больших транзакций (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation>Пожалуйста убедитесь в корректности установки времени и даты на вашем компьютере! Если время установлено неверно, %s не будет работать правильно.</translation>
-    </message>
-    <message>
-        <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
-        <translation>Пожалуйста, внести свой вклад, если вы найдете %s полезными. Посетите  %s для получения дополнительной информации о программном обеспечении.</translation>
-    </message>
-    <message>
-        <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
-        <translation>Уменьшить размер хранилища за счёт обрезания (удаления) старых блоков. Будет разрешён вызов RPC метода pruneblockchain для удаления определённых блоков и разрешено автоматическое обрезание старых блоков, если указан целевой размер в Мб. Этот режим несовместим с -txindex и -rescan. Внимание: переключение этой опции обратно потребует полной загрузки цепи блоков. (по умолчанию: 0 = отключить обрезание блоков, 1 = разрешить ручное обрезание через RPC, &gt;%u = автоматически обрезать файлы блоков, чтобы они были меньше указанного размера в Мб)</translation>
-    </message>
-    <message>
-        <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
-        <translation>Задать минимальный курс комиссии (в %s/Кб) для  транзакцийб включаемых в создаваемый блок. (по умолчанию: %s)</translation>
+        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
+        <translation>В этом режиме -genproclimit определяет, сколько блоков генерируется немедленно.</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
         <translation>Задать число потоков проверки скрипта (от %u до %d, 0=авто, &lt;0 = оставить столько ядер свободными, по умолчанию: %d)</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>База данных блоков содержит блок, который появляется из будущего. Это может из-за некорректно установленных даты и времени на вашем компьютере. Остается только перестроивать базу блоков, если вы уверены, что дата и время корректны.</translation>
+        <source>Set the processor limit for when generation is on (-1 = unlimited, default: -1)</source>
+        <translation>Задать лимит процессора, когда генерация работает (-1 = безлимитно, по умолчанию: -1)</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Это пре-релизная тестовая сборка - используйте на свой страх и риск - не используйте для добычи или торговых приложений</translation>
     </message>
     <message>
-        <source>Unable to rewind the database to a pre-fork state. You will need to redownload the blockchain</source>
-        <translation>Невозможно отмотать базу данных до пред-форкового состояния. Вам будет необходимо перекачать цепочку блоков.</translation>
+        <source>Unable to bind to %s on this computer. GameCredits Core is probably already running.</source>
+        <translation>Не удалось забиндиться на %s на этом компьютере. Возможно, GameCredits Core уже запущен.</translation>
     </message>
     <message>
-        <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: 1, если используется прослушивание и нет -proxy)</translation>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: -proxy)</source>
+        <translation>Использовать отдельный прокси SOCKS5 для соединения с участниками через скрытые сервисы Tor (по умолчанию: -proxy)</translation>
     </message>
     <message>
-        <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
-        <translation>Имя пользователя и хэш пароля для JSON-RPC соединений. Поле &lt;userpw&gt; использует формат: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Каноничный пример скрипта на питоне находится в share/rpcuser. Эта опция может быть указана несколько раз</translation>
+        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
+        <translation>Внимание: установлено очень большое значение -paytxfee. Это комиссия, которую вы заплатите при проведении транзакции.</translation>
     </message>
     <message>
-        <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
-        <translation>Бумажник не будет создавать транзакции, которые нарушают лимиты цепочки пула в памяти (по умолчанию: %u)</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong GameCredits will not work properly.</source>
+        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, GameCredits будет работать некорректно.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Внимание: похоже, в сети нет полного согласия! Некоторые майнеры, возможно, испытывают проблемы.</translation>
+        <translation>Внимание: похоже, в сети нет полного согласия! Некоторый майнеры, возможно, испытывают проблемы.</translation>
     </message>
     <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Внимание: мы не полностью согласны с подключенными участниками! Вам или другим участникам, возможно, следует обновиться.</translation>
+        <translation>Внимание: мы не полностью согласны с подключенными участниками! Вам или другим узлам, возможно, следует обновиться.</translation>
     </message>
     <message>
-        <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex-chainstate, чтобы изменить -txindex</translation>
+        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
+        <translation>Внимание: ошибка чтения wallet.dat! Все ключи прочитаны верно, но данные транзакций или записи адресной книги могут отсутствовать или быть неправильными.</translation>
     </message>
     <message>
-        <source>%s corrupt, salvage failed</source>
-        <translation>%s поврежден, восстановить не удалось</translation>
+        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
+        <translation>Внимание: wallet.dat повреждён, данные спасены! Оригинальный wallet.dat сохранён как wallet.{timestamp}.bak в %s; если ваш баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
     </message>
     <message>
-        <source>-maxmempool must be at least %d MB</source>
-        <translation>-maxmempool должен быть как минимум %d MB</translation>
+        <source>(default: 1)</source>
+        <translation>(по умолчанию: 1)</translation>
+    </message>
+    <message>
+        <source>(default: wallet.dat)</source>
+        <translation>(по умолчанию: wallet.dat)</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>
         <translation>&lt;category&gt; может быть:</translation>
     </message>
     <message>
-        <source>Append comment to the user agent string</source>
-        <translation>Добавить комментарий к строке пользовательского агента</translation>
+        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
+        <translation>Попытаться восстановить приватные ключи из повреждённого wallet.dat</translation>
     </message>
     <message>
-        <source>Attempt to recover private keys from a corrupt wallet on startup</source>
-        <translation>Попытаться восстановить приватные ключи из повреждённого бумажника при запуске</translation>
+        <source>GameCredits Core Daemon</source>
+        <translation>Демон GameCredits Core</translation>
     </message>
     <message>
         <source>Block creation options:</source>
         <translation>Параметры создания блоков:</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Не удаётся разрешить адрес в параметре -%s: '%s'</translation>
+        <source>Clear list of wallet transactions (diagnostic tool; implies -rescan)</source>
+        <translation>Очистить список транзакций кошелька (диагностический инструмент; включает в себя -rescan)</translation>
     </message>
     <message>
-        <source>Chain selection options:</source>
-        <translation>Параметры выбора цепочки:</translation>
+        <source>Connect only to the specified node(s)</source>
+        <translation>Подключаться только к указанному узлу(ам)</translation>
     </message>
     <message>
-        <source>Change index out of range</source>
-        <translation>Изменение индекса вне диапазона</translation>
+        <source>Connect through SOCKS proxy</source>
+        <translation>Подключаться через SOCKS прокси</translation>
+    </message>
+    <message>
+        <source>Connect to JSON-RPC on &lt;port&gt; (default: 40001 or testnet: 50000)</source>
+        <translation>Подключаться к JSON-RPC на &lt;порт&gt; (по умолчанию: 40001 или testnet: 50000)</translation>
     </message>
     <message>
         <source>Connection options:</source>
         <translation>Параметры подключения:</translation>
-    </message>
-    <message>
-        <source>Copyright (C) %i-%i</source>
-        <translation>Copyright (C) %i-%i</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3218,6 +2851,14 @@
         <translation>Параметры отладки/тестирования:</translation>
     </message>
     <message>
+        <source>Disable safemode, override a real safe mode event (default: 0)</source>
+        <translation>Отключить безопасный режим, отклонить реальное событие безопасного режима (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
+        <translation>Определить свой IP (по умолчанию: 1 при прослушивании и если не используется -externalip)</translation>
+    </message>
+    <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
         <translation>Не загружать бумажник и запретить обращения к нему через RPC</translation>
     </message>
@@ -3226,48 +2867,12 @@
         <translation>Пересобрать БД блоков прямо сейчас?</translation>
     </message>
     <message>
-        <source>Enable publish hash block in &lt;address&gt;</source>
-        <translation>Включить публичный хеш блока в &lt;address&gt;</translation>
-    </message>
-    <message>
-        <source>Enable publish hash transaction in &lt;address&gt;</source>
-        <translation>Включить публичный хеш транзакции в &lt;address&gt;</translation>
-    </message>
-    <message>
-        <source>Enable publish raw block in &lt;address&gt;</source>
-        <translation>Включить публичный сырой блок в &lt;address&gt;</translation>
-    </message>
-    <message>
-        <source>Enable publish raw transaction in &lt;address&gt;</source>
-        <translation>Включить публичную сырую транзакцию в &lt;address&gt;</translation>
-    </message>
-    <message>
-        <source>Enable transaction replacement in the memory pool (default: %u)</source>
-        <translation>Включить замену транзакций в пуле памяти (по умолчанию:%u)</translation>
-    </message>
-    <message>
         <source>Error initializing block database</source>
         <translation>Ошибка инициализации БД блоков</translation>
     </message>
     <message>
         <source>Error initializing wallet database environment %s!</source>
         <translation>Ошибка инициализации окружения БД бумажника %s!</translation>
-    </message>
-    <message>
-        <source>Error loading %s</source>
-        <translation>Ошибка загрузки %s</translation>
-    </message>
-    <message>
-        <source>Error loading %s: Wallet corrupted</source>
-        <translation>Ошибка загрузки %s: Бумажник поврежден</translation>
-    </message>
-    <message>
-        <source>Error loading %s: Wallet requires newer version of %s</source>
-        <translation>Ошибка загрузки %s: Для бумажника требуется более новая версия %s</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't disable HD on a already existing HD wallet</source>
-        <translation>Ошибка загрузки %s: Вы не можете включить HD в уже существующем не-HD кошельке</translation>
     </message>
     <message>
         <source>Error loading block database</source>
@@ -3282,8 +2887,84 @@
         <translation>Ошибка: мало места на диске!</translation>
     </message>
     <message>
+        <source>Error: Wallet locked, unable to create transaction!</source>
+        <translation>Ошибка: бумажник заблокирован, невозможно создать транзакцию!</translation>
+    </message>
+    <message>
+        <source>Error: system error: </source>
+        <translation>Ошибка: системная ошибка:</translation>
+    </message>
+    <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>Не удалось начать прослушивание на порту. Используйте -listen=0 если вас это устраивает.</translation>
+    </message>
+    <message>
+        <source>Failed to read block info</source>
+        <translation>Не удалось прочитать информацию блока</translation>
+    </message>
+    <message>
+        <source>Failed to read block</source>
+        <translation>Не удалось прочитать блок</translation>
+    </message>
+    <message>
+        <source>Failed to sync block index</source>
+        <translation>Не удалось синхронизировать индекс блоков</translation>
+    </message>
+    <message>
+        <source>Failed to write block index</source>
+        <translation>Не удалось записать индекс блоков</translation>
+    </message>
+    <message>
+        <source>Failed to write block info</source>
+        <translation>Не удалось записать информацию блока</translation>
+    </message>
+    <message>
+        <source>Failed to write block</source>
+        <translation>Не удалось записать блок</translation>
+    </message>
+    <message>
+        <source>Failed to write file info</source>
+        <translation>Не удалось записать информацию файла</translation>
+    </message>
+    <message>
+        <source>Failed to write to coin database</source>
+        <translation>Не удалось записать БД монет</translation>
+    </message>
+    <message>
+        <source>Failed to write transaction index</source>
+        <translation>Не удалось записать индекс транзакций</translation>
+    </message>
+    <message>
+        <source>Failed to write undo data</source>
+        <translation>Не удалось записать данные для отмены</translation>
+    </message>
+    <message>
+        <source>Fee per kB to add to transactions you send</source>
+        <translation>Комиссия на КБ, добавляемая к вашим переводам</translation>
+    </message>
+    <message>
+        <source>Fees smaller than this are considered zero fee (for relaying) (default:</source>
+        <translation>Комиссии меньшие этого значения считаются нулевыми (для ретрансляции) (по умолчанию:</translation>
+    </message>
+    <message>
+        <source>Find peers using DNS lookup (default: 1 unless -connect)</source>
+        <translation>Искать узлы с помощью DNS (по умолчанию: 1, если не указан -connect)</translation>
+    </message>
+    <message>
+        <source>Force safe mode (default: 0)</source>
+        <translation>Принудительный безопасный режим (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>Generate coins (default: 0)</source>
+        <translation>Включить добычу монет (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: 288, 0 = all)</source>
+        <translation>Сколько блоков проверять при запуске (по умолчанию: 288, 0 = все)</translation>
+    </message>
+    <message>
+        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
+        <translation>Если &lt;category&gt; не предоставлена, выводить всю отладочную информацию.</translation>
     </message>
     <message>
         <source>Importing...</source>
@@ -3294,68 +2975,28 @@
         <translation>Неверный или отсутствующий начальный блок. Неправильный каталог данных для сети?</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. %s is shutting down.</source>
-        <translation>Начальная проверка исправности не удалась. %s завершает работу.</translation>
-    </message>
-    <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Неверный -onion адрес: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Неверная сумма для -%s=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Недопустимая сумма для -fallbackfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
-        <translation>Сбрасывать транзакции из памяти на диск каждые &lt;n&gt; мегабайт (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Loading banlist...</source>
-        <translation>Загрузка банлиста...</translation>
-    </message>
-    <message>
-        <source>Location of the auth cookie (default: data dir)</source>
-        <translation>Расположение куки входы(по умолчанию: data dir)</translation>
+        <source>Invalid -onion address: &apos;%s&apos;</source>
+        <translation>Неверный -onion адрес: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Not enough file descriptors available.</source>
         <translation>Недостаточно файловых дескрипторов.</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
-        <translation>Соединяться только по сети &lt;net&gt; (ipv4, ipv6 или onion)</translation>
+        <source>Prepend debug output with timestamp (default: 1)</source>
+        <translation>Дописывать отметки времени к отладочному выводу (по умолчанию: 1)</translation>
     </message>
     <message>
-        <source>Print this help message and exit</source>
-        <translation>Вывести эту справку и выйти</translation>
+        <source>RPC client options:</source>
+        <translation>Параметры RPC клиента:</translation>
     </message>
     <message>
-        <source>Print version and exit</source>
-        <translation>Написать версию и выйти</translation>
+        <source>Rebuild block chain index from current blk000??.dat files</source>
+        <translation>Перестроить индекс цепи блоков из текущих файлов blk000??.dat</translation>
     </message>
     <message>
-        <source>Prune cannot be configured with a negative value.</source>
-        <translation>Удаление блоков не может использовать отрицательное значение.</translation>
-    </message>
-    <message>
-        <source>Prune mode is incompatible with -txindex.</source>
-        <translation>Режим удаления блоков несовместим с -txindex.</translation>
-    </message>
-    <message>
-        <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
-        <translation>Перестроить состояние цепи блоков и индекс блоков из blk*.dat файлов с диска</translation>
-    </message>
-    <message>
-        <source>Rebuild chain state from the currently indexed blocks</source>
-        <translation>Перестроить индекс цепи из текущих индексированных блоков</translation>
-    </message>
-    <message>
-        <source>Rewinding blocks...</source>
-        <translation>Перемотка блоков...</translation>
+        <source>Select SOCKS version for -proxy (4 or 5, default: 5)</source>
+        <translation>Выбрать версию SOCKS для -proxy (4 или 5, по умолчанию: 5)</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -3366,40 +3007,24 @@
         <translation>Задать максимальный размер блока в байтах (по умолчанию: %d)</translation>
     </message>
     <message>
+        <source>Set the number of threads to service RPC calls (default: 4)</source>
+        <translation>Задать число потоков выполнения(по умолчанию: 4)</translation>
+    </message>
+    <message>
         <source>Specify wallet file (within data directory)</source>
         <translation>Укажите файл бумажника (внутри каталога данных)</translation>
     </message>
     <message>
-        <source>The source code is available from %s.</source>
-        <translation>Исходный код доступен в %s.</translation>
+        <source>Spend unconfirmed change when sending transactions (default: 1)</source>
+        <translation>Тратить неподтвержденную сдачу при отправке транзакций (по умолчанию: 1)</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. %s is probably already running.</source>
-        <translation>Невозможно привязаться к %s на этом компьютере. Возможно, %s уже работает.</translation>
+        <source>This is intended for regression testing tools and app development.</source>
+        <translation>Это рассчитано на инструменты регрессионного тестирования и разработку приложений.</translation>
     </message>
     <message>
-        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation>Неподдерживаемый аргумент -benchmark проигнорирован, используйте -debug=bench.</translation>
-    </message>
-    <message>
-        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation>Неподдерживаемый аргумент -debugnet проигнорирован, используйте -debug=net.</translation>
-    </message>
-    <message>
-        <source>Unsupported argument -tor found, use -onion.</source>
-        <translation>Обнаружен не поддерживаемый параметр -tor, используйте -onion.</translation>
-    </message>
-    <message>
-        <source>Use UPnP to map the listening port (default: %u)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Use the test chain</source>
-        <translation>Использовать тестовую цепочку</translation>
-    </message>
-    <message>
-        <source>User Agent comment (%s) contains unsafe characters.</source>
-        <translation>Комментарий пользователя (%s) содержит небезопасные символы.</translation>
+        <source>Usage (deprecated, use gamecredits-cli):</source>
+        <translation>Использование (устарело, используйте gamecredits-cli):</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
@@ -3410,160 +3035,141 @@
         <translation>Проверка бумажника...</translation>
     </message>
     <message>
+        <source>Wait for RPC server to start</source>
+        <translation>Ожидание запуска RPC сервера</translation>
+    </message>
+    <message>
         <source>Wallet %s resides outside data directory %s</source>
         <translation>Бумажник %s располагается вне каталога данных %s</translation>
     </message>
     <message>
-        <source>Wallet debugging/testing options:</source>
-        <translation>Параметры отладки/тестирования бумажника:</translation>
-    </message>
-    <message>
-        <source>Wallet needed to be rewritten: restart %s to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите %s для завершения операции.</translation>
-    </message>
-    <message>
         <source>Wallet options:</source>
-        <translation>Настройки бумажника:</translation>
+        <translation>Опции бумажника:</translation>
     </message>
     <message>
-        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
-        <translation>Разрешить подключения JSON-RPC с указанного источника. Разрешённые значения для &lt;ip&gt; — отдельный IP (например, 1.2.3.4), сеть/маска сети (например, 1.2.3.4/255.255.255.0) или сеть/CIDR (например, 1.2.3.4/24). Эту опцию можно использовать многократно</translation>
+        <source>Warning: Deprecated argument -debugnet ignored, use -debug=net</source>
+        <translation>Внимание: устаревший аргумент -debugnet проигнорирован, используйте -debug=net</translation>
     </message>
     <message>
-        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
-        <translation>Привязаться к указанному адресу и внести в белый список подключающихся к нему участников. Используйте [хост]:порт для IPv6</translation>
+        <source>You need to rebuild the database using -reindex to change -txindex</source>
+        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
     </message>
     <message>
-        <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
-        <translation>Привязаться к указанному адресу для прослушивания JSON-RPC подключений. Используйте запись [хост]:порт для IPv6. Эту опцию можно использовать многократно (по умолчанию: привязываться ко всем интерфейсам)</translation>
+        <source>Imports blocks from external blk000??.dat file</source>
+        <translation>Импортировать блоки из внешнего файла blk000??.dat</translation>
     </message>
     <message>
-        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation>Создавать новые файлы с системными правами по умолчанию вместо umask 077 (эффективно только при отключенном бумажнике)</translation>
-    </message>
-    <message>
-        <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
-        <translation>Обнаруживать собственный IP адрес (по умолчанию: 1 при прослушивании и без -externalip или -proxy)</translation>
-    </message>
-    <message>
-        <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>Ошибка: не удалось начать прослушивание входящих подключений (прослушивание вернуло ошибку %s)</translation>
+        <source>Cannot obtain a lock on data directory %s. GameCredits Core is probably already running.</source>
+        <translation>Не удалось установить блокировку на каталог данных %s. Возможно, GameCredits Core уже запущен.</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
         <translation>Выполнить команду, когда приходит соответствующее сообщение о тревоге или наблюдается очень длинное расщепление цепи (%s в команде заменяется на сообщение)</translation>
     </message>
     <message>
-        <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
-        <translation>Комиссии (в %s/Кб) меньшие этого значения считаются нулевыми для создания, ретрансляции, получения транзакции (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
-        <translation>Если paytxfee не задан, включить достаточную комиссию для подтверждения транзакции в среднем за n блоков (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Неверное значение для -maxtxfee=&lt;amount&gt;: '%s' (минимальная комиссия трансляции %s для предотвращения зависания транзакций)</translation>
-    </message>
-    <message>
-        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
-        <translation>Наибольший размер данных в носителе данных транзакций, которые мы передаем и генерируем (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
-        <translation>Использовать случайные учётные данные для каждого прокси-подключения. Эта функция позволяет изолировать потоки Tor (по умолчанию: %u)</translation>
+        <source>Output debugging information (default: 0, supplying &lt;category&gt; is optional)</source>
+        <translation>Выводить отладочную информацию (по умолчанию: 0, указание &lt;category&gt; необязательно)</translation>
     </message>
     <message>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
         <translation>Задать максимальный размер высокоприоритетных/низкокомиссионных транзакций в байтах (по умолчанию: %d)</translation>
     </message>
     <message>
-        <source>The transaction amount is too small to send after the fee has been deducted</source>
-        <translation>Сумма транзакции за вычетом комиссии слишком мала</translation>
-    </message>
-    <message>
-        <source>Use hierarchical deterministic key generation (HD) after BIP32. Only has effect during wallet creation/first start</source>
-        <translation>Использовать иерархическую детерминированную генерацию ключей (HD) после BIP32. Применяется в процессе создания бумажника / первого запуска</translation>
-    </message>
-    <message>
-        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
-        <translation>Участники из белого списка не могуть быть забанены за DoS, и их транзакции всегда транслируются, даже если они уже содержатся в памяти. Полезно, например, для шлюза.</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
-        <translation>Вам необходимо пересобрать базу данных с помощью -reindex, чтобы вернуться к полному режиму. Это приведёт к перезагрузке всей цепи блоков</translation>
-    </message>
-    <message>
-        <source>(default: %u)</source>
-        <translation>(по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Accept public REST requests (default: %u)</source>
-        <translation>Принимать публичные REST-запросы (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Automatically create Tor hidden service (default: %d)</source>
-        <translation>Автоматически создавать скрытый Tor сервис (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Connect through SOCKS5 proxy</source>
-        <translation>Подключаться через SOCKS5 прокси</translation>
-    </message>
-    <message>
-        <source>Error reading from database, shutting down.</source>
-        <translation>Ошибка чтения базы данных, работа завершается.</translation>
-    </message>
-    <message>
-        <source>Imports blocks from external blk000??.dat file on startup</source>
-        <translation>Импортировать блоки из внешнего файла blk000?.dat при запуске</translation>
-    </message>
-    <message>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Неверное количество в параметре -paytxfee=&lt;кол-во&gt;: '%s' (должно быть как минимум %s)</translation>
+        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неверная сумма в параметре -minrelaytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Указана неверная сетевая маска в -whitelist: '%s'</translation>
+        <source>Invalid amount for -mintxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неверная сумма в параметре -mintxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Держать в памяти до &lt;n&gt; несвязных транзакций (по умолчанию: %u)</translation>
+        <source>Limit size of signature cache to &lt;n&gt; entries (default: 50000)</source>
+        <translation>Ограничить размер кэша подписей &lt;n&gt; записями (по умолчанию: 50000)</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Необходимо указать порт с помощью -whitebind: '%s'</translation>
+        <source>Log transaction priority and fee per kB when mining blocks (default: 0)</source>
+        <translation>Записывать в лог приоритет транзакции и комиссию на килобайт во время добычи блоков (по умолчанию: 0)</translation>
     </message>
     <message>
-        <source>Node relay options:</source>
-        <translation>Параметры трансляции узла:</translation>
+        <source>Maintain a full transaction index (default: 0)</source>
+        <translation>Держать полный индекс транзакций (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
+        <translation>Максимальный размер буфера приёма на соединение, &lt;n&gt;*1000 байт (по умолчанию: 5000)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
+        <translation>Максимальный размер буфера отправки на соединение, &lt;n&gt;*1000 байт (по умолчанию: 1000)</translation>
+    </message>
+    <message>
+        <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
+        <translation>Принимать цепь блоков, только если она соответствует встроенным контрольным точкам (по умолчанию: 1)</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
+        <translation>Подключаться только к узлам из сети &lt;net&gt; (IPv4, IPv6 или Tor)</translation>
+    </message>
+    <message>
+        <source>Print block on startup, if found in block index</source>
+        <translation>Печатать блок при запуске, если он найден в индексе блоков</translation>
+    </message>
+    <message>
+        <source>Print block tree on startup (default: 0)</source>
+        <translation>Печатать дерево блоков при запуске (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>RPC SSL options: (see the GameCredits Wiki for SSL setup instructions)</source>
+        <translation>Параметры RPC SSL: (см. GameCredits вики для инструкций по настройке SSL)</translation>
     </message>
     <message>
         <source>RPC server options:</source>
         <translation>Параметры сервера RPC:</translation>
     </message>
     <message>
-        <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
-        <translation>Уменьшите -maxconnections с %d до %d, из-за ограничений системы.</translation>
+        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
+        <translation>Случайно отбрасывать 1 из каждых &lt;n&gt; сетевых сообщений</translation>
     </message>
     <message>
-        <source>Rescan the block chain for missing wallet transactions on startup</source>
-        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций при запуске</translation>
+        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
+        <translation>Случайно разбрасывать 1 из каждых &lt;n&gt; сетевых сообщений</translation>
+    </message>
+    <message>
+        <source>Run a thread to flush wallet periodically (default: 1)</source>
+        <translation>Запустить поток для периодического сохранения бумажника (по умолчанию: 1)</translation>
+    </message>
+    <message>
+        <source>SSL options: (see the GameCredits Wiki for SSL setup instructions)</source>
+        <translation>
+Параметры SSL: (см. GameCredits Wiki для инструкций по настройке SSL)</translation>
+    </message>
+    <message>
+        <source>Send command to GameCredits Core</source>
+        <translation>Отправить команду GameCredits Core</translation>
     </message>
     <message>
         <source>Send trace/debug info to console instead of debug.log file</source>
         <translation>Выводить информацию трассировки/отладки на консоль вместо файла debug.log</translation>
     </message>
     <message>
-        <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
-        <translation>Осуществить транзакцию бесплатно, если возможно (по умолчанию: %u)</translation>
+        <source>Set minimum block size in bytes (default: 0)</source>
+        <translation>Минимальный размер блока в байтах (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: 1)</source>
+        <translation>Установить флаг DB_PRIVATE в окружении базы данных бумажника (по умолчанию: 1)</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
         <translation>Показать все отладочные параметры (использование: --help -help-debug)</translation>
+    </message>
+    <message>
+        <source>Show benchmark information (default: 0)</source>
+        <translation>Показать информацию нагрузочного тестирования (по умолчанию: 0)</translation>
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
@@ -3574,40 +3180,36 @@
         <translation>Не удалось подписать транзакцию</translation>
     </message>
     <message>
-        <source>The transaction amount is too small to pay the fee</source>
-        <translation>Сумма транзакции слишком мала для уплаты комиссии</translation>
+        <source>Specify connection timeout in milliseconds (default: 5000)</source>
+        <translation>Тайм-аут соединения в миллисекундах (по умолчанию: 5000)</translation>
     </message>
     <message>
-        <source>This is experimental software.</source>
-        <translation>Это экспериментальное ПО.</translation>
+        <source>Start GameCredits Core Daemon</source>
+        <translation>Запустить GameCredits Core демон</translation>
     </message>
     <message>
-        <source>Tor control port password (default: empty)</source>
-        <translation>Пароль контроля порта Tor (по умолчанию: пустой)</translation>
-    </message>
-    <message>
-        <source>Tor control port to use if onion listening enabled (default: %s)</source>
-        <translation>Порт контроля Tor используется, если включено прослушивание onion (по умолчанию: %s)</translation>
+        <source>System error: </source>
+        <translation>Системная ошибка:</translation>
     </message>
     <message>
         <source>Transaction amount too small</source>
         <translation>Сумма транзакции слишком мала</translation>
     </message>
     <message>
-        <source>Transaction too large for fee policy</source>
-        <translation>Транзакция слишком большая для правил комиссии.</translation>
+        <source>Transaction amounts must be positive</source>
+        <translation>Сумма транзакции должна быть положительна</translation>
     </message>
     <message>
         <source>Transaction too large</source>
         <translation>Транзакция слишком большая</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %s)</translation>
+        <source>Use UPnP to map the listening port (default: 0)</source>
+        <translation>Использовать UPnP для проброса порта (по умолчанию: 0)</translation>
     </message>
     <message>
-        <source>Upgrade wallet to latest format on startup</source>
-        <translation>Обновить бумажник до последнего формата при запуске</translation>
+        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
+        <translation>Использовать UPnP для проброса порта (по умолчанию: 1, если используется прослушивание)</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
@@ -3618,28 +3220,72 @@
         <translation>Внимание</translation>
     </message>
     <message>
-        <source>Warning: unknown new rules activated (versionbit %i)</source>
-        <translation>Внимание: неизвестные правила вступили в силу(versionbit %i)</translation>
-    </message>
-    <message>
-        <source>Whether to operate in a blocks only mode (default: %u)</source>
-        <translation>Будет работать в режиме только блоков (по умолчанию: %u)</translation>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation>Внимание: эта версия устарела, требуется обновление!</translation>
     </message>
     <message>
         <source>Zapping all transactions from wallet...</source>
         <translation>Стираем все транзакции из кошелька...</translation>
     </message>
     <message>
-        <source>ZeroMQ notification options:</source>
-        <translation>ZeroMQ параметры оповещения:</translation>
+        <source>on startup</source>
+        <translation>при запуске</translation>
+    </message>
+    <message>
+        <source>version</source>
+        <translation>версия</translation>
+    </message>
+    <message>
+        <source>wallet.dat corrupt, salvage failed</source>
+        <translation>wallet.dat повреждён, спасение данных не удалось</translation>
     </message>
     <message>
         <source>Password for JSON-RPC connections</source>
         <translation>Пароль для подключений JSON-RPC</translation>
     </message>
     <message>
+        <source>Allow JSON-RPC connections from specified IP address</source>
+        <translation>Разрешить подключения JSON-RPC с указанного IP</translation>
+    </message>
+    <message>
+        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
+        <translation>Посылать команды узлу, запущенному на &lt;ip&gt; (по умолчанию: 127.0.0.1)</translation>
+    </message>
+    <message>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
         <translation>Выполнить команду, когда появляется новый блок (%s в команде заменяется на хэш блока)</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format</source>
+        <translation>Обновить бумажник до последнего формата</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
+        <translation>Установить размер запаса ключей в &lt;n&gt; (по умолчанию: 100)</translation>
+    </message>
+    <message>
+        <source>Rescan the block chain for missing wallet transactions</source>
+        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций</translation>
+    </message>
+    <message>
+        <source>Use OpenSSL (https) for JSON-RPC connections</source>
+        <translation>Использовать OpenSSL (https) для подключений JSON-RPC</translation>
+    </message>
+    <message>
+        <source>Server certificate file (default: server.cert)</source>
+        <translation>Файл серверного сертификата (по умолчанию: server.cert)</translation>
+    </message>
+    <message>
+        <source>Server private key (default: server.pem)</source>
+        <translation>Приватный ключ сервера (по умолчанию: server.pem)</translation>
+    </message>
+    <message>
+        <source>This help message</source>
+        <translation>Эта справка</translation>
+    </message>
+    <message>
+        <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
+        <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %d, %s)</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
@@ -3650,228 +3296,48 @@
         <translation>Загрузка адресов...</translation>
     </message>
     <message>
-        <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
-        <translation>(1 = сохранять метаданные транзакции: например, владельца аккаунта и информацию запроса платежа; 2 = отбросить метаданные)</translation>
+        <source>Error loading wallet.dat: Wallet corrupted</source>
+        <translation>Ошибка загрузки wallet.dat: Бумажник поврежден</translation>
     </message>
     <message>
-        <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
-        <translation>Установлено очень большое значение -maxtxfee. Такие большие комиссии могут быть уплачены в отдельной транзакции.</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of GameCredits</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию GameCredits</translation>
     </message>
     <message>
-        <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
-        <translation>Не хранить транзакции в памяти дольше, чем &lt;n&gt; часов (по умолчанию %u)</translation>
+        <source>Wallet needed to be rewritten: restart GameCredits to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите GameCredits для завершения операции.</translation>
     </message>
     <message>
-        <source>Equivalent bytes per sigop in transactions for relay and mining (default: %u)</source>
-        <translation>Эквивалентных байт на sigop в транзакциях для ретрансляции или добычи (по умолчанию: %u)</translation>
+        <source>Error loading wallet.dat</source>
+        <translation>Ошибка при загрузке wallet.dat</translation>
     </message>
     <message>
-        <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Комиссии (в %s/Кб) меньшие этого значения считаются нулевыми при создании транзакций (по умолчанию: %s)</translation>
+        <source>Invalid -proxy address: &apos;%s&apos;</source>
+        <translation>Неверный адрес -proxy: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
-        <translation>Всегда ретранслировать транзакции, полученные из белого списка участников, даже если они нарушают локальную политику ретрансляции (по умолчанию: %d)</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>В параметре -onlynet указана неизвестная сеть: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
-        <translation>Насколько тщательна проверка контрольных блоков -checkblocks (0-4, по умолчанию: %u)</translation>
+        <source>Unknown -socks proxy version requested: %i</source>
+        <translation>В параметре -socks запрошена неизвестная версия: %i</translation>
     </message>
     <message>
-        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
-        <translation>Держать полный индекс транзакций, используемый RPC-запросом getrawtransaction (по умолчанию: %u)</translation>
+        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
+        <translation>Не удаётся разрешить адрес в параметре -bind: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
-        <translation>Число секунд блокирования неправильно ведущих себя узлов (по умолчанию: %u)</translation>
+        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
+        <translation>Не удаётся разрешить адрес в параметре -externalip: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
-        <translation>Выводить отладочную информацию (по умолчанию: %u, указание &lt;category&gt; необязательно)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неверная сумма в параметре -paytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
-        <translation>Запрашивать адреса участников с помощью DNS, если адресов мало (по умолчанию: 1, если не указан -connect/-noconnect)</translation>
-    </message>
-    <message>
-        <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
-        <translation>Задаёт сериализацию сырой транзакции или хекса блока, возвращённого в не подробном режиме, non-segwit(0) или segwit(1) (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
-        <translation>Поддерживать фильтрацию блоков и транзакций с помощью фильтра Блума (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>This is the transaction fee you may pay when fee estimates are not available.</source>
-        <translation>Это комиссия за транзакцию, которую вы можете заплатить, когда расчёт комиссии недоступен.</translation>
-    </message>
-    <message>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit %s и криптографическое ПО, написанное Eric Young и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
-    </message>
-    <message>
-        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
-        <translation>Текущая длина строки версии сети (%i) превышает максимальную длину (%i). Увеливается количество или размер uacomments.</translation>
-    </message>
-    <message>
-        <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
-        <translation>Пытается ограничить исходящий трафик до (в МБ за 24ч), 0 = не ограничивать (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
-        <translation>Обнаружен не поддерживаемый аргумент -socks. Выбор версии SOCKS более невозможен, поддерживаются только прокси SOCKS5.</translation>
-    </message>
-    <message>
-        <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
-        <translation>Не поддерживаемый аргумент -whitelistalwaysrelay игнорируется, используйте -whitelistrelay и/или -whitelistforcerelay.</translation>
-    </message>
-    <message>
-        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
-        <translation>Использовать отдельный прокси SOCKS5 для соединения с участниками через скрытые сервисы Tor (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
-        <translation>Внимание: Получена неизвестная версия блока! Возможно неизвестные правила вступили в силу.</translation>
-    </message>
-    <message>
-        <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Внимание: Файл бумажника поврежден, данные восстановлены! Оригинальный %s сохранен как %s в %s; Если баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
-    </message>
-    <message>
-        <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
-        <translation>Вносить в белый список участников, подключающихся с указанного IP (напр. 1.2.3.4) или CIDR-адреса сети (напр. 1.2.3.0/24). Можно использовать многократно.</translation>
-    </message>
-    <message>
-        <source>%s is set very high!</source>
-        <translation>%s задан слишком высоким!</translation>
-    </message>
-    <message>
-        <source>(default: %s)</source>
-        <translation>(по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
-        <translation>Всегда запрашивать адреса участников с помощью DNS (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
-        <translation>Сколько блоков проверять при запуске (по умолчанию: %u, 0 = все)</translation>
-    </message>
-    <message>
-        <source>Include IP addresses in debug output (default: %u)</source>
-        <translation>Включить IP-адреса в отладочный вывод (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Неверный адрес -proxy: '%s'</translation>
-    </message>
-    <message>
-        <source>Keypool ran out, please call keypoolrefill first</source>
-        <translation>Пул ключей опустел, пожалуйста, выполните keypoolrefill</translation>
-    </message>
-    <message>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: %u или %u в тестовой сети)</translation>
-    </message>
-    <message>
-        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: %u или %u в тестовой сети)</translation>
-    </message>
-    <message>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
-        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Make the wallet broadcast transactions</source>
-        <translation>Рассылать транзакции из бумажника</translation>
-    </message>
-    <message>
-        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
-        <translation>Максимальный размер буфера приёма на соединение, &lt;n&gt;*1000 байт (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
-        <translation>Максимальный размер буфера отправки на соединение, &lt;n&gt;*1000 байт (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Prepend debug output with timestamp (default: %u)</source>
-        <translation>Дописывать отметки времени к отладочному выводу (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Relay and mine data carrier transactions (default: %u)</source>
-        <translation>Транслировать и генерировать транзакции носителей данных (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Relay non-P2SH multisig (default: %u)</source>
-        <translation>Транслировать не-P2SH мультиподпись (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Send transactions with full-RBF opt-in enabled (default: %u)</source>
-        <translation>Отправлять транзакции с включенным full-RBF (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
-        <translation>Установить размер пула ключей в &lt;n&gt; (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Set maximum BIP141 block weight (default: %d)</source>
-        <translation>Задать максимальное BIP141 значение блока (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Set the number of threads to service RPC calls (default: %d)</source>
-        <translation>Задать число потоков выполнения запросов RPC (по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Specify configuration file (default: %s)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
-        <translation>Указать тайм-аут соединения в миллисекундах (минимум: 1, по умолчанию: %d)</translation>
-    </message>
-    <message>
-        <source>Specify pid file (default: %s)</source>
-        <translation>Указать pid-файл (по умолчанию: %s)</translation>
-    </message>
-    <message>
-        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
-        <translation>Тратить неподтвержденную сдачу при отправке транзакций (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Starting network threads...</source>
-        <translation>Запускаем сетевые потоки...</translation>
-    </message>
-    <message>
-        <source>The wallet will avoid paying less than the minimum relay fee.</source>
-        <translation>Бумажник постарается не платить меньше, чем минимальная комиссия передачи.</translation>
-    </message>
-    <message>
-        <source>This is the minimum transaction fee you pay on every transaction.</source>
-        <translation>Это минимальная комиссия, которую вы платите с каждой транзакцией.</translation>
-    </message>
-    <message>
-        <source>This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Это комиссия, которую вы заплатите за эту транзакцию.</translation>
-    </message>
-    <message>
-        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
-        <translation>Порог для отключения неправильно ведущих себя узлов (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must not be negative</source>
-        <translation>Сумма транзакции не должна быть негативной</translation>
-    </message>
-    <message>
-        <source>Transaction has too long of a mempool chain</source>
-        <translation>У транзакции слишком длинная цепочка в пуле в памяти.</translation>
-    </message>
-    <message>
-        <source>Transaction must have at least one recipient</source>
-        <translation>У транзакции должен быть как минимум один получатель</translation>
-    </message>
-    <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>В параметре -onlynet указана неизвестная сеть: '%s'</translation>
+        <source>Invalid amount</source>
+        <translation>Неверная сумма</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3906,8 +3372,20 @@
         <translation>Загрузка завершена</translation>
     </message>
     <message>
+        <source>To use the %s option</source>
+        <translation>Чтобы использовать опцию %s</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
+%s
+If the file does not exist, create it with owner-readable-only file permissions.</source>
+        <translation>Вы должны установить rpcpassword=&lt;password&gt; в конфигурационном файле:
+%s
+Если файл не существует, создайте его и установите права доступа только для владельца.</translation>
     </message>
 </context>
 </TS>

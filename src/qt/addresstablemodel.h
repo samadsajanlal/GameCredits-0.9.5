@@ -1,9 +1,10 @@
-// Copyright (c) 2011-2015 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Original Code: Copyright (c) 2011-2014 The Bitcoin Core Developers
+// Modified Code: Copyright (c) 2015 Gamecredits Foundation
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_ADDRESSTABLEMODEL_H
-#define BITCOIN_QT_ADDRESSTABLEMODEL_H
+#ifndef ADDRESSTABLEMODEL_H
+#define ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -26,7 +27,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< Bitcoin address */
+        Address = 1  /**< GameCredits address */
     };
 
     enum RoleIndex {
@@ -84,7 +85,7 @@ private:
     /** Notify listeners that data changed. */
     void emitDataChanged(int index);
 
-public Q_SLOTS:
+public slots:
     /* Update address list from core.
      */
     void updateEntry(const QString &address, const QString &label, bool isMine, const QString &purpose, int status);
@@ -92,4 +93,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // BITCOIN_QT_ADDRESSTABLEMODEL_H
+#endif // ADDRESSTABLEMODEL_H
