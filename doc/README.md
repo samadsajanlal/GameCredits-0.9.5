@@ -1,76 +1,80 @@
-Gamecredits
-=====================
-
-Copyright (c) 2009-2016 Gamecredits Developers
-
+GameCredits Core
+=============
 
 Setup
 ---------------------
-[Gamecredits Core](http://gamecredits.org/en/download) is the original Gamecredits client and it builds the backbone of the network. However, it downloads and stores the entire history of Gamecredits transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once. If you would like the process to go faster you can [download the blockchain directly](bootstrap.md).
+GameCredits Core is the original gamecredits client and it builds the backbone of the network. It downloads and, by default, stores the entire history of gamecredits transactions (which is currently more than 7 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+
+To download GameCredits Core, visit [gamecredits.com](https://gamecredits.com).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Gamecredits on your native platform. 
+The following are some helpful notes on how to run gamecredits on your native platform.
 
 ### Unix
 
-You need the Qt4 run-time libraries to run GameCredits-Qt. On Debian or Ubuntu:
-
-	sudo apt-get install libqtgui4
-
 Unpack the files into a directory and run:
 
-- bin/32/gamecredits-qt (GUI, 32-bit) or bin/32/gamecreditsd (headless, 32-bit)
-- bin/64/gamecredits-qt (GUI, 64-bit) or bin/64/gamecreditsd (headless, 64-bit)
-
-
+- `bin/gamecredits-qt` (GUI) or
+- `bin/gamecreditsd` (headless)
 
 ### Windows
 
 Unpack the files into a directory, and then run gamecredits-qt.exe.
 
-### OSX
+### OS X
 
-Drag GameCredits-Qt to your applications folder, and then run GameCredits-Qt.
+Drag GameCredits-Core to your applications folder, and then run GameCredits-Core.
 
 ### Need Help?
 
-* See the documentation at the [Gamecredits Wiki](https://en.gamecredits.it/wiki/Main_Page)
+* See the documentation at the [gamecredits Wiki](https://gamecredits.info/)
 for help and more information.
 * Ask for help on [#gamecredits](http://webchat.freenode.net?channels=gamecredits) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=gamecredits).
-* Ask for help on the [bitcointalk](https://bitcointalk.org/) forums, in the [Technical Support board](https://bitcointalk.org/index.php?board=4.0).
+* Ask for help on the [gamecreditsTalk](https://gamecreditstalk.io/) forums.
 
 Building
 ---------------------
-The following are developer notes on how to build Gamecredits on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build gamecredits on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
-- [OSX Build Notes](build-osx.md)
+- [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
-- [Windows Build Notes](build-msw.md)
+- [Windows Build Notes](build-windows.md)
+- [OpenBSD Build Notes](build-openbsd.md)
+- [Gitian Building Guide](gitian-building.md)
 
 Development
 ---------------------
-The Gamecredits repo's [root README](https://github.com/project-gamecredits/gamecredits/blob/master/README.md) contains relevant information on the development process and automated testing.
+The gamecredits repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
-- [Coding Guidelines](coding.md)
-- [Multiwallet Qt Development](multiwallet-qt.md)
+- [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
 - [Source Code Documentation (External Link)](https://dev.visucore.com/gamecredits/doxygen/)
 - [Translation Process](translation_process.md)
-- [Unit Tests](unit-tests.md)
+- [Translation Strings Policy](translation_strings_policy.md)
+- [Travis CI](travis-ci.md)
+- [Unauthenticated REST Interface](REST-interface.md)
+- [Shared Libraries](shared-libraries.md)
+- [BIPS](bips.md)
+- [Dnsseed Policy](dnsseed-policy.md)
+- [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [bitcointalk](https://bitcointalk.org/) forums, in the [Development & Technical Discussion board](https://bitcointalk.org/index.php?board=6.0).
-* Discuss on [#gamecredits-dev](http://webchat.freenode.net/?channels=gamecredits) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=gamecredits-dev).
+* Discuss on the [gamecreditsTalk](https://gamecreditstalk.io/) forums.
+* Discuss general gamecredits development on #gamecredits-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=gamecredits-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
+- [Fuzz-testing](fuzzing.md)
+- [Reduce Traffic](reduce-traffic.md)
 - [Tor Support](tor.md)
+- [Init Scripts (systemd/upstart/openrc)](init.md)
+- [ZMQ](zmq.md)
 
 License
 ---------------------
-Distributed under the [MIT/X11 software license](http://www.opensource.org/licenses/mit-license.php).
-This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](http://www.openssl.org/). This product includes
+Distributed under the [MIT software license](/COPYING).
+This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

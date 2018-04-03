@@ -1,203 +1,284 @@
 Release Process
 ====================
 
-###update (commit) version in sources
+Before every release candidate:
 
-	contrib/verifysfbinaries/verify.sh
-	doc/README*
-	share/setup.nsi
-	src/clientversion.h (change CLIENT_VERSION_IS_RELEASE to true)
+* Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#synchronising-translations).
 
-###tag version in git
+* Update manpages, see [gen-manpages.sh](https://github.com/gamecredits-project/gamecredits/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
-	git tag -s v(new version, e.g. 0.8.0)
+Before every minor and major release:
 
-###write release notes. git shortlog helps a lot, for example:
+* Update [bips.md](bips.md) to account for changes since the last release.
+* Update version in `configure.ac` (don't forget to set `CLIENT_VERSION_IS_RELEASE` to `true`)
+* Write release notes (see below)
+* Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.
+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.
+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.
+  - Testnet should be set some tens of thousands back from the tip due to reorgs there.
+  - This update should be reviewed with a reindex-chainstate with assumevalid=0 to catch any defect
+     that causes rejection of blocks in the past history.
 
-	git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.8.0)
+Before every major release:
 
-* * *
+* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/bitcoin/bitcoin/pull/7415) for an example.
+* Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
+* Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
+* Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
 
-##perform gitian builds
+### First time / New builders
 
- From a directory containing the gamecredits source, gitian-builder and gitian.sigs
-  
-	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
-	export VERSION=(new version, e.g. 0.8.0)
-	pushd ./gamecredits
-	git checkout v${VERSION}
-	popd
-	pushd ./gitian-builder
-        mkdir -p inputs; cd inputs/
+If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
 
- Register and download the Apple SDK (see OSX Readme for details)
-	visit https://developer.apple.com/downloads/download.action?path=Developer_Tools/xcode_4.6.3/xcode4630916281a.dmg
- 
- Using a Mac, create a tarball for the 10.7 SDK
-	tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.7.sdk.tar.gz MacOSX10.7.sdk
+Check out the source code in the following directory hierarchy.
 
- Fetch and build inputs: (first time, or when dependency versions change)
+    cd /path/to/your/toplevel/build
+    git clone https://github.com/gamecredits-project/gitian.sigs.GAME.git
+    git clone https://github.com/gamecredits-project/gamecredits-detached-sigs.git
+    git clone https://github.com/devrandom/gitian-builder.git
+    git clone https://github.com/gamecredits-project/gamecredits.git
 
-	wget 'http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.20140701.tar.gz' -O miniupnpc-1.9.20140701.tar.gz
-	wget 'https://www.openssl.org/source/openssl-1.0.1k.tar.gz'
-	wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
-	wget 'http://zlib.net/zlib-1.2.8.tar.gz'
-	wget 'ftp://ftp.simplesystems.org/pub/png/src/history/libpng16/libpng-1.6.8.tar.gz'
-	wget 'https://fukuchi.org/works/qrencode/qrencode-3.4.3.tar.bz2'
-	wget 'https://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2'
-	wget 'https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch' -O \ 
-	     boost-mingw-gas-cross-compile-2013-03-03.patch
-	wget 'https://download.qt-project.org/official_releases/qt/5.2/5.2.0/single/qt-everywhere-opensource-src-5.2.0.tar.gz'
-	wget 'https://download.qt-project.org/archive/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz'
-	wget 'https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2'
-	wget 'https://github.com/mingwandroid/toolchain4/archive/10cc648683617cca8bcbeae507888099b41b530c.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/cctools/cctools-809.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/dyld/dyld-195.5.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/ld64/ld64-127.2.tar.gz'
-	wget 'http://pkgs.fedoraproject.org/repo/pkgs/cdrkit/cdrkit-1.1.11.tar.gz/efe08e2f3ca478486037b053acd512e9/cdrkit-1.1.11.tar.gz'
-	wget 'https://github.com/theuni/libdmg-hfsplus/archive/libdmg-hfsplus-v0.1.tar.gz'
-	wget 'http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz' -O \
-	     clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
-        wget 'https://raw.githubusercontent.com/theuni/osx-cross-depends/master/patches/cdrtools/genisoimage.diff' -O \
-	     cdrkit-deterministic.patch
-	cd ..
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/boost-linux.yml
-	mv build/out/boost-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/deps-linux.yml
-	mv build/out/gamecredits-deps-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/qt-linux.yml
-	mv build/out/qt-*.tar.gz inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/boost-win.yml
-	mv build/out/boost-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/deps-win.yml
-	mv build/out/gamecredits-deps-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/qt-win.yml
-	mv build/out/qt-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/protobuf-win.yml
-	mv build/out/protobuf-*.zip inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/gitian-osx-native.yml
-	mv build/out/osx-*.tar.gz inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/gitian-osx-depends.yml
-	mv build/out/osx-*.tar.gz inputs/
-	./bin/gbuild ../gamecredits/contrib/gitian-descriptors/gitian-osx-qt.yml
-	mv build/out/osx-*.tar.gz inputs/
+### gamecredits maintainers/release engineers, suggestion for writing release notes
 
- SHA256 hashes of intermediate inputs will be different for each project based on gamecredits.
- 
- Build gamecreditsd and gamecredits-qt on Linux32, Linux64, and Win32:
-  
-	./bin/gbuild --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION} --destination ../gitian.sigs/ ../gamecredits/contrib/gitian-descriptors/gitian-linux.yml
-	pushd build/out
-	zip -r gamecredits-${VERSION}-linux-gitian.zip *
-	mv gamecredits-${VERSION}-linux-gitian.zip ../../../
-	popd
-	./bin/gbuild --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../gamecredits/contrib/gitian-descriptors/gitian-win.yml
-	pushd build/out
-	zip -r gamecredits-${VERSION}-win-gitian.zip *
-	mv gamecredits-${VERSION}-win-gitian.zip ../../../
-	popd
-    ./bin/gbuild --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-osx-gamecredits.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx --destination ../gitian.sigs/ ../gamecredits/contrib/gitian-descriptors/gitian-osx-gamecredits.yml
-	pushd build/out
-	mv GameCredits-Qt.dmg ../../../
-	popd
-	popd
+Write release notes. git shortlog helps a lot, for example:
 
-  Build output expected:
+    git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.8.0)
 
-  1. linux 32-bit and 64-bit binaries + source (gamecredits-${VERSION}-linux-gitian.zip)
-  2. windows 32-bit and 64-bit binaries + installer + source (gamecredits-${VERSION}-win-gitian.zip)
-  3. OSX installer (GameCredits-Qt.dmg)
-  4. Gitian signatures (in gitian.sigs/${VERSION}[-win|-osx]/(your gitian key)/
+(or ping @wumpus on IRC, he has specific tooling to generate the list of merged pulls
+and sort them into categories based on labels)
 
-repackage gitian builds for release as stand-alone zip/tar/installer exe
+Generate list of authors:
 
-**Linux .tar.gz:**
+    git log --format='%aN' "$*" | sort -ui | sed -e 's/^/- /'
 
-	unzip gamecredits-${VERSION}-linux-gitian.zip -d gamecredits-${VERSION}-linux
-	tar czvf gamecredits-${VERSION}-linux.tar.gz gamecredits-${VERSION}-linux
-	rm -rf gamecredits-${VERSION}-linux
+Tag version (or release candidate) in git
 
-**Windows .zip and setup.exe:**
+    git tag -s v(new version, e.g. 0.8.0)
 
-	unzip gamecredits-${VERSION}-win-gitian.zip -d gamecredits-${VERSION}-win
-	mv gamecredits-${VERSION}-win/*/gamecredits-*-setup.exe .
-	zip -r gamecredits-${VERSION}-win.zip gamecredits-${VERSION}-win
-	rm -rf gamecredits-${VERSION}-win
+### Setup and perform Gitian builds
 
-###Next steps:
+If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--build" command. Otherwise ignore this.
 
-* Code-sign Windows -setup.exe (in a Windows virtual machine using signtool)
- Note: only Gavin has the code-signing keys currently.
+Setup Gitian descriptors:
 
-* upload builds to SourceForge
+    pushd ./gamecredits
+    export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
+    export VERSION=(new version, e.g. 0.8.0)
+    git fetch
+    git checkout v${VERSION}
+    popd
 
-* create SHA256SUMS for builds, and PGP-sign it
+Ensure your gitian.sigs.GAME are up-to-date if you wish to gverify your builds against other Gitian signatures.
 
-* update gamecredits.org version
-  make sure all OS download links go to the right versions
-  
-* update download sizes on gamecredits.org/_templates/download.html
+    pushd ./gitian.sigs.GAME
+    git pull
+    popd
 
-* update forum version
+Ensure gitian-builder is up-to-date:
 
-* update wiki download links
+    pushd ./gitian-builder
+    git pull
+    popd
 
-* update wiki changelog: [https://en.gamecredits.it/wiki/Changelog](https://en.gamecredits.it/wiki/Changelog)
+### Fetch and create inputs: (first time, or when dependency versions change)
 
-Commit your signature to gitian.sigs:
+    pushd ./gitian-builder
+    mkdir -p inputs
+    wget -P inputs https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
+    wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
+    popd
 
-	pushd gitian.sigs
-	git add ${VERSION}/${SIGNER}
-	git add ${VERSION}-win/${SIGNER}
-	git commit -a
-	git push  # Assuming you can push to the gitian.sigs tree
-	popd
+Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, and copy it into the inputs directory.
 
--------------------------------------------------------------------------
+### Optional: Seed the Gitian sources cache and offline git repositories
 
-### After 3 or more people have gitian-built, repackage gitian-signed zips:
+By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
-From a directory containing gamecredits source, gitian.sigs and gitian zips
+    pushd ./gitian-builder
+    make -C ../gamecredits/depends download SOURCES_PATH=`pwd`/cache/common
+    popd
 
-	export VERSION=(new version, e.g. 0.8.0)
-	mkdir gamecredits-${VERSION}-linux-gitian
-	pushd gamecredits-${VERSION}-linux-gitian
-	unzip ../gamecredits-${VERSION}-linux-gitian.zip
-	mkdir gitian
-	cp ../gamecredits/contrib/gitian-downloader/*.pgp ./gitian/
-	for signer in $(ls ../gitian.sigs/${VERSION}/); do
-	 cp ../gitian.sigs/${VERSION}/${signer}/gamecredits-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}/${signer}/gamecredits-build.assert.sig ./gitian/${signer}-build.assert.sig
-	done
-	zip -r gamecredits-${VERSION}-linux-gitian.zip *
-	cp gamecredits-${VERSION}-linux-gitian.zip ../
-	popd
-	mkdir gamecredits-${VERSION}-win-gitian
-	pushd gamecredits-${VERSION}-win-gitian
-	unzip ../gamecredits-${VERSION}-win-gitian.zip
-	mkdir gitian
-	cp ../gamecredits/contrib/gitian-downloader/*.pgp ./gitian/
-	for signer in $(ls ../gitian.sigs/${VERSION}-win/); do
-	 cp ../gitian.sigs/${VERSION}-win/${signer}/gamecredits-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}-win/${signer}/gamecredits-build.assert.sig ./gitian/${signer}-build.assert.sig
-	done
-	zip -r gamecredits-${VERSION}-win-gitian.zip *
-	cp gamecredits-${VERSION}-win-gitian.zip ../
-	popd
+Only missing files will be fetched, so this is safe to re-run for each build.
 
-- Upload gitian zips to SourceForge
+NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
+
+    pushd ./gitian-builder
+    ./bin/gbuild --url gamecredits=/path/to/gamecredits,signature=/path/to/sigs {rest of arguments}
+    popd
+
+The gbuild invocations below <b>DO NOT DO THIS</b> by default.
+
+### Build and sign GameCredits Core for Linux, Windows, and OS X:
+
+    pushd ./gitian-builder
+    ./bin/gbuild --num-make 2 --memory 3000 --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.GAME/ ../gamecredits/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/gamecredits-*.tar.gz build/out/src/gamecredits-*.tar.gz ../
+
+    ./bin/gbuild --num-make 2 --memory 3000 --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.GAME/ ../gamecredits/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/gamecredits-*-win-unsigned.tar.gz inputs/gamecredits-win-unsigned.tar.gz
+    mv build/out/gamecredits-*.zip build/out/gamecredits-*.exe ../
+
+    ./bin/gbuild --num-make 2 --memory 3000 --commit gamecredits=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.GAME/ ../gamecredits/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/gamecredits-*-osx-unsigned.tar.gz inputs/gamecredits-osx-unsigned.tar.gz
+    mv build/out/gamecredits-*.tar.gz build/out/gamecredits-*.dmg ../
+    popd
+
+Build output expected:
+
+  1. source tarball (`gamecredits-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`gamecredits-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`gamecredits-${VERSION}-win[32|64]-setup-unsigned.exe`, `gamecredits-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`gamecredits-${VERSION}-osx-unsigned.dmg`, `gamecredits-${VERSION}-osx64.tar.gz`)
+  5. Gitian signatures (in `gitian.sigs.GAME/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
+
+### Verify other gitian builders signatures to your own. (Optional)
+
+Add other gitian builders keys to your gpg keyring, and/or refresh keys.
+
+    gpg --import gamecredits/contrib/gitian-keys/*.pgp
+    gpg --refresh-keys
+
+Verify the signatures
+
+    pushd ./gitian-builder
+    ./bin/gverify -v -d ../gitian.sigs.GAME/ -r ${VERSION}-linux ../gamecredits/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs.GAME/ -r ${VERSION}-win-unsigned ../gamecredits/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs.GAME/ -r ${VERSION}-osx-unsigned ../gamecredits/contrib/gitian-descriptors/gitian-osx.yml
+    popd
+
+### Next steps:
+
+Commit your signature to gitian.sigs.GAME:
+
+    pushd gitian.sigs.GAME
+    git add ${VERSION}-linux/${SIGNER}
+    git add ${VERSION}-win-unsigned/${SIGNER}
+    git add ${VERSION}-osx-unsigned/${SIGNER}
+    git commit -a
+    git push  # Assuming you can push to the gitian.sigs.GAME tree
+    popd
+
+Codesigner only: Create Windows/OS X detached signatures:
+- Only one person handles codesigning. Everyone else should skip to the next step.
+- Only once the Windows/OS X builds each have 3 matching signatures may they be signed with their respective release keys.
+
+Codesigner only: Sign the osx binary:
+
+    transfer gamecredits-osx-unsigned.tar.gz to osx for signing
+    tar xf gamecredits-osx-unsigned.tar.gz
+    ./detached-sig-create.sh -s "Key ID"
+    Enter the keychain password and authorize the signature
+    Move signature-osx.tar.gz back to the gitian host
+
+Codesigner only: Sign the windows binaries:
+
+    tar xf gamecredits-win-unsigned.tar.gz
+    ./detached-sig-create.sh -key /path/to/codesign.key
+    Enter the passphrase for the key when prompted
+    signature-win.tar.gz will be created
+
+Codesigner only: Commit the detached codesign payloads:
+
+    cd ~/gamecredits-detached-sigs
+    checkout the appropriate branch for this release series
+    rm -rf *
+    tar xf signature-osx.tar.gz
+    tar xf signature-win.tar.gz
+    git add -a
+    git commit -m "point to ${VERSION}"
+    git tag -s v${VERSION} HEAD
+    git push the current branch and new tag
+
+Non-codesigners: wait for Windows/OS X detached signatures:
+
+- Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
+- Detached signatures will then be committed to the [gamecredits-detached-sigs](https://github.com/gamecredits-project/gamecredits-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+
+Create (and optionally verify) the signed OS X binary:
+
+    pushd ./gitian-builder
+    ./bin/gbuild -i --commit signature=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.GAME/ ../gamecredits/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.GAME/ -r ${VERSION}-osx-signed ../gamecredits/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/gamecredits-osx-signed.dmg ../gamecredits-${VERSION}-osx.dmg
+    popd
+
+Create (and optionally verify) the signed Windows binaries:
+
+    pushd ./gitian-builder
+    ./bin/gbuild -i --commit signature=v${VERSION} ../gamecredits/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.GAME/ ../gamecredits/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.GAME/ -r ${VERSION}-win-signed ../gamecredits/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/gamecredits-*win64-setup.exe ../gamecredits-${VERSION}-win64-setup.exe
+    mv build/out/gamecredits-*win32-setup.exe ../gamecredits-${VERSION}-win32-setup.exe
+    popd
+
+Commit your signature for the signed OS X/Windows binaries:
+
+    pushd gitian.sigs.GAME
+    git add ${VERSION}-osx-signed/${SIGNER}
+    git add ${VERSION}-win-signed/${SIGNER}
+    git commit -a
+    git push  # Assuming you can push to the gitian.sigs.GAME tree
+    popd
+
+### After 3 or more people have gitian-built and their results match:
+
+- Create `SHA256SUMS.asc` for the builds, and GPG-sign it:
+
+```bash
+sha256sum * > SHA256SUMS
+```
+
+The list of files should be:
+```
+gamecredits-${VERSION}-aarch64-linux-gnu.tar.gz
+gamecredits-${VERSION}-arm-linux-gnueabihf.tar.gz
+gamecredits-${VERSION}-i686-pc-linux-gnu.tar.gz
+gamecredits-${VERSION}-x86_64-linux-gnu.tar.gz
+gamecredits-${VERSION}-osx64.tar.gz
+gamecredits-${VERSION}-osx.dmg
+gamecredits-${VERSION}.tar.gz
+gamecredits-${VERSION}-win32-setup.exe
+gamecredits-${VERSION}-win32.zip
+gamecredits-${VERSION}-win64-setup.exe
+gamecredits-${VERSION}-win64.zip
+```
+The `*-debug*` files generated by the gitian build contain debug symbols
+for troubleshooting by developers. It is assumed that anyone that is interested
+in debugging can run gitian to generate the files for themselves. To avoid
+end-user confusion about which file to pick, as well as save storage
+space *do not upload these to the gamecredits.com server, nor put them in the torrent*.
+
+- GPG-sign it, delete the unsigned file:
+```
+gpg --digest-algo sha256 --clearsign SHA256SUMS # outputs SHA256SUMS.asc
+rm SHA256SUMS
+```
+(the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
+Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
+
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the gamecredits.com server.
+
+```
+
+- Update gamecredits.com version
 
 - Announce the release:
 
-  - Add the release to gamecredits.org: https://github.com/project-gamecredits/gamecredits.org/tree/master/_releases
+  - gamecredits-dev and gamecredits-dev mailing list
 
-  - Release sticky on bitcointalk: https://bitcointalk.org/index.php?board=1.0
+  - blog.gamecredits.com blog post
 
-  - Gamecredits-development mailing list
+  - Update title of #gamecredits and #gamecredits-dev on Freenode IRC
 
-  - Optionally reddit /r/Gamecredits, ...
+  - Optionally twitter, reddit /r/gamecredits, ... but this will usually sort out itself
 
-- Celebrate 
+  - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
+
+  - Create a [new GitHub release](https://github.com/gamecredits-project/gamecredits/releases/new) with a link to the archived release notes.
+
+  - Celebrate
