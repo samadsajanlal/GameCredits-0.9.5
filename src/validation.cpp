@@ -1263,7 +1263,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
     	 this workaround is dirty, but it emulates behavior of GC <= 0.9.6 clients until a sufficient block height
     	 is reached after which script validation starts being enforced.
     	*/
-        if (fScriptChecks && (GetSpendHeight(inputs) > 2004364)) {
+        if (fScriptChecks && (GetSpendHeight(inputs) > 2005926)) {
             // First check if script executions have been cached with the same
             // flags. Note that this assumes that the inputs provided are
             // correct (ie that the transaction hash which is in tx's prevouts
