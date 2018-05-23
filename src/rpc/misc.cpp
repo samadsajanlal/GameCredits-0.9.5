@@ -98,9 +98,6 @@ UniValue getinfo(const JSONRPCRequest& request)
         obj.pushKV("notarizedhash",         NOTARIZED_HASH.GetHex());
         obj.pushKV("notarizedtxid",         NOTARIZED_DESTTXID.GetHex());
         obj.pushKV("notarized",                (int)NOTARIZED_HEIGHT);
-        obj.pushKV("prevMoMheight",                (int)komodo_prevMoMheight());
-        obj.pushKV("notarized_MoMdepth",                (int)NOTARIZED_MOMDEPTH);
-        obj.pushKV("notarized_MoM",         NOTARIZED_MOM.GetHex());
     }
 #ifdef ENABLE_WALLET
     if (pwallet) {
