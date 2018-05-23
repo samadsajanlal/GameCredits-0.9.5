@@ -51,7 +51,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "gamecredits cannot be compiled without assertions."
+# error "GameCredits cannot be compiled without assertions."
 #endif
 
 /**

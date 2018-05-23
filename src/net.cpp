@@ -1483,7 +1483,7 @@ void ThreadMapPort()
             }
         }
 
-        std::string strDesc = "gamecredits " + FormatFullVersion();
+        std::string strDesc = "GameCredits " + FormatFullVersion();
 
         try {
             while (true) {

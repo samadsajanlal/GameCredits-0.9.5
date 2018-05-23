@@ -815,7 +815,7 @@ void InitLogging()
     fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("gamecredits version %s\n", FormatFullVersion());
+    LogPrintf("GameCredits version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only

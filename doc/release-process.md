@@ -269,11 +269,9 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
 - Announce the release:
 
-  - gamecredits-dev and gamecredits-dev mailing list
+  - gamecredits mailing list
 
-  - blog.gamecredits.com blog post
-
-  - Update title of #gamecredits and #gamecredits-dev on Freenode IRC
+  - gamecredits.com blog post
 
   - Optionally twitter, reddit /r/gamecredits, ... but this will usually sort out itself
 
