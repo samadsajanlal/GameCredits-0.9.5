@@ -91,6 +91,17 @@ UniValue getinfo(const JSONRPCRequest& request)
         " Projects should transition to using getblockchaininfo, getnetworkinfo, and getwalletinfo before upgrading to 0.16"));
     obj.push_back(Pair("version", CLIENT_VERSION));
     obj.push_back(Pair("protocolversion", PROTOCOL_VERSION));
+    {
+        int32_t komodo_prevMoMheight();
+        extern uint256 NOTARIZED_HASH,NOTARIZED_DESTTXID,NOTARIZED_MOM;
+        extern int32_t NOTARIZED_HEIGHT,NOTARIZED_MOMDEPTH;
+        obj.pushKV("notarizedhash",         NOTARIZED_HASH.GetHex());
+        obj.pushKV("notarizedtxid",         NOTARIZED_DESTTXID.GetHex());
+        obj.pushKV("notarized",                (int)NOTARIZED_HEIGHT);
+        obj.pushKV("prevMoMheight",                (int)komodo_prevMoMheight());
+        obj.pushKV("notarized_MoMdepth",                (int)NOTARIZED_MOMDEPTH);
+        obj.pushKV("notarized_MoM",         NOTARIZED_MOM.GetHex());
+    }
 #ifdef ENABLE_WALLET
     if (pwallet) {
         obj.push_back(Pair("walletversion", pwallet->GetVersion()));

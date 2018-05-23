@@ -889,12 +889,15 @@ bool AppInitBasicSetup()
     return true;
 }
 
+int32_t komodo_init();
+
 bool AppInitParameterInteraction()
 {
     const CChainParams& chainparams = Params();
     // ********************************************************* Step 2: parameter interactions
 
     // also see: InitParameterInteraction()
+    komodo_init();
 
     // if using block pruning, then disallow txindex
     if (gArgs.GetArg("-prune", 0)) {

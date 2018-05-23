@@ -41,6 +41,7 @@
 #include "validationinterface.h"
 #include "versionbits.h"
 #include "warnings.h"
+#include "komodo_validation015.h"
 
 #include <atomic>
 #include <sstream>
@@ -194,6 +195,21 @@ static void FindFilesToPruneManual(std::set<int>& setFilesToPrune, int nManualPr
 static void FindFilesToPrune(std::set<int>& setFilesToPrune, uint64_t nPruneAfterHeight);
 bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheSigStore, bool cacheFullScriptStore, PrecomputedTransactionData& txdata, std::vector<CScriptCheck> *pvChecks = nullptr);
 static FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
+
+char ASSETCHAINS_SYMBOL[65] = { "GAME" };
+//#include "komodo_validation015.h"
+// add calls to ConnectBlock/DisconnectBlock and ContextualCheckBlockHeader
+// komodo_connectblock(pindex,*(CBlock *)&block);
+// komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
+/* else if ( komodo_checkpoint(&notarized_height,(int32_t)nHeight,hash) < 0 )
+ {
+ CBlockIndex *heightblock = chainActive[nHeight];
+ if ( heightblock != 0 && heightblock->GetBlockHash() == hash )
+ {
+ //fprintf(stderr,"got a pre notarization block that matches height.%d\n",(int32_t)nHeight);
+ return true;
+ } else return state.DoS(100, error("%s: forked chain %d older than last notarized (height %d) vs %d", __func__,nHeight, notarized_height));
+ }*/
 
 bool CheckFinalTx(const CTransaction &tx, int flags)
 {
@@ -1505,6 +1521,7 @@ static DisconnectResult DisconnectBlock(const CBlock& block, const CBlockIndex* 
             // At this point, all of txundo.vprevout should have been moved out.
         }
     }
+    komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);
 
     // move best block pointer to prevout block
     view.SetBestBlock(pindex->pprev->GetBlockHash());
@@ -2238,6 +2255,7 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     LogPrint(BCLog::BENCH, "- Connect block: %.2fms [%.2fs]\n", (nTime6 - nTime1) * 0.001, nTimeTotal * 0.000001);
 
     connectTrace.BlockConnected(pindexNew, std::move(pthisBlock));
+    komodo_connectblock(pindexNew,*(CBlock *)&blockConnecting);
     return true;
 }
 
@@ -2913,7 +2931,10 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
 {
     assert(pindexPrev != nullptr);
     const int nHeight = pindexPrev->nHeight + 1;
-
+    //komodo
+    uint256 hash = block.GetHash();
+    int32_t notarized_height;
+    
     // Check proof of work
     const Consensus::Params& consensusParams = params.GetConsensus();
     if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
@@ -2927,6 +2948,15 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
         CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(params.Checkpoints());
         if (pcheckpoint && nHeight < pcheckpoint->nHeight)
             return state.DoS(100, error("%s: forked chain older than last checkpoint (height %d)", __func__, nHeight), REJECT_CHECKPOINT, "bad-fork-prior-to-checkpoint");
+        else if ( komodo_checkpoint(&notarized_height,(int32_t)nHeight,hash) < 0 )
+        {
+            CBlockIndex *heightblock = chainActive[nHeight];
+            if ( heightblock != 0 && heightblock->GetBlockHash() == hash )
+            {
+                //fprintf(stderr,"got a pre notarization block that matches height.%d\n",(int32_t)nHeight);
+                return true;
+            } else return state.DoS(100, error("%s: forked chain %d older than last notarized (height %d) vs %d", __func__,nHeight, notarized_height));
+        }
     }
 
     // Check timestamp against prev
