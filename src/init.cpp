@@ -815,7 +815,7 @@ void InitLogging()
     fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("gamecredits version %s\n", FormatFullVersion());
+    LogPrintf("GameCredits version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only
@@ -889,12 +889,15 @@ bool AppInitBasicSetup()
     return true;
 }
 
+int32_t komodo_init();
+
 bool AppInitParameterInteraction()
 {
     const CChainParams& chainparams = Params();
     // ********************************************************* Step 2: parameter interactions
 
     // also see: InitParameterInteraction()
+    komodo_init();
 
     // if using block pruning, then disallow txindex
     if (gArgs.GetArg("-prune", 0)) {

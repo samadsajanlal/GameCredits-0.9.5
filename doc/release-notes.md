@@ -1,83 +1,79 @@
-Bitcoin Core version *0.15.0.1* is now available from:
+GameCredits Core version *0.15.2* is now available from:
 
-  <https://bitcoin.org/bin/bitcoin-core-0.15.0.1/>
+  <https://www.gamecredits.com>
 
-This is a minor bug fix for 0.15.0.
+This is a major release introducing additional security features.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitcoin/bitcoin/issues>
+  <https://github.com/gamecredits-project/gamecredits/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitcoincore.org/en/list/announcements/join/>
+  <https://www.gamecredits.com>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
-installer (on Windows) or just copy over `/Applications/Bitcoin-Qt` (on Mac)
-or `bitcoind`/`bitcoin-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/GameCredits-Qt` (on Mac)
+or `gamecreditsd`/`gamecredits-qt` (on Linux).
 
-The first time you run version 0.15.0 or higher, your chainstate database will
-be converted to a new format, which will take anywhere from a few minutes to
-half an hour, depending on the speed of your machine.
+The first time you run version 0.15.2 or higher, you may be asked to re-index your blockchain. This process will take anywhere from a few minutes to
+several hours, depending on the speed of your machine.
 
-The file format of `fee_estimates.dat` changed in version 0.15.0. Hence, a
-downgrade from version 0.15.0 or upgrade to version 0.15.0 will cause all fee
-estimates to be discarded.
-
-Note that the block database format also changed in version 0.8.0 and there is no
-automatic upgrade code from before version 0.8 to version 0.15.0. Upgrading
-directly from 0.7.x and earlier without redownloading the blockchain is not supported.
-However, as usual, old wallet versions are still supported.
-
-Downgrading warning
--------------------
-
-The chainstate database for this release is not compatible with previous
-releases, so if you run 0.15 and then decide to switch back to any
-older version, you will need to run the old release with the `-reindex-chainstate`
-option to rebuild the chainstate data structures in the old format.
-
-If your node has pruning enabled, this will entail re-downloading and
-processing the entire blockchain.
+There are no upgrades compared to 0.15.1 other than the security updates, which require transaction indexing at this time. 
 
 Compatibility
 ==============
 
-Bitcoin Core is extensively tested on multiple operating systems using
+GameCredits Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-Bitcoin Core should also work on most other Unix-like systems but is not
+GameCredits Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
 ===============
 
-GUI startup crash issue
+Komodo Notary Integration
+-------------------------
+We have integrated our software with Komodo's ecosystem to notarize our blockchain. This allows our blockchain to be "backed up" on the Komodo chain which we can restore from later (as long as we have at least one peer with the correct chain). The integration is expected to stop rollbacks of blocks due to consensus attacks that were observed in early May 2018.
+
+
+Transaction indexing enabled by default
+-------------------------
+As part of the security features being introduced with the Komodo notary integration, we have turned transaction indexing on by default. This causes a reindex of the blocks on the user's device in case the user was not already indexing transactions. This process can take several hours to complete depending on the speed of the machine.
+
+
+Message Signing String Bug fix
 -------------------------
 
-After upgrade to 0.15.0, some clients would crash at startup because a custom
-fee setting was configured that no longer exists in the GUI. This is a minimal
-patch to avoid this issue from occuring.
+In 0.15.1, the message signing string was incorrectly written as "gamecredits Signed Message:". In 0.15.2, the string has been replaced with the correct version "GameCredits Signed Message:". Signed messages generated on 0.15.1 will fail verification on 0.15.2. However, older signed messages (from pre-0.15.1) will continue to work on 0.15.2.
 
-0.15.0.1 Change log
+Segwit and CSV Signaling Period Changed
+-------------------------
+
+Segwit and CSV signaling has moved from April 2019 to July 2018, lasting 1 year. An overlap period between April 2019 and July 2019 is present to ensure activation.
+
+0.15.2 Change log
 ====================
 
--  #11332 `46c8d23` Fix possible crash with invalid nCustomFeeRadio in QSettings (achow101, TheBlueMatt)
-
-Also the manpages were updated, as this was forgotten for 0.15.0.
+-  Komodo notary integration
+-  Transaction indexing is enabled by default
+-  Message signing string has been updated to the correct one
+-  Testnet and Regtest have been reintroduced with new genesis blocks
+-  Transactions are now version 2
+-  Getinfo now reports notarization status
+-  Segwit and CSV signaling starts July 15, 2018 and lasts one year
 
 Credits
 =======
 
 Thanks to everyone who directly contributed to this release:
 
-- Andrew Chow
-- Matt Corallo
-- Jonas Schnelli
-- Wladimir J. van der Laan
-
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitcoin/).
+- Samad Sajanlal
+- jl777 of Komodo
+- Vuksan Simunovic of GameCredits, Inc
+- Nikola Divic of GameCredits, Inc

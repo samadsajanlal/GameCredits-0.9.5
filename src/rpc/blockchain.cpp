@@ -957,8 +957,8 @@ UniValue gettxout(const JSONRPCRequest& request)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of gamecredits addresses\n"
-            "        \"address\"     (string) gamecredits address\n"
+            "     \"addresses\" : [          (array of string) array of GameCredits addresses\n"
+            "        \"address\"     (string) GameCredits address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"
@@ -1531,6 +1531,8 @@ UniValue getchaintxstats(const JSONRPCRequest& request)
     return ret;
 }
 
+#include "komodo_rpcblockchain.h"
+
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafe argNames
   //  --------------------- ------------------------  -----------------------  ------ ----------
@@ -1554,6 +1556,10 @@ static const CRPCCommand commands[] =
     { "blockchain",         "verifychain",            &verifychain,            true,  {"checklevel","nblocks"} },
 
     { "blockchain",         "preciousblock",          &preciousblock,          true,  {"blockhash"} },
+    { "blockchain",         "calc_MoM",               &calc_MoM,               true,  {"height", "MoMdepth"} },
+    { "blockchain",         "height_MoM",             &height_MoM,             true,  {"height"} },
+
+
 
     /* Not shown in help */
     { "hidden",             "invalidateblock",        &invalidateblock,        true,  {"blockhash"} },

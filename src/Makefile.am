@@ -105,6 +105,8 @@ BITCOIN_CORE_H = \
   httpserver.h \
   indirectmap.h \
   init.h \
+  komodo_rpcblockchain.h \
+  komodo_validation015.h \
   key.h \
   keystore.h \
   dbwrapper.h \

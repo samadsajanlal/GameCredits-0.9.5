@@ -28,10 +28,9 @@ Drag GameCredits-Core to your applications folder, and then run GameCredits-Core
 
 ### Need Help?
 
-* See the documentation at the [gamecredits Wiki](https://gamecredits.info/)
+* See the documentation at the [GameCredits GitHub](https://github.com/gamecredits-project/gamecredits)
 for help and more information.
-* Ask for help on [#gamecredits](http://webchat.freenode.net?channels=gamecredits) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=gamecredits).
-* Ask for help on the [gamecreditsTalk](https://gamecreditstalk.io/) forums.
+* Ask for help on [Discord](http://discord.gamecredits.com).
 
 Building
 ---------------------
@@ -61,8 +60,7 @@ The gamecredits repo's [root README](/README.md) contains relevant information o
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [gamecreditsTalk](https://gamecreditstalk.io/) forums.
-* Discuss general gamecredits development on #gamecredits-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=gamecredits-dev).
+* Discuss general GameCredits development on #development on Discord.
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

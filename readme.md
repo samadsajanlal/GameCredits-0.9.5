@@ -1,15 +1,13 @@
 GameCredits Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/gamecredits-project/gamecredits.svg?branch=master)](https://travis-ci.org/gamecredits-project/gamecredits)
-
 https://gamecredits.com
 
-What is gamecredits?
+What is GameCredits?
 ----------------
 
-gamecredits is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. gamecredits uses peer-to-peer technology to operate
+GameCredits is an experimental digital currency that enables instant payments to
+any gamer, anywhere in the world. GameCredits uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
 out collectively by the network. GameCredits Core is the name of open source
 software which enables the use of this currency.
@@ -32,11 +30,11 @@ regularly to indicate new official, stable release versions of GameCredits Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The developer [mailing list](https://groups.google.com/forum/#!forum/gamecredits-dev)
+The [mailing list](https://gamecredits.com)
 should be used to discuss complicated or controversial changes before working
 on a patch set.
 
-Developer IRC can be found on Freenode at #gamecredits-dev.
+Developer chat can be found on Discord at #development.
 
 Testing
 -------
@@ -70,7 +68,7 @@ Translations
 ------------
 
 We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-Translations are converted to gamecredits periodically.
+Translations are converted to GameCredits periodically.
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

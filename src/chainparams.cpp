@@ -94,16 +94,16 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1556366400; // April 27, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1587945600; // April 27, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1531612800; // July 15, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1563062400; // July 14, 2019
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1556366400; // April 27, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1587945600; // April 27, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1531612800; // July 15, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1563062400; // July 14, 2019
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000125c3b07c62eb71d6");
+        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000001c94603cf1e94e37a");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0ce250921f2aab3037da2a9e94e7c24da6c4497958b7b0f0d3d4fcc9a1079b56"); //1900000
@@ -160,8 +160,8 @@ public:
 
          chainTxData = ChainTxData{
             // Data as of block 2003677.
-            1522641851, // * UNIX timestamp of last known number of transactions
-            3223066,  // * total number of transactions between genesis and that timestamp
+            1527141776, // * UNIX timestamp of last known number of transactions
+            3291542,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
             0.01     // * estimated number of transactions per second after that timestamp
         };
@@ -193,13 +193,13 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1556366400; // April 27, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1587945600; // April 27, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1531612800; // July 15, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1563062400; // July 14, 2019
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1556366400; // April 27, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1587945600; // April 27, 2020
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1531612800; // July 15, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1563062400; // July 14, 2019
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
