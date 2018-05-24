@@ -41,7 +41,6 @@
 #include "validationinterface.h"
 #include "versionbits.h"
 #include "warnings.h"
-#include "komodo_validation015.h"
 
 #include <atomic>
 #include <sstream>
@@ -197,7 +196,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
 static FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 
 char ASSETCHAINS_SYMBOL[65] = { "GAME" };
-//#include "komodo_validation015.h"
+#include "komodo_validation015.h"
 // add calls to ConnectBlock/DisconnectBlock and ContextualCheckBlockHeader
 // komodo_connectblock(pindex,*(CBlock *)&block);
 // komodo_disconnect((CBlockIndex *)pindex,(CBlock *)&block);

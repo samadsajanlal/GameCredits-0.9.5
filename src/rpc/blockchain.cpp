@@ -24,7 +24,6 @@
 #include "util.h"
 #include "utilstrencodings.h"
 #include "hash.h"
-#include "komodo_rpcblockchain.h"
 
 #include <stdint.h>
 
@@ -1532,7 +1531,7 @@ UniValue getchaintxstats(const JSONRPCRequest& request)
     return ret;
 }
 
-//#include "komodo_rpcblockchain.h"
+#include "komodo_rpcblockchain.h"
 
 static const CRPCCommand commands[] =
 { //  category              name                      actor (function)         okSafe argNames
