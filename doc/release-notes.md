@@ -52,6 +52,11 @@ Message Signing String Bug fix
 
 In 0.15.1, the message signing string was incorrectly written as "gamecredits Signed Message:". In 0.15.2, the string has been replaced with the correct version "GameCredits Signed Message:". Signed messages generated on 0.15.1 will fail verification on 0.15.2. However, older signed messages (from pre-0.15.1) will continue to work on 0.15.2.
 
+Segwit and CSV Signaling Period Changed
+-------------------------
+
+Segwit and CSV signaling has moved from April 2019 to July 2018, lasting 1 year. An overlap period between April 2019 and July 2019 is present to ensure activation.
+
 0.15.2 Change log
 ====================
 
@@ -61,6 +66,7 @@ In 0.15.1, the message signing string was incorrectly written as "gamecredits Si
 -  Testnet and Regtest have been reintroduced with new genesis blocks
 -  Transactions are now version 2
 -  Getinfo now reports notarization status
+-  Segwit and CSV signaling starts July 15, 2018 and lasts one year
 
 Credits
 =======
@@ -68,5 +74,6 @@ Credits
 Thanks to everyone who directly contributed to this release:
 
 - Samad Sajanlal
-- jl777
-- GameCredits, Inc
+- jl777 of Komodo
+- Vuksan Simunovic of GameCredits, Inc
+- Nikola Divic of GameCredits, Inc
