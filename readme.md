@@ -1,7 +1,7 @@
 GameCredits Core integration/staging tree
 =====================================
 
-https://gamecredits.com
+https://gamecredits.org
 
 What is GameCredits?
 ----------------
@@ -13,7 +13,7 @@ out collectively by the network. GameCredits Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the GameCredits Core software, see [https://gamecredits.com](https://gamecredits.com).
+the GameCredits Core software, see [https://gamecredits.org](https://gamecredits.org).
 
 License
 -------
@@ -30,7 +30,7 @@ regularly to indicate new official, stable release versions of GameCredits Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The [mailing list](https://gamecredits.com)
+The [mailing list](https://gamecredits.org)
 should be used to discuss complicated or controversial changes before working
 on a patch set.
 

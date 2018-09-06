@@ -1,6 +1,6 @@
 GameCredits Core version *0.15.2* is now available from:
 
-  <https://www.gamecredits.com>
+  <https://www.gamecredits.org>
 
 This is a major release introducing additional security features.
 
@@ -10,7 +10,7 @@ Please report bugs using the issue tracker at GitHub:
 
 To receive security and update notifications, please subscribe to:
 
-  <https://www.gamecredits.com>
+  <https://www.gamecredits.org>
 
 How to Upgrade
 ==============
