@@ -240,7 +240,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {10000, uint256S("0x")},
+                //{10000, uint256S("0x")},
             }
         };
 
