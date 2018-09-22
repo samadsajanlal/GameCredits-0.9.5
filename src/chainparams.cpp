@@ -240,7 +240,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                //{0, uint256S("0x")},
+                {10000, uint256S("0x")},
             }
         };
 
@@ -310,7 +310,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                //{0, uint256S("0x")},
+                {0, uint256S("0x2574af5d531ba2c7b1b2994de62ae356699cb579cd744cf5dc8a565fce6db638")},
             }
         };
 
