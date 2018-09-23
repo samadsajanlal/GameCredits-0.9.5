@@ -103,7 +103,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1563062400; // July 14, 2019
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000001c94603cf1e94e37a");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000027a2b9e1150fac93a");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0ce250921f2aab3037da2a9e94e7c24da6c4497958b7b0f0d3d4fcc9a1079b56"); //1900000
@@ -240,7 +240,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x")},
+                //{10000, uint256S("0x")},
             }
         };
 
@@ -310,7 +310,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x")},
+                {0, uint256S("0x2574af5d531ba2c7b1b2994de62ae356699cb579cd744cf5dc8a565fce6db638")},
             }
         };
 
