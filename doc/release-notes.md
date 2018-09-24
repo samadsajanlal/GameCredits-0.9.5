@@ -54,6 +54,7 @@ A bug fix has been implemented for listsinceblock RPC call. This resolves the bu
 -  Fix DoS Vulnerability (CVE-2018-17144)
 -  Fix listsinceblock RPC call
 -  Update branding to correct domain (gamecredits.org)
+-  Add in a Komodo notarization patch activating at 2177400
 
 
 0.15.3 Known Issues
@@ -69,3 +70,4 @@ Thanks to everyone who directly contributed to this release:
 - Samad Sajanlal
 - MihailoGC
 - CryptoDJ
+- jl777 of Komodo
