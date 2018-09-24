@@ -2091,6 +2091,17 @@ bool static DisconnectTip(CValidationState& state, const CChainParams& chainpara
     if (!ReadBlockFromDisk(block, pindexDelete, chainparams.GetConsensus()))
         return AbortNode(state, "Failed to read block");
     // Apply the block atomically to the chain state.
+    // Komodo fix after block 2177400
+    if(pindexDelete->nHeight > 2177400) { 
+    	int32_t prevMoMheight; 
+    	uint256 notarizedhash,txid; 
+    	komodo_notarized_height(&prevMoMheight,&notarizedhash,&txid); 
+    	if ( block.GetHash() == notarizedhash) { 
+    		fprintf(stderr,"DisconnectTip trying to disconnect notarized block at ht.%d\n",(int32_t)pindexDelete->nHeight); 
+    		return(false); 
+    	} 
+    }
+    
     int64_t nStart = GetTimeMicros();
     {
         CCoinsViewCache view(pcoinsTip);
