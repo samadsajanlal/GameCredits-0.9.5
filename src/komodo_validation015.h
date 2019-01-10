@@ -55,6 +55,7 @@
 
 #include <wallet/wallet.h>
 //#include <key_io.h>
+#include <chainparams.h>
 #include <base58.h>
 
 #define SATOSHIDEN ((uint64_t)100000000L)
@@ -1028,11 +1029,14 @@ void komodo_notarized_update(int32_t nHeight,int32_t notarized_height,uint256 no
         char fname[512];int32_t latestht = 0;
         //decode_hex(NOTARY_PUBKEY33,33,(char *)NOTARY_PUBKEY.c_str());
         pthread_mutex_init(&komodo_mutex,NULL);
+        std::string suffix = Params().NetworkIDString() == "main" ? "" : "_" + Params().NetworkIDString();
+        std::string sep;
 #ifdef _WIN32
-        sprintf(fname,"%s\\notarizations",GetDataDir().string().c_str());
+        sep = "\\";
 #else
-        sprintf(fname,"%s/notarizations",GetDataDir().string().c_str());
+        sep = "/";
 #endif
+        sprintf(fname,"%s%snotarizations%s",GetDefaultDataDir().string().c_str(), sep.c_str(), suffix.c_str());
         printf("fname.(%s)\n",fname);
         if ( (fp= fopen(fname,"rb+")) == 0 )
             fp = fopen(fname,"wb+");

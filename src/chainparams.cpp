@@ -238,6 +238,12 @@ public:
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
 
+        // Hardfork params
+        consensus.nSwitchKGW2 = 0;
+        consensus.nSwitchKGW2prefork = 0;
+        consensus.nSwitchKGW2postfork = 0;
+        consensus.nSwitchDGW = 1;
+
         checkpointData = (CCheckpointData) {
             {
                 //{10000, uint256S("0x")},
@@ -307,6 +313,12 @@ public:
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
         fMineBlocksOnDemand = true; 
+
+        // Hardfork params
+        consensus.nSwitchKGW2 = 0;
+        consensus.nSwitchKGW2prefork = 0;
+        consensus.nSwitchKGW2postfork = 0;
+        consensus.nSwitchDGW = 1;
 
         checkpointData = (CCheckpointData) {
             {
