@@ -127,7 +127,7 @@ public:
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         // if you can seed, please let us know in github
-        vSeeds.emplace_back("dnsseed.btcgold.club", true);
+        vSeeds.emplace_back("dnsseed.gamecredits.network", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,38); // G
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5); // 3
@@ -222,8 +222,7 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("gamecredits.co", true);
-        vSeeds.emplace_back("test.gamecredits.co", true);
+        vSeeds.emplace_back("dnsseedtest.gamecredits.network", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
