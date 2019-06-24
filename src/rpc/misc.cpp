@@ -93,8 +93,8 @@ UniValue getinfo(const JSONRPCRequest& request)
     obj.push_back(Pair("protocolversion", PROTOCOL_VERSION));
     {
         int32_t komodo_prevMoMheight();
-        extern uint256 NOTARIZED_HASH,NOTARIZED_DESTTXID,NOTARIZED_MOM;
-        extern int32_t NOTARIZED_HEIGHT,NOTARIZED_MOMDEPTH;
+        extern uint256 NOTARIZED_HASH,NOTARIZED_DESTTXID;
+        extern int32_t NOTARIZED_HEIGHT;
         obj.pushKV("notarizedhash",         NOTARIZED_HASH.GetHex());
         obj.pushKV("notarizedtxid",         NOTARIZED_DESTTXID.GetHex());
         obj.pushKV("notarized",                (int)NOTARIZED_HEIGHT);
