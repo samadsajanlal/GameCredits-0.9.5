@@ -43,6 +43,7 @@ struct CUpdatedBlock
 static std::mutex cs_blockchange;
 static std::condition_variable cond_blockchange;
 static CUpdatedBlock latestblock;
+int32_t komodo_dpowconfs(int32_t height,int32_t numconfs);
 
 extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry);
 
@@ -83,7 +84,8 @@ UniValue blockheaderToJSON(const CBlockIndex* blockindex)
     // Only report confirmations if the block is on the main chain
     if (chainActive.Contains(blockindex))
         confirmations = chainActive.Height() - blockindex->nHeight + 1;
-    result.push_back(Pair("confirmations", confirmations));
+    result.push_back(Pair("confirmations", komodo_dpowconfs(blockindex->nHeight,confirmations)));
+    result.push_back(Pair("rawconfirmations", confirmations));
     result.push_back(Pair("height", blockindex->nHeight));
     result.push_back(Pair("version", blockindex->nVersion));
     result.push_back(Pair("versionHex", strprintf("%08x", blockindex->nVersion)));
@@ -111,7 +113,8 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
     // Only report confirmations if the block is on the main chain
     if (chainActive.Contains(blockindex))
         confirmations = chainActive.Height() - blockindex->nHeight + 1;
-    result.push_back(Pair("confirmations", confirmations));
+    result.push_back(Pair("confirmations", komodo_dpowconfs(blockindex->nHeight,confirmations)));
+    result.push_back(Pair("rawconfirmations", confirmations));
     result.push_back(Pair("strippedsize", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS)));
     result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
     result.push_back(Pair("weight", (int)::GetBlockWeight(block)));
@@ -639,7 +642,8 @@ UniValue getblockheader(const JSONRPCRequest& request)
             "\nResult (for verbose = true):\n"
             "{\n"
             "  \"hash\" : \"hash\",     (string) the block hash (same as provided)\n"
-            "  \"confirmations\" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain\n"
+            "  \"confirmations\" : n,   (numeric) The number of notarized confirmations, or -1 if the block is not on the main chain\n"
+            "  \"rawconfirmations\" : n,(numeric) The number of confirmations, or -1 if the block is not on the main chain\n"
             "  \"height\" : n,          (numeric) The block height or index\n"
             "  \"version\" : n,         (numeric) The block version\n"
             "  \"versionHex\" : \"00000000\", (string) The block version formatted in hexadecimal\n"
@@ -701,7 +705,8 @@ UniValue getblock(const JSONRPCRequest& request)
             "\nResult (for verbosity = 1):\n"
             "{\n"
             "  \"hash\" : \"hash\",     (string) the block hash (same as provided)\n"
-            "  \"confirmations\" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain\n"
+            "  \"confirmations\" : n,   (numeric) The number of notarized confirmations, or -1 if the block is not on the main chain\n"
+            "  \"rawconfirmations\" : n,(numeric) The number of confirmations, or -1 if the block is not on the main chain\n"
             "  \"size\" : n,            (numeric) The block size\n"
             "  \"strippedsize\" : n,    (numeric) The block size excluding witness data\n"
             "  \"weight\" : n           (numeric) The block weight as defined in BIP 141\n"
@@ -951,6 +956,7 @@ UniValue gettxout(const JSONRPCRequest& request)
             "{\n"
             "  \"bestblock\" : \"hash\",    (string) the block hash\n"
             "  \"confirmations\" : n,       (numeric) The number of confirmations\n"
+            "  \"rawconfirmations\" : n,    (numeric) The number of rawconfirmations\n"
             "  \"value\" : x.xxx,           (numeric) The transaction value in " + CURRENCY_UNIT + "\n"
             "  \"scriptPubKey\" : {         (json object)\n"
             "     \"asm\" : \"code\",       (string) \n"
@@ -1004,8 +1010,10 @@ UniValue gettxout(const JSONRPCRequest& request)
     ret.push_back(Pair("bestblock", pindex->GetBlockHash().GetHex()));
     if (coin.nHeight == MEMPOOL_HEIGHT) {
         ret.push_back(Pair("confirmations", 0));
+        ret.push_back(Pair("rawconfirmations", 0));
     } else {
-        ret.push_back(Pair("confirmations", (int64_t)(pindex->nHeight - coin.nHeight + 1)));
+        ret.push_back(Pair("confirmations", komodo_dpowconfs(coin.nHeight,pindex->nHeight - coin.nHeight + 1)));
+        ret.push_back(Pair("rawconfirmations", pindex->nHeight - coin.nHeight + 1));
     }
     ret.push_back(Pair("value", ValueFromAmount(coin.out.nValue)));
     UniValue o(UniValue::VOBJ);
