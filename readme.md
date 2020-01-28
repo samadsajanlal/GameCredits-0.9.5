@@ -1,7 +1,7 @@
 GameCredits Core integration/staging tree
 =====================================
 
-https://gamecredits.net
+https://gamecredits.org
 
 What is GameCredits?
 ----------------
