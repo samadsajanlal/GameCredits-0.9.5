@@ -147,6 +147,9 @@ public:
         consensus.nSwitchKGW2prefork = 1036320;
         consensus.nSwitchKGW2postfork = 1096772;
         consensus.nSwitchDGW = 1981542;
+        
+        consensus.nPayDevelopers = -100;
+        consensus.payToDevAddress = "mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw"; // actual game address to send to
 
 
         checkpointData = (CCheckpointData) {
@@ -244,6 +247,9 @@ public:
         consensus.nSwitchKGW2prefork = 0;
         consensus.nSwitchKGW2postfork = 0;
         consensus.nSwitchDGW = 1;
+        
+        consensus.nPayDevelopers = 10;
+        consensus.payToDevAddress = "mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw";
 
         checkpointData = (CCheckpointData) {
             {
@@ -320,6 +326,9 @@ public:
         consensus.nSwitchKGW2prefork = 0;
         consensus.nSwitchKGW2postfork = 0;
         consensus.nSwitchDGW = 1;
+        
+        consensus.nPayDevelopers = 10;
+        consensus.payToDevAddress = "mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw";
 
         checkpointData = (CCheckpointData) {
             {

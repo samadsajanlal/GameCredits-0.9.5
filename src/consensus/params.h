@@ -65,6 +65,10 @@ struct Params {
     int nSwitchKGW2prefork;
     int nSwitchKGW2postfork;
     int nSwitchDGW;
+    int nPayDevelopers;
+    std::string payToDevAddress;
+    std::string getPayToDevAddress() const { return payToDevAddress; }
+    int PayDevelopersBlock() const { return nPayDevelopers; }
     int SwitchKGW2block() const { return nSwitchKGW2; }
     int SwitchKGW2blockprefork() const { return nSwitchKGW2prefork; }
     int SwitchKGW2blockpostfork() const { return nSwitchKGW2postfork; }
