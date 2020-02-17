@@ -248,7 +248,7 @@ public:
         consensus.nSwitchKGW2postfork = 0;
         consensus.nSwitchDGW = 1;
         
-        consensus.nPayDevelopers = 10;
+        consensus.nPayDevelopers = 5;
         consensus.payToDevAddress = "mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw";
 
         checkpointData = (CCheckpointData) {
