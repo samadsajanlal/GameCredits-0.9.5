@@ -78,6 +78,8 @@ public:
     const CCheckpointData& Checkpoints() const { return checkpointData; }
     const ChainTxData& TxData() const { return chainTxData; }
     void UpdateVersionBitsParameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout);
+    std::string getPayToDevAddress() const { return payToDevAddress; }
+    int PayDevelopersBlock() const { return nPayDevelopers; }
     
 protected:
     CChainParams() {}
@@ -94,6 +96,8 @@ protected:
     bool fDefaultConsistencyChecks;
     bool fRequireStandard;
     bool fMineBlocksOnDemand;
+    int nPayDevelopers;
+    std::string payToDevAddress;
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
 };

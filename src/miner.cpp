@@ -6,6 +6,7 @@
 #include "miner.h"
 
 #include "amount.h"
+#include "base58.h"
 #include "chain.h"
 #include "chainparams.h"
 #include "coins.h"
@@ -185,12 +186,12 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     coinbaseTx.vin[0].prevout.SetNull();
     coinbaseTx.vout.resize(1);
     
-	if(nHeight == chainParams.PayDevelopersBlock()) {
+	if(nHeight == chainparams.PayDevelopersBlock()) {
 		// create developers pay to amount
 		//payto: chainParams.getPayToDevAddress() 
-		CBitcoinAddress devaddress(chainParams.getPayToDevAddress());
+		CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
     	if (!devaddress.IsValid())
-        	throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Error: Invalid address");
+        	LogPrintf("Dev address not valid!\n");
 
     	coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
 	} else {
