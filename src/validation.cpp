@@ -1841,7 +1841,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                                block.vtx[0]->GetValueOut(), blockReward),
                                REJECT_INVALID, "bad-cb-amount");
 	// override the fork block's coinbase txn, give it to developers.
-    if(pindex->nHeight == 10) {
+    /*if(pindex->nHeight == 10) {
 		// create developers pay to amount
 		//payto: chainParams.getPayToDevAddress() 
 		CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
@@ -1856,7 +1856,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 		coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
    	 	coinbaseTx.vin[0].scriptSig = CScript() << pindex->nHeight << OP_0;
     	block->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
-    }
+    }*/
     
     
     if (!control.Wait())
