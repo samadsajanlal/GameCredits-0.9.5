@@ -185,8 +185,10 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     coinbaseTx.vin.resize(1);
     coinbaseTx.vin[0].prevout.SetNull();
     coinbaseTx.vout.resize(1);
-    
-	if(nHeight == chainparams.PayDevelopersBlock()) {
+    LogPrintf("hello createBlock()");
+    LogPrintf("Now at the following block: %u\n", nHeight);
+    LogPrintf("PayDevelopersBlock: %u\n", chainparams.PayDevelopersBlock());
+    if(nHeight == chainparams.PayDevelopersBlock()) {
 		// create developers pay to amount
 		//payto: chainParams.getPayToDevAddress() 
 		CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
