@@ -1799,8 +1799,17 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                                  REJECT_INVALID, "bad-txns-nonfinal");
             }
         }
-        
-        if(tx.IsCoinBase() && pindex->nHeight == 10 {
+
+        // GetTransactionSigOpCost counts 3 types of sigops:
+        // * legacy (always)
+        // * p2sh (when P2SH enabled in flags and excludes coinbase)
+        // * witness (when witness enabled in flags and excludes coinbase)
+        nSigOpsCost += GetTransactionSigOpCost(tx, view, flags);
+        if (nSigOpsCost > MAX_BLOCK_SIGOPS_COST)
+            return state.DoS(100, error("ConnectBlock(): too many sigops"),
+                             REJECT_INVALID, "bad-blk-sigops");
+		
+		if(tx.IsCoinBase() && pindex->nHeight == 10) {
 			// create developers pay to amount
 			//payto: chainParams.getPayToDevAddress() 
 			CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
@@ -1813,19 +1822,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     		coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
 			coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
    	 		coinbaseTx.vin[0].scriptSig = CScript() << pindex->nHeight << OP_0;
-    		block->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
-    	}
-
-        // GetTransactionSigOpCost counts 3 types of sigops:
-        // * legacy (always)
-        // * p2sh (when P2SH enabled in flags and excludes coinbase)
-        // * witness (when witness enabled in flags and excludes coinbase)
-        nSigOpsCost += GetTransactionSigOpCost(tx, view, flags);
-        if (nSigOpsCost > MAX_BLOCK_SIGOPS_COST)
-            return state.DoS(100, error("ConnectBlock(): too many sigops"),
-                             REJECT_INVALID, "bad-blk-sigops");
-
-        txdata.emplace_back(tx);
+    		txdata.emplace_back(coinbaseTx);
+    	} else {
+	        txdata.emplace_back(tx);
+	    }
+	    
         if (!tx.IsCoinBase())
         {
             nFees += view.GetValueIn(tx)-tx.GetValueOut();
