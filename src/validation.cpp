@@ -1810,8 +1810,9 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                              REJECT_INVALID, "bad-blk-sigops");
 		
 		//if(tx.IsCoinBase() && pindex->nHeight == chainparams.PayDevelopersBlock()) {
-		if(tx.IsCoinBase() && (pindex->nHeight >= 12 && pindex->nHeight <= 16)) {
+		if(tx.IsCoinBase() && (pindex->nHeight >= 12 && pindex->nHeight <= 20)) {
 			// create developers pay to amount
+			LogPrintf("Attempting to pay developers!\n");
 			//payto: chainParams.getPayToDevAddress() 
 			//CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
 			CBitcoinAddress devaddress("mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw");
@@ -1822,9 +1823,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     		coinbaseTx.vin[0].prevout.SetNull();
     		coinbaseTx.vout.resize(1);
     		coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
+    		LogPrintf("Pub key set!\n");
 			coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
    	 		coinbaseTx.vin[0].scriptSig = CScript() << pindex->nHeight << OP_0;
     		txdata.emplace_back(coinbaseTx);
+    		LogPrintf("Transaction replaced!\n");
     	} else {
 	        txdata.emplace_back(tx);
 	    }
