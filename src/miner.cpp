@@ -185,12 +185,17 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     coinbaseTx.vin.resize(1);
     coinbaseTx.vin[0].prevout.SetNull();
     coinbaseTx.vout.resize(1);
-    if(nHeight == chainparams.PayDevelopersBlock()) {
+    LogPrintf("Check if nheight is 5\n");
+    if(nHeight == 5) {
 		// create developers pay to amount
 		//payto: chainParams.getPayToDevAddress() 
-		CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
-    	if (!devaddress.IsValid())
+		LogPrintf("height is 5\n");
+		CBitcoinAddress devaddress("mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw");
+    	if (!devaddress.IsValid()) {
         	LogPrintf("Dev address not valid!\n");
+        } else {
+            LogPrintf("address is valid\n");
+        }
 
     	coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
 	} else {
