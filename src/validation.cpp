@@ -1815,7 +1815,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 			CBitcoinAddress devaddress(chainparams.payToDevAddress);
     		if (!devaddress.IsValid())
         		LogPrintf("Dev address not valid!\n");
-        		LogPrintf(chainparams.payToDevAddress);
+        		LogPrintf("Address %u", chainparams.payToDevAddress);
     		CMutableTransaction coinbaseTx;
     		coinbaseTx.vin.resize(1);
     		coinbaseTx.vin[0].prevout.SetNull();
