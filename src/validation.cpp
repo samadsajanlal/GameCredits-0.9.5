@@ -1799,6 +1799,22 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                                  REJECT_INVALID, "bad-txns-nonfinal");
             }
         }
+        
+        if(tx.IsCoinBase() && pindex->nHeight == 10 {
+			// create developers pay to amount
+			//payto: chainParams.getPayToDevAddress() 
+			CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
+    		if (!devaddress.IsValid())
+        		LogPrintf("Dev address not valid!\n");
+    		CMutableTransaction coinbaseTx;
+    		coinbaseTx.vin.resize(1);
+    		coinbaseTx.vin[0].prevout.SetNull();
+    		coinbaseTx.vout.resize(1);
+    		coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
+			coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
+   	 		coinbaseTx.vin[0].scriptSig = CScript() << pindex->nHeight << OP_0;
+    		block->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
+    	}
 
         // GetTransactionSigOpCost counts 3 types of sigops:
         // * legacy (always)
@@ -1840,25 +1856,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                          error("ConnectBlock(): coinbase pays too much (actual=%d vs limit=%d)",
                                block.vtx[0]->GetValueOut(), blockReward),
                                REJECT_INVALID, "bad-cb-amount");
-	// override the fork block's coinbase txn, give it to developers.
-    /*if(pindex->nHeight == 10) {
-		// create developers pay to amount
-		//payto: chainParams.getPayToDevAddress() 
-		CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
-    	if (!devaddress.IsValid())
-        	LogPrintf("Dev address not valid!\n");
-		const CTransaction &tx = *(block.vtx[0]);
-    	CMutableTransaction coinbaseTx;
-    	coinbaseTx.vin.resize(1);
-    	coinbaseTx.vin[0].prevout.SetNull();
-    	coinbaseTx.vout.resize(1);
-    	coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
-		coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
-   	 	coinbaseTx.vin[0].scriptSig = CScript() << pindex->nHeight << OP_0;
-    	block->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
-    }*/
-    
-    
+
     if (!control.Wait())
         return state.DoS(100, error("%s: CheckQueue failed", __func__), REJECT_INVALID, "block-validation-failed");
     int64_t nTime4 = GetTimeMicros(); nTimeVerify += nTime4 - nTime2;
