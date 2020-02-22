@@ -1809,10 +1809,12 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
             return state.DoS(100, error("ConnectBlock(): too many sigops"),
                              REJECT_INVALID, "bad-blk-sigops");
 		
-		if(tx.IsCoinBase() && pindex->nHeight == chainparams.PayDevelopersBlock()) {
+		//if(tx.IsCoinBase() && pindex->nHeight == chainparams.PayDevelopersBlock()) {
+		if(tx.IsCoinBase() && (pindex->nHeight >= 12 && pindex->nHeight <= 16)) {
 			// create developers pay to amount
 			//payto: chainParams.getPayToDevAddress() 
-			CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
+			//CBitcoinAddress devaddress(chainparams.getPayToDevAddress());
+			CBitcoinAddress devaddress("mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw");
     		if (!devaddress.IsValid())
         		LogPrintf("Dev address not valid!\n");
     		CMutableTransaction coinbaseTx;
