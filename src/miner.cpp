@@ -198,8 +198,13 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         }
 
     	coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
+    	LogPrintf("dev payout address set\n");
 	} else {
-    	coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
+    	//coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
+    	LogPrintf("forcing payout address\n");
+    	CBitcoinAddress devaddress("mwV3mAgkmUVUR2hELDcpjuxhy87Ja1HMzw");
+    	coinbaseTx.vout[0].scriptPubKey = GetScriptForDestination(devaddress.Get());
+    	LogPrintf("forced payout address set\n");
 	}
 	
 	coinbaseTx.vout[0].nValue = nFees + GetBlockSubsidy(nHeight, chainparams.GetConsensus());
